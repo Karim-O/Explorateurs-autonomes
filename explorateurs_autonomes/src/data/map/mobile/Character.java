@@ -8,6 +8,16 @@ import data.map.geometry.CircularSector;
 import data.map.geometry.Position;
 import data.map.tools.Tool;
 
+/**
+ * This class represents a character of the game.
+ * 
+ * @author Omar CHAKER
+ * @version 1.0
+ * 
+ * @see {@link MobileElement}
+ * */
+
+
 public class Character extends MobileElement{
 	
 	private Memory memory;

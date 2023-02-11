@@ -17,7 +17,10 @@ public class Position {
 		this.x = x;
 		this.y = y;
 	}
-
+	
+	public Position() {
+		this(0, 0);
+	}
 	
 	public void move(int dx, int dy) {
 		this.x += dx;
