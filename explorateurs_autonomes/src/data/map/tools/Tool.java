@@ -1,6 +1,7 @@
 package data.map.tools;
 
 import data.map.mobile.Monster;
+import data.map.mobile.Character;
 
 public abstract class Tool {
 
@@ -17,7 +18,7 @@ public abstract class Tool {
 	
 	
 	public abstract void doDamages(Character character, Monster monster, int damage);
-	public abstract void communicate(Character character1, Character character2, int information);
+	public abstract void communicate(Character sender, Character receiver, int information);
 	public abstract void speedIncrease(Character character, int dspeed);
 	
 	

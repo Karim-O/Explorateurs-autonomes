@@ -1,6 +1,8 @@
 package data.map.tools;
 
 import data.map.mobile.Monster;
+import data.map.mobile.Character;
+import data.map.mobile.Memory;
 
 public class CommunicationTool extends Tool{
 	
@@ -15,7 +17,8 @@ public class CommunicationTool extends Tool{
 	public void doDamages(Character character, Monster monster, int damage) {}
 
 	@Override
-	public void communicate(Character character1, Character character2, int information) {
+	public void communicate(Character sender, Character character2, int information) {
+		
 	}
 
 	@Override

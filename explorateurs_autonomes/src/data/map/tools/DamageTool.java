@@ -1,6 +1,7 @@
 package data.map.tools;
 
 import data.map.mobile.Monster;
+import data.map.mobile.Character;
 
 public class DamageTool extends Tool{
 	
