@@ -15,10 +15,18 @@ import data.map.geometry.Position;
 
 public class Monster extends MobileElement {
 
-	public Monster(Position position, Dimension dimension, float pace, String name, int strength, CircularSector vision,
-			Sound sound) {
-		super(position, dimension, pace, name, strength, vision, sound);
+	public Monster(Position position, Dimension dimension, float pace, String name, int health, int strength, CircularSector vision, 
+			Sound sound) { 
+		super(position, dimension, pace, name, health,  strength, vision, sound);
 		
+	}
+	public Monster (Position position, Dimension dimension, float pace, String name, int strength, CircularSector vision,
+			Sound sound) {
+		this(position, dimension, pace, name, MobileElement.MONSTER_HEALTH, strength, vision, sound);
 	}
 
 }
+
+
+
+		
