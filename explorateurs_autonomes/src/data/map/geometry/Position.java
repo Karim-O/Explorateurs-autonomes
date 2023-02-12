@@ -5,6 +5,7 @@ package data.map.geometry;
  * 
  * @version 1.0
  * @author Omar CHAKER
+ * explorateur
  * */
 
 public class Position {
@@ -47,8 +48,7 @@ public class Position {
 	public String toString() {
 		return "Point : x = "+ this.x +" , y = "+ this.y;
 	}
-	
-	
+		
 }
 
 
