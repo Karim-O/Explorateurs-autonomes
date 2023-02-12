@@ -47,6 +47,7 @@ public class Map {
   public void setTreasures(ArrayList<Treasure> treasures) {
     this.treasures = treasures;
   }
+  
 }
 
 
