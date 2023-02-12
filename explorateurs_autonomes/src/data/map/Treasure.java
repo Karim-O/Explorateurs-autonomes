@@ -4,6 +4,12 @@ import java.awt.Dimension;
 
 import data.map.geometry.Position;
 
+/**
+ * This class represents a treasure
+ * 
+ * @version 1.0
+ * @author Feriel MALEK
+ * */
 
 public class Treasure extends GraphicElement{
 
