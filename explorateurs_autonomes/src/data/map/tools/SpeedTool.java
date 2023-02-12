@@ -1,6 +1,7 @@
 package data.map.tools;
 
 import data.map.mobile.Monster;
+import exceptions.ValueException;
 import data.map.mobile.Character;
 import data.map.mobile.Memory;
 
@@ -14,14 +15,23 @@ public class SpeedTool extends Tool{
 	}
 
 	@Override
-	public void doDamages(Character character, Monster monster, int damage) {}
+	public void damageIncrease(Character character, Monster monster) {}
 
 	@Override
-	public void communicate(Character sender, Character receiver, int information) {}
+	public void communicate(Character sender, Character receiver){}
 
 	@Override
-	public void speedIncrease(Character character, int dspeed) {
-		int speed = character.getPace();
+	public void speedIncrease(Character character) throws ValueException {
+		int initPace = character.getPace();
+		
+		float dpace = initPace * speedIncrease / 100;
+		
+		float pace = initPace + dpace;
+		if(pace > 15)
+			character.setPace((int)pace);
+		else
+			throw new ValueException("Pace value is not supposed to be more or equal than 15");
+	
 	}
 
 	public int getSpeedIncrease() {

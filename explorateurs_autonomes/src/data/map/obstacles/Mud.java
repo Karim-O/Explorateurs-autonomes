@@ -35,7 +35,9 @@ public class Mud extends Obstacle{
 		
 		int initPace = character.getPace();
 		
-		float pace = initPace * MUD_DECELERATE_PERCENTAGE / 100;
+		float dpace = initPace * MUD_DECELERATE_PERCENTAGE / 100;
+		
+		float pace = initPace - dpace;
 		
 		character.setPace((int)pace);
 	}

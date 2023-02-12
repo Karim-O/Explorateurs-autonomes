@@ -1,8 +1,17 @@
 package data.map.tools;
 
 import data.map.mobile.Monster;
+import exceptions.ValueException;
 import data.map.mobile.Character;
 import data.map.mobile.Memory;
+
+/**
+ * This class represents every tool of the map.
+ * 
+ * @author Omar CHAKER
+ * @version 1.2
+ * 
+ * */
 
 public abstract class Tool {
 
@@ -18,9 +27,32 @@ public abstract class Tool {
 	}
 	
 	
-	public abstract void doDamages(Character character, Monster monster, int damage);
-	public abstract void communicate(Character sender, Character receiver, int information);
-	public abstract void speedIncrease(Character character, int dspeed);
+	
+	
+	public String getName() {
+		return name;
+	}
+
+
+
+
+	public String getWeight() {
+		return weight;
+	}
+
+
+
+
+	public int getPrice() {
+		return price;
+	}
+
+
+
+
+	public abstract void damageIncrease(Character character, Monster monster);
+	public abstract void communicate(Character sender, Character receiver);
+	public abstract void speedIncrease(Character character) throws ValueException;
 	
 	
 }

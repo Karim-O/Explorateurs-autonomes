@@ -36,7 +36,9 @@ public class River extends Obstacle{
 		
 		int initPace = character.getPace();
 		
-		float pace = initPace * RIVER_DECELERATE_PERCENTAGE / 100;
+		float dpace = initPace * RIVER_DECELERATE_PERCENTAGE / 100;
+		
+		float pace = initPace - dpace;	
 		
 		character.setPace((int)pace);
 	}

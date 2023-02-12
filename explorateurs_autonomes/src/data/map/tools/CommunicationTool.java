@@ -15,25 +15,33 @@ public class CommunicationTool extends Tool{
 	}
 
 	@Override
-	public void doDamages(Character character, Monster monster, int damage) {}
+	public void damageIncrease(Character character, Monster monster) {}
 
 	@Override
-	public void communicate(Character sender, Character receiver, int information) {
+	public void communicate(Character sender, Character receiver) {
 		Memory senderMemory = sender.getMemory();
 		Memory receiverMemory = receiver.getMemory();
 		
 		for(Position treasureLoc : senderMemory.getTreasuresLoc()) {
 			if(!receiverMemory.getTreasuresLoc().contains(treasureLoc))
 				receiverMemory.addTreasureLoc(treasureLoc);
+				message += "Localisation du trésor est dans la position : " + treasureLoc + "\n";
 		}
 		receiver.setMemory(receiverMemory);
 	}
 
 	@Override
-	public void speedIncrease(Character character, int dspeed){}
+	public void speedIncrease(Character character){}
 
+	/**
+	 * This method is a getter of the attribute message, but when
+	 * it is called the message is erased.
+	 * */
+	
 	public String getMessage() {
-		return message;
+		String temporaryMessage = this.message;
+		setMessage(null);
+		return temporaryMessage;
 	}
 
 	public void setMessage(String message) {

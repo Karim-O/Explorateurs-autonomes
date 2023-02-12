@@ -14,13 +14,13 @@ public class DamageTool extends Tool{
 	}
 
 	@Override
-	public void doDamages(Character character, Monster monster, int damage) {}
+	public void damageIncrease(Character character, Monster monster) {}
 
 	@Override
-	public void communicate(Character character1, Character character2, int information) {}
+	public void communicate(Character character1, Character character2) {}
 
 	@Override
-	public void speedIncrease(Character character, int dspeed){}
+	public void speedIncrease(Character character){}
 
 	public int getDamage() {
 		return this.damage;
