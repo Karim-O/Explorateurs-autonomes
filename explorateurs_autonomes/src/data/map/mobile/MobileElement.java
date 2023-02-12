@@ -6,6 +6,15 @@ import data.map.GraphicElement;
 import data.map.geometry.CircularSector;
 import data.map.geometry.Position;
 
+/**
+ * This abstract class represents every mobile element on the map.
+ * 
+ * @version 1.0
+ * @author Omar CHAKER
+ * 
+ * @see {@link GraphicElement}
+ * */
+
 public class MobileElement extends GraphicElement{
 	private float pace;
 	private String name;
@@ -40,4 +49,35 @@ public class MobileElement extends GraphicElement{
 		this(position, dimension, pace, name, health, strength, new CircularSector(5,6,7,8),
 				sound);
 	}
+
+
+	public int getHealth() {
+		return health;
+	}
+
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+
+	public float getPace() {
+		return pace;
+	}
+	
+	
+	public void setPace(float pace) {
+		this.pace = pace;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public int getStrength() {
+		return strength;
+	}
+	
 }

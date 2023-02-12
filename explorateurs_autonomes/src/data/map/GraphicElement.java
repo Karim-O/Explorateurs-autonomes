@@ -17,6 +17,11 @@ public class GraphicElement {
 	private Position position;
 	private Dimension dimension;
 	
+	
+	public static final Dimension TREE_DIMENSION = new Dimension(20,30);
+
+
+	
 	public GraphicElement(Position position, Dimension dimension) {
 		this.position = position;
 		this.dimension = dimension;
