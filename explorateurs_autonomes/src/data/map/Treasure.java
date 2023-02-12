@@ -17,13 +17,13 @@ public class Treasure extends GraphicElement{
 
     private static final int DEFAULT_LOOT = 10000;
 
-    public Treasure(Dimension dimension, Position position, int loot) {
+    public Treasure(Position position, Dimension dimension, int loot) {
         super(dimension, position);
         this.loot = loot;
     }
 
-    public Treasure(Dimension dimension, Position position) {
-        this(dimension, position, DEFAULT_LOOT);
+    public Treasure(Position position, Dimension dimension) {
+        this(position, dimension, DEFAULT_LOOT);
     }
 
     public int getLoot() {

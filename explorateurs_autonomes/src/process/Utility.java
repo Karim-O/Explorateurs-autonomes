@@ -6,6 +6,14 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+
+/**
+ * This class contains static methods for different utilities
+ * 
+ * @author Omar CHAKER
+ * @version 1.0
+ * */
+
 public class Utility {
 
 	/**
@@ -24,12 +32,6 @@ public class Utility {
 			return null;
 		}
 	}
-	
-	/**
-	 * This 
-	 * */
-	
-	
 	
 }
 
