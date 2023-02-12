@@ -2,6 +2,7 @@ package data.map.tools;
 
 import data.map.mobile.Monster;
 import data.map.mobile.Character;
+import data.map.mobile.Memory;
 
 public abstract class Tool {
 

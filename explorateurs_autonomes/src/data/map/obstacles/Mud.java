@@ -33,10 +33,10 @@ public class Mud extends Obstacle{
 	@Override
 	public void speedDecrease(Character character) {
 		
-		float initPace = character.getPace();
+		int initPace = character.getPace();
 		
 		float pace = initPace * MUD_DECELERATE_PERCENTAGE / 100;
 		
-		character.setPace(pace);
+		character.setPace((int)pace);
 	}
 }

@@ -34,11 +34,11 @@ public class River extends Obstacle{
 	@Override
 	public void speedDecrease(Character character) {
 		
-		float initPace = character.getPace();
+		int initPace = character.getPace();
 		
 		float pace = initPace * RIVER_DECELERATE_PERCENTAGE / 100;
 		
-		character.setPace(pace);
+		character.setPace((int)pace);
 	}
 
 }

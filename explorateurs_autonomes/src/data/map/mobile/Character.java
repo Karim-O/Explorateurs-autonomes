@@ -26,7 +26,7 @@ public class Character extends MobileElement{
 	private int stamina;
 	private int price;
 
-	public Character(Position position, Dimension dimension, float pace, String name, int strength,
+	public Character(Position position, Dimension dimension, int pace, String name, int strength,
 			CircularSector vision, Sound sound, int intelligence, int stamina, int price) {
 		super(position, dimension, pace, name, strength, vision, sound);
 		this.memory = new Memory();
