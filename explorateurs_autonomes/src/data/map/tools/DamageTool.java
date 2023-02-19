@@ -8,7 +8,7 @@ public class DamageTool extends Tool{
 	
 	private int damage;
 
-	public DamageTool(String name, String weight, int price, int damage) {
+	public DamageTool(String name, int weight, int price, int damage) {
 		super(name, weight, price);
 		this.damage = damage;
 	}

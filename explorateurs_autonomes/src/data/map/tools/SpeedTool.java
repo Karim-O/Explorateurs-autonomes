@@ -9,7 +9,7 @@ public class SpeedTool extends Tool{
 	
 	private int speedIncrease; 
 
-	public SpeedTool(String name, String weight, int price, int speedIncrease) {
+	public SpeedTool(String name, int weight, int price, int speedIncrease) {
 		super(name, weight, price);
 		this.speedIncrease = speedIncrease;
 	}

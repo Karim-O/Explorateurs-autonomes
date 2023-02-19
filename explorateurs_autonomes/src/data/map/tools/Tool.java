@@ -16,11 +16,11 @@ import data.map.mobile.Memory;
 public abstract class Tool {
 
 	private String name;
-	private String weight;
+	private int weight;
 	private int price;
 	
 	
-	public Tool(String name, String weight, int price) {
+	public Tool(String name, int weight, int price) {
 		this.name = name;
 		this.weight = weight;
 		this.price = price;
@@ -36,7 +36,7 @@ public abstract class Tool {
 
 
 
-	public String getWeight() {
+	public int getWeight() {
 		return weight;
 	}
 

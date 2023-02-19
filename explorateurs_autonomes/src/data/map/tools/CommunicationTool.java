@@ -9,7 +9,7 @@ public class CommunicationTool extends Tool{
 	
 	private String message;
 
-	public CommunicationTool(String name, String weight, int price) {
+	public CommunicationTool(String name, int weight, int price) {
 		super(name, weight, price);
 		this.message = "";
 	}
