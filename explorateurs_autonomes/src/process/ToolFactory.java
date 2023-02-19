@@ -20,6 +20,7 @@ import exceptions.ValueException;
  * This class is a Factory which generate static elements of the map.
  * 
  * @author Omar CHAKER
+ * @author Xuming MA
  * @version 1.0
  * */
 
