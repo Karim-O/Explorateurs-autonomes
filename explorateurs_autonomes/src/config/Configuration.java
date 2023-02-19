@@ -92,5 +92,39 @@ public class Configuration {
 	public static final int TITLE_WELCOME_POSITION_Y = (WINDOW_HEIGHT_WELCOME/2) - (TITLE_WELCOME_HEIGHT/2) - (DESCRIPTION_WELCOME_HEIGHT);
 	
 	
+	/** Width of the start button in the end frame **/	
+	//public static final int START_END_WIDTH = 200;
+	
+	/** Height of the start button in the end frame **/
+	//public static final int START_END_HEIGHT =70;
+	
+	/** Position X of the start button in the end frame **/
+	//public static final int START_END_POSITION_X = (WINDOW_WIDTH_WELCOME/4) - (START_END_WIDTH/2);
+	/** Position Y of the start button in the end frame **/
+	//public static final int START_END_POSITION_Y = (WINDOW_HEIGHT_WELCOME) - (START_END_HEIGHT/2);
+	
+	
+	/** Width of the exit button in the end frame **/
+	//public static final int EXIT_END_WIDTH = 200;
+	
+	/** Height of the exit button in the end frame **/
+	//public static final int EXIT_END_HEIGHT = 70;
+	
+	/** Position X of the exit button in the end frame **/
+	//public static final int EXIT_END_POSITION_X = (WINDOW_WIDTH_WELCOME/4) + (EXIT_END_WIDTH/2);
+	/** Position Y of the exit button in the end frame **/
+	//public static final int EXIT_END_POSITION_Y = (WINDOW_HEIGHT_WELCOME) - (EXIT_END_HEIGHT/2);
 
+	
+	/** Width of the finish game in the end frame **/
+	public static final int COUPE_END_WIDTH = 500;
+	
+	/** Height of the finish game in the end frame **/
+	public static final int COUPE_END_HEIGHT = 400;
+	
+	/** Position X of the finish game in the end frame **/
+	public static final int COUPE_END_POSITION_X = (WINDOW_WIDTH_WELCOME/2) - (COUPE_END_WIDTH/2);
+	/** Position Y of the finish game in the end frame **/
+	public static final int COUPE_END_POSITION_Y = (WINDOW_HEIGHT_WELCOME/2) - (COUPE_END_HEIGHT/2);
+	
 }

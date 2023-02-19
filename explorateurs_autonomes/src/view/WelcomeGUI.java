@@ -40,14 +40,13 @@ public class WelcomeGUI extends JFrame implements Runnable{
     private JPanel panel = new JPanel();
 	private JPanel control = new JPanel();
 	
-    Container contentPane = getContentPane();
     
    
     //private JLabel titre = new JLabel("Explorateurs autonomes");
 	
 	//private static Font font = new Font(Font.SERIF, Font.ITALIC, 20);
      
-    
+    // Description of the game 
     private JLabel description = new JLabel("<html>"
     									+ "<p style=\"text-align: justify;\">\tCe jeu représente des explorateurs autonomes"
     									+ " dans un environnement hostile a fin d’y trouver"
@@ -63,7 +62,7 @@ public class WelcomeGUI extends JFrame implements Runnable{
 	
 	
     
-	private JButton createDH = new JButton("start");
+	private JButton start = new JButton("start");
 	
 	private static Color buttonColor = new Color(241, 234, 232);
 	
@@ -82,7 +81,7 @@ public class WelcomeGUI extends JFrame implements Runnable{
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         
-        control.setLayout(new FlowLayout(FlowLayout.CENTER));
+       // control.setLayout(new FlowLayout());
 		control.setLayout(null);
 		control.setPreferredSize(preferredSize);
 		control.setBackground(controlColor);
@@ -97,29 +96,28 @@ public class WelcomeGUI extends JFrame implements Runnable{
 		//control.add(titre);
 		
 		//description.setPreferredSize(new Dimension(100,40));
-		description.setFont(font1);
+		
 		//description.setBounds(160, 100, 300, 130);
-
+		description.setFont(font1);
 		description.setBounds(Configuration.DESCRIPTION_WELCOME_POSITION_X,
 				Configuration.DESCRIPTION_WELCOME_POSITION_Y,
 				Configuration.DESCRIPTION_WELCOME_WIDTH,
 				Configuration.DESCRIPTION_WELCOME_HEIGHT);
 		description.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		description.setHorizontalAlignment(JLabel.LEFT);
+		control.add(description);
 		//description.setLineWrap(true);
 		//description.setWrapStyleWord(true);
-		control.add(description);
 		
 		
+		start.addActionListener(new ActionStart());
 		
-		createDH.addActionListener(new ActionStart());
-		
-		createDH.setBounds(Configuration.START_WELCOME_POSITION_X,
+		start.setBounds(Configuration.START_WELCOME_POSITION_X,
 				Configuration.START_WELCOME_POSITION_Y,
 				Configuration.START_WELCOME_WIDTH,
 				Configuration.START_WELCOME_HEIGHT);
-		createDH.setBackground(buttonColor);
-		control.add(createDH);
+		start.setBackground(buttonColor);
+		control.add(start);
 		
 		
 		
