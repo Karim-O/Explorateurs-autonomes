@@ -10,19 +10,19 @@ public class Sound {
 	
 	
 	/** This constant represents male character sound intensity **/
-	public static final int MALE_CHARACTER_SOUND_INTENSITY = 0;
+	public static final int MALE_CHARACTER_SOUND_TONE = 0;
 	
 	/** This constant represents female character sound intensity **/
-	public static final int FEMALE_CHARACTER_SOUND_INTENSITY = 1;
+	public static final int FEMALE_CHARACTER_SOUND_TONE = 1;
 	
 	/** This constant represents monster sound intensity **/
 	public static final int MONSTER_SOUND_INTENSITY = 2;
 	
 	/** This constant represents character tone **/
-	public static final int CHARACTER_TONE = 3;
+	public static final int CHARACTER_INTENSITY = 3;
 	
 	/** This constant represents character tone **/
-	public static final int MONSTER_TONE = 4;
+	public static final int MONSTER_INTENSITY = 4;
 	
 	
 	

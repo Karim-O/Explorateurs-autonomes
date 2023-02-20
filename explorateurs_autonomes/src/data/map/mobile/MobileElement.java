@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import data.map.GraphicElement;
 import data.map.geometry.CircularSector;
 import data.map.geometry.Position;
+import exceptions.ValueException;
 
 /**
  * This abstract class represents every mobile element on the map.
@@ -28,26 +29,32 @@ public class MobileElement extends GraphicElement{
 	
 	
 	public MobileElement(Position position, Dimension dimension, int pace, String name, 
-			int health, int strength, CircularSector vision, Sound sound) {
+			int health, int strength, CircularSector vision) {
 		super(dimension, position);
+		try{
+			this.sound = new Sound(Sound.MALE_CHARACTER_SOUND_TONE, Sound.CHARACTER_INTENSITY);
+		}
+		
+		catch(ValueException e) {
+			e.getMessage();
+		}
+	
 		this.pace = pace;
 		this.name = name;
 		this.health = health;
 		this.strength = strength;
 		this.vision = vision;
-		this.sound = sound;
 	}
 	
 	
 	public MobileElement(Position position, Dimension dimension, int pace, String name, 
-			int strength, CircularSector vision, Sound sound) {
-		this(position, dimension, pace, name, CHARACTER_HEALTH, strength, vision, sound);
+			int strength){
+		this(position, dimension, pace, name, CHARACTER_HEALTH, strength, new CircularSector(5,6,7,8));
 	}
 	
 	public MobileElement(Position position, Dimension dimension, int pace, String name,
-			int health, int strength, Sound sound) {
-		this(position, dimension, pace, name, health, strength, new CircularSector(5,6,7,8),
-				sound);
+			int health, int strength){
+		this(position, dimension, pace, name, health, strength, new CircularSector(5,6,7,8));
 	}
 
 
@@ -79,5 +86,17 @@ public class MobileElement extends GraphicElement{
 	public int getStrength() {
 		return strength;
 	}
+
+
+	public CircularSector getVision() {
+		return vision;
+	}
+
+
+	public Sound getSound() {
+		return sound;
+	}
+	
+	
 	
 }

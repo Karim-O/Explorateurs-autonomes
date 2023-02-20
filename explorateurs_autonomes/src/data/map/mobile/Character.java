@@ -27,8 +27,8 @@ public class Character extends MobileElement{
 	private int price;
 
 	public Character(Position position, Dimension dimension, int pace, String name, int strength,
-			CircularSector vision, Sound sound, int intelligence, int stamina, int price) {
-		super(position, dimension, pace, name, strength, vision, sound);
+				int intelligence, int stamina, int price) {
+		super(position, dimension, pace, name, strength);
 		this.memory = new Memory();
 		this.intelligence = intelligence;
 		this.stamina = stamina;

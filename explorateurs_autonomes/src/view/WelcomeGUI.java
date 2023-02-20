@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -21,7 +22,7 @@ import javax.swing.JTextArea;
 
 import config.Configuration;
 import process.Utility;
-import view.MainGui;
+import view.MainGUI;
 
 /**
  * This class represents a treasure
@@ -136,7 +137,7 @@ public class WelcomeGUI extends JFrame implements Runnable{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			MainGui gameMainGui = new MainGui();
+			MainGUI gameMainGui = new MainGUI("Welcome");
 
 			Thread gameThread = new Thread();
 			gameThread.start();

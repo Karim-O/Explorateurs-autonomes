@@ -35,7 +35,7 @@ public class Configuration {
 	
 	
 	/** Width of the character in the selection window **/
-	public static final int CHAR_PREP_WIDTH = 300;
+	public static final int CHAR_PREP_WIDTH = 200;
 	
 	/** Height of the character in the selection window **/
 	public static final int CHAR_PREP_HEIGHT = 300;

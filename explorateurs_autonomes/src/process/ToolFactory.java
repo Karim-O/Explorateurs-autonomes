@@ -17,9 +17,8 @@ import data.map.tools.SpeedTool;
 import data.map.tools.Tool;
 import exceptions.ValueException;
 /**
- * This class is a Factory which generate static elements of the map.
+ * This class is a Factory which generate tools for the characters.
  * 
- * @author Omar CHAKER
  * @author Xuming MA
  * @version 1.0
  * */
