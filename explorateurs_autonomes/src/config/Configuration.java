@@ -14,18 +14,21 @@ import view.prep.SelectPanel;
  */
 public class Configuration {
 	
-	GraphicsEnvironment graphicsEnvironment=GraphicsEnvironment.getLocalGraphicsEnvironment();
+	private static GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
     
 	//get maximum window bounds
-	Rectangle maximumWindowBounds=graphicsEnvironment.getMaximumWindowBounds();
+	private static Rectangle maximumWindowBounds = graphicsEnvironment.getMaximumWindowBounds();
 	
 	//System.out.println("(" + maximumWindowBounds.height + ", "  + maximumWindowBounds.width + ")");
 	
 	/** Width of the window **/
-	public static final int WINDOW_WIDTH = 1600;
+	//public static final int WINDOW_WIDTH = 1600;
+
+	public static final int WINDOW_WIDTH = (int) maximumWindowBounds.getWidth();
 
 	/** Height of the window **/
-	public static final int WINDOW_HEIGHT = 900;
+	//public static final int WINDOW_HEIGHT = 900;
+	public static final int WINDOW_HEIGHT = (int) maximumWindowBounds.getHeight();
 	
 	/** Width of the select panel **/
 	public static final int SELECT_PANEL_WIDTH = 400;

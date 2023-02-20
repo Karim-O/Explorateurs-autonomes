@@ -33,20 +33,20 @@ public class TriangularButton extends JButton {
 	public final static int LEFT_BUTTON = 1;
 	
 	/* These constants represents the width and the length of a Triangular Button */
-	private final static int PREFERRED_BUTTON_HEIGHT = 20;
-	private final static int PREFERRED_BUTTON_WIDTH = PREFERRED_BUTTON_HEIGHT * 2;
+	private final static int PREFERRED_BUTTON_WIDTH = 20;
+	private final static int PREFERRED_BUTTON_HEIGHT = PREFERRED_BUTTON_WIDTH * 2;
 	
 	/** This constant represents the preferred dimension for a Triangular Button **/
-	public final static Dimension PREFERRED_BUTTON_DIMENSION = new Dimension(PREFERRED_BUTTON_HEIGHT, PREFERRED_BUTTON_WIDTH);
+	public final static Dimension PREFERRED_BUTTON_DIMENSION = new Dimension(PREFERRED_BUTTON_WIDTH, PREFERRED_BUTTON_HEIGHT);
 	
 	/* These constants represents the default points to create a Triangular Button */
-	private static final Position IDEAL_LP1_POSITION = new Position(0, PREFERRED_BUTTON_HEIGHT);
-	private static final Position IDEAL_LP2_POSITION = new Position(PREFERRED_BUTTON_HEIGHT, 0);
-	private static final Position IDEAL_LP3_POSITION = new Position(PREFERRED_BUTTON_HEIGHT, PREFERRED_BUTTON_WIDTH);
+	private static final Position IDEAL_LP1_POSITION = new Position(0, PREFERRED_BUTTON_WIDTH);
+	private static final Position IDEAL_LP2_POSITION = new Position(PREFERRED_BUTTON_WIDTH, 0);
+	private static final Position IDEAL_LP3_POSITION = new Position(PREFERRED_BUTTON_WIDTH, PREFERRED_BUTTON_HEIGHT);
 	
 	private static final Position IDEAL_RP1_POSITION = new Position(0, 0);
-	private static final Position IDEAL_RP2_POSITION = new Position(0, PREFERRED_BUTTON_WIDTH);
-	private static final Position IDEAL_RP3_POSITION = new Position(PREFERRED_BUTTON_HEIGHT, PREFERRED_BUTTON_HEIGHT);
+	private static final Position IDEAL_RP2_POSITION = new Position(0, PREFERRED_BUTTON_HEIGHT);
+	private static final Position IDEAL_RP3_POSITION = new Position(PREFERRED_BUTTON_WIDTH, PREFERRED_BUTTON_WIDTH);
 	
 	private static final long serialVersionUID = 6349732565241920972L;
 	private Shape triangle;
@@ -128,14 +128,18 @@ public class TriangularButton extends JButton {
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2D = (Graphics2D)(g);
+       
+        g2D.setColor(getBackground());
+        g2D.fillRect(0, 0, PREFERRED_BUTTON_WIDTH, PREFERRED_BUTTON_HEIGHT);
         
         if (hovered)
         	g2D.setColor(Color.BLACK);
         else
-        	g2D.setColor(null);
+        	g2D.setColor(Color.DARK_GRAY);
         
 
         g2D.fill(triangle);
-        	
+    
+    
     }
 }
