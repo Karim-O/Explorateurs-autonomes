@@ -31,7 +31,7 @@ public class Configuration {
 	public static final int SELECT_PANEL_WIDTH = 400;
 
 	/** Height of the window **/
-	public static final int SELECT_PANEL_HEIGHT = 400;
+	public static final int SELECT_PANEL_HEIGHT = 600;
 	
 	
 	/** Width of the character in the selection window **/

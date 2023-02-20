@@ -39,7 +39,7 @@ public class SelectPanel<E> extends JPanel{
 
 	private static final long serialVersionUID = -6152182396347102949L;
 
-	public static final Dimension IDEAL_SELECT_DIMENSION = new Dimension(400, 400);
+	public static final Dimension IDEAL_SELECT_DIMENSION = new Dimension(Configuration.SELECT_PANEL_WIDTH, Configuration.SELECT_PANEL_HEIGHT);
 	
 	protected JButton leftButton;
 	protected JButton rightButton;
@@ -56,6 +56,13 @@ public class SelectPanel<E> extends JPanel{
 	
 	public SelectPanel() {
 		super();
+		/*if (currentElement instanceof Character) {
+			this.currentElement.getClass().c = (Character)currentElement;
+			elementPath = "character/" + ((Character) currentElement).getName() + ".png";
+		}
+		else if (currentElement instanceof Tool) {
+			elementPath = "tool/" + ((Tool) currentElement).getName() + ".png";
+		}*/
 	}
 	
 	protected void init() {
@@ -172,7 +179,7 @@ public class SelectPanel<E> extends JPanel{
 		super.paintComponent(g);
 		
 		if (currentElement instanceof Character) {
-			elementPath = "character/" + ((Character)currentElement).getName() + ".png";
+			elementPath = "character/" + ((Character) currentElement).getName() + ".png";
 		}
 		else if (currentElement instanceof Tool) {
 			elementPath = "tool/" + ((Tool) currentElement).getName() + ".png";
@@ -183,7 +190,6 @@ public class SelectPanel<E> extends JPanel{
 				Configuration.CHAR_PREP_POSITION_Y,
 				Configuration.CHAR_PREP_WIDTH,
 				Configuration.CHAR_PREP_HEIGHT, null);
-		System.out.println(elementPath);
 		
 	}
 }

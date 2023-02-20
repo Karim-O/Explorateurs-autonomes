@@ -33,4 +33,9 @@ public class CharacterPanel extends SelectPanel<Character>{
 		}
 		init();
 	}
+	
+	@Override
+	protected void init() {
+		super.init();
+	}
 }
