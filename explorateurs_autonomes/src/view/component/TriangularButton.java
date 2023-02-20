@@ -90,12 +90,10 @@ public class TriangularButton extends JButton {
             @Override
             public void mouseEntered(MouseEvent e) {
                 hovered = true;
-                repaint();
             }
             @Override
             public void mouseExited(MouseEvent e) {
                 hovered = false;
-                repaint();
             }
         });
 	
