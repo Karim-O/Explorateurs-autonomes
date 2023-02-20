@@ -7,6 +7,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import data.map.mobile.Character;
+import data.map.tools.Tool;
 import process.GameBuilder;
 
 import javax.swing.JFrame;
@@ -28,10 +29,12 @@ public class PrepGUI extends JFrame implements Runnable {
 	
 	private PrepGUI instance = this;
 	
-	private SelectPanel toolPanel;
+	private ToolPanel toolPanel;
 	private CharacterPanel characterPanel;
-	// a enlever
+	
 	public ArrayList<Character> characters = GameBuilder.initCharacters();
+	public ArrayList<Tool> tools = GameBuilder.initTools();
+	
 	
 	public PrepGUI(String title) {
 		super(title);
@@ -47,7 +50,7 @@ public class PrepGUI extends JFrame implements Runnable {
 		//characterPanel = new CharacterPanel();
 
 		characterPanel = new CharacterPanel(characters);
-		toolPanel = new SelectPanel();
+		toolPanel = new ToolPanel(tools);
 		
 		principalPanel.add(characterPanel, BorderLayout.NORTH);
 		principalPanel.add(toolPanel, BorderLayout.NORTH);

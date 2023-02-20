@@ -35,14 +35,13 @@ public class ToolFactory {
 	public final static int TELESCOPE = 7;
 	
 	
-	public Tool createTool(int toolType, Position position,
-			Dimension dimension) throws ValueException {
+	public static Tool createTool(int toolType) throws ValueException {
 		
 		if(toolType == SHOES) {
 			return new SpeedTool("Shoes",0,0,2);
 		}
 		else if (toolType == COMPASS) {
-			return new CommunicationTool("Campass",1,2);
+			return new CommunicationTool("Compass",1,2);
 		}
 		else if (toolType == HAMMER) {
 			return new DamageTool("Hammer",5,3,10);

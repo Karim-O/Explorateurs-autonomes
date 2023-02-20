@@ -16,10 +16,12 @@ public class MobileElementManager {
 		this.map = map; 
 	}
 
-	public void set(ArrayList<Character> characters) {
+	public void setCharacters(ArrayList<Character> characters) {
 		this.characters = characters;
-		
 	}
 	
+	public void setTools(ArrayList<Tool> tools) {
+		this.tools = tools;
+	}
 
 }

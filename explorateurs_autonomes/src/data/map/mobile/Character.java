@@ -66,5 +66,10 @@ public class Character extends MobileElement{
 	public int getPrice() {
 		return price;
 	}
+	
+	/*@Override
+	public String getName() {
+		return super.getName();
+	}*/
 
 }

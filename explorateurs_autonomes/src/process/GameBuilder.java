@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import data.map.Map;
 import data.map.mobile.Character;
+import data.map.tools.Tool;
 import exceptions.ValueException;
 
 public class GameBuilder {
@@ -17,8 +18,10 @@ public class GameBuilder {
 		MobileElementManager manager = new MobileElementManager(map);
 		
 		ArrayList<Character> characters = initCharacters();
+		ArrayList<Tool> tools = initTools();
 		
-		manager.set(characters);
+		manager.setCharacters(characters);
+		manager.setTools(tools);
 		
 		return manager;
 	}
@@ -41,6 +44,26 @@ public class GameBuilder {
 		}
 		
 		return characters;
+		
+	}
+	
+	public static ArrayList<Tool> initTools(){
+		ArrayList<Tool> tools = new ArrayList<Tool>();
+		
+		try {
+			tools.add(ToolFactory.createTool(ToolFactory.COMPASS));
+			tools.add(ToolFactory.createTool(ToolFactory.HAMMER));
+			tools.add(ToolFactory.createTool(ToolFactory.SWORD));
+			tools.add(ToolFactory.createTool(ToolFactory.MAP));
+			tools.add(ToolFactory.createTool(ToolFactory.PICKAXE));
+			tools.add(ToolFactory.createTool(ToolFactory.SHOES));
+		}
+		
+		catch(ValueException e) {
+			e.getMessage();
+		}
+		
+		return tools;
 		
 	}
 	
