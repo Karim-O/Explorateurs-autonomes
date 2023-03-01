@@ -1,5 +1,6 @@
 package config;
 
+import java.awt.Color;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 
@@ -14,27 +15,42 @@ import view.prep.SelectPanel;
  */
 public class Configuration {
 	
+<<<<<<< Upstream, based on origin/main
 	private static GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+=======
+	private static GraphicsEnvironment graphicsEnvironment=GraphicsEnvironment.getLocalGraphicsEnvironment();
+>>>>>>> ad03b16 Commit
     
 	//get maximum window bounds
+<<<<<<< Upstream, based on origin/main
 	private static Rectangle maximumWindowBounds = graphicsEnvironment.getMaximumWindowBounds();
+=======
+	private static Rectangle maximumWindowBounds=graphicsEnvironment.getMaximumWindowBounds();
+>>>>>>> ad03b16 Commit
 	
 	//System.out.println("(" + maximumWindowBounds.height + ", "  + maximumWindowBounds.width + ")");
 	
 	/** Width of the window **/
 	//public static final int WINDOW_WIDTH = 1600;
+<<<<<<< Upstream, based on origin/main
 
+=======
+>>>>>>> ad03b16 Commit
 	public static final int WINDOW_WIDTH = (int) maximumWindowBounds.getWidth();
 
 	/** Height of the window **/
 	//public static final int WINDOW_HEIGHT = 900;
 	public static final int WINDOW_HEIGHT = (int) maximumWindowBounds.getHeight();
+<<<<<<< Upstream, based on origin/main
 	
+=======
+
+>>>>>>> ad03b16 Commit
 	/** Width of the select panel **/
 	public static final int SELECT_PANEL_WIDTH = 400;
 
 	/** Height of the window **/
-	public static final int SELECT_PANEL_HEIGHT = 600;
+	public static final int SELECT_PANEL_HEIGHT = 400;
 	
 	
 	/** Width of the character in the selection window **/
@@ -129,5 +145,15 @@ public class Configuration {
 	public static final int COUPE_END_POSITION_X = (WINDOW_WIDTH_WELCOME/2) - (COUPE_END_WIDTH/2);
 	/** Position Y of the finish game in the end frame **/
 	public static final int COUPE_END_POSITION_Y = (WINDOW_HEIGHT_WELCOME/2) - (COUPE_END_HEIGHT/2);
+	
+	/** Width of the attributes panel in the preparation frame **/
+	public static final int ATTRIBUTES_PANEL_WIDTH = 400;
+	
+	/** Height of the attributes panel in the preparation frame **/
+	public static final int ATTRIBUTES_PANEL_HEIGHT = 200;
+	
+	
+	/** Colors **/
+	public static final Color LIGHT_GRAY = new Color(200, 200, 200);
 	
 }

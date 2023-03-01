@@ -31,7 +31,7 @@ import view.MainGUI;
  * @author Feriel MALEK
  * */
 
-public class WelcomeGUI extends JFrame implements Runnable{
+public class WelcomeGUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private final static Dimension preferredSize = new Dimension(Configuration.WINDOW_WIDTH_WELCOME,Configuration.WINDOW_HEIGHT_WELCOME);
@@ -153,11 +153,5 @@ public class WelcomeGUI extends JFrame implements Runnable{
                 Configuration.TITLE_WELCOME_HEIGHT, null);
     	
     	 	
-    }
-
-    @Override
-    public void run() {
-        // TODO Auto-generated method stub
-
     }
 }

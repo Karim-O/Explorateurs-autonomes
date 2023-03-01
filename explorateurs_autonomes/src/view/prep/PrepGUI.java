@@ -5,13 +5,18 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.io.ObjectInputFilter.Config;
 import java.util.ArrayList;
 import data.map.mobile.Character;
 import data.map.tools.Tool;
 import process.GameBuilder;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import config.Configuration;
 
 
 /**
@@ -23,7 +28,7 @@ import javax.swing.JPanel;
 
 public class PrepGUI extends JFrame implements Runnable {
 	
-	public static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(1530, 873);
+	public static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(Configuration.WINDOW_WIDTH, Configuration.WINDOW_HEIGHT);
 	
 	private static final long serialVersionUID = 6294652327524659690L;
 	
@@ -38,6 +43,8 @@ public class PrepGUI extends JFrame implements Runnable {
 	
 	public PrepGUI(String title) {
 		super(title);
+		characterPanel = new CharacterPanel(characters);
+		toolPanel = new ToolPanel(tools);
 		init();
 	}
 	
@@ -46,14 +53,30 @@ public class PrepGUI extends JFrame implements Runnable {
 		this.setLayout(new BorderLayout());
 		
 		JPanel principalPanel = new JPanel();
+		principalPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		
+		JPanel characterSelectionPanel = new JPanel();
+		characterSelectionPanel.setLayout(new BorderLayout());
+		
+		characterSelectionPanel.add(characterPanel, BorderLayout.CENTER);
+		characterSelectionPanel.add(characterPanel.attributesPanel, BorderLayout.SOUTH);
+		
+		characterSelectionPanel.setPreferredSize(characterPanel.IDEAL_CHARACTER_PANEL_DIMENSION);
+		characterSelectionPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+		characterPanel.attributesPanel.setBackground(Color.BLACK);
+		
 		
 		//characterPanel = new CharacterPanel();
-
-		characterPanel = new CharacterPanel(characters);
-		toolPanel = new ToolPanel(tools);
 		
-		principalPanel.add(characterPanel, BorderLayout.NORTH);
-		principalPanel.add(toolPanel, BorderLayout.NORTH);
+		//principalPanel.add(characterPanel);
+		//principalPanel.add(characterPanel.getAttributesPanel());
+		
+		principalPanel.add(characterSelectionPanel);
+		principalPanel.add(toolPanel);
+		
+		
+		principalPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		this.add(principalPanel);
 		//Paramètres du jframe
@@ -72,5 +95,7 @@ public class PrepGUI extends JFrame implements Runnable {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 }

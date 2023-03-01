@@ -44,7 +44,6 @@ public class SelectPanel<E> extends JPanel{
 	protected JButton leftButton;
 	protected JButton rightButton;
 	
-	private JLabel description;
 	private JLabel type;
 	
 	private JButton select;
@@ -56,13 +55,6 @@ public class SelectPanel<E> extends JPanel{
 	
 	public SelectPanel() {
 		super();
-		/*if (currentElement instanceof Character) {
-			this.currentElement.getClass().c = (Character)currentElement;
-			elementPath = "character/" + ((Character) currentElement).getName() + ".png";
-		}
-		else if (currentElement instanceof Tool) {
-			elementPath = "tool/" + ((Tool) currentElement).getName() + ".png";
-		}*/
 	}
 	
 	protected void init() {
@@ -81,24 +73,24 @@ public class SelectPanel<E> extends JPanel{
 		
 		//select.setMaximumSize(new Dimension(50, 20));
 		JPanel selectPanel = new JPanel();
-		selectPanel.setLayout(new FlowLayout());
+		selectPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		selectPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		selectPanel.add(select);
 		
 		
 		leftButton.setPreferredSize(TriangularButton.PREFERRED_BUTTON_DIMENSION);
-		leftButton.addMouseListener(new ActionSwipe(ActionSwipe.LEFT_BUTTON_SELECT));
 		JPanel leftButtonPanel = new JPanel();
 		leftButtonPanel.setLayout(new GridBagLayout());
 		leftButtonPanel.add(leftButton);
+		leftButtonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		
 		rightButton.setPreferredSize(TriangularButton.PREFERRED_BUTTON_DIMENSION);
-		rightButton.addMouseListener(new ActionSwipe(ActionSwipe.RIGHT_BUTTON_SELECT));
 		JPanel rightButtonPanel = new JPanel();
 		rightButtonPanel.setLayout(new GridBagLayout());
 		rightButtonPanel.add(rightButton);
-		
+		rightButtonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		
 		
@@ -107,71 +99,13 @@ public class SelectPanel<E> extends JPanel{
 		this.add(leftButtonPanel, BorderLayout.WEST);
 		this.add(rightButtonPanel, BorderLayout.EAST);
 		this.add(selectPanel, BorderLayout.SOUTH);
-		this.setPreferredSize(IDEAL_SELECT_DIMENSION);
+		
+		
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
-		this.setBackground(Color.gray);
+		this.setBackground(Configuration.LIGHT_GRAY);
 		this.setVisible(true);
 	}	
 	
-	private class ActionSwipe implements MouseListener{
-
-		private int buttonSelector;
-		
-		public static final int RIGHT_BUTTON_SELECT = 0;
-		public static final int LEFT_BUTTON_SELECT = 1;
-		
-		public ActionSwipe(int buttonSelector){
-			this.buttonSelector = buttonSelector;
-		}
-		
-		
-		@Override
-		public void mouseClicked(MouseEvent e) {}
-
-		@Override
-		public void mousePressed(MouseEvent e) {}
-
-		@Override
-		public void mouseReleased(MouseEvent e) throws DirectoryIteratorException{
-			System.out.println("abcd");
-			if(buttonSelector == RIGHT_BUTTON_SELECT) {
-				if (iterator.hasNext()) {
-					currentElement = iterator.next();
-				}
-				else {
-					iterator = mobileElements.listIterator();
-					if (iterator.hasNext()) {
-						currentElement = iterator.next();
-					}
-					else {
-						throw new DirectoryIteratorException(new IOException());
-					}
-				}
-			}
-			else if(buttonSelector == LEFT_BUTTON_SELECT) {
-				if (iterator.hasPrevious()) {
-					currentElement = iterator.previous();
-				}
-				else {
-					iterator = mobileElements.listIterator(mobileElements.size());
-					if (iterator.hasPrevious()) {
-						currentElement = iterator.previous();
-					}
-					else {
-						throw new DirectoryIteratorException(new IOException());
-					}
-				}
-			}
-			repaint();
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {}
-
-		@Override
-		public void mouseExited(MouseEvent e) {}
-	
-	}
 	
 	@Override
 	public void paintComponent(Graphics g) {
