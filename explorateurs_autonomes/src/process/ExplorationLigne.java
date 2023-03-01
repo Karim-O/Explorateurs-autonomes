@@ -1,4 +1,4 @@
-package data.map.search;
+package process;
 
 import data.map.Map;
 import data.map.mobile.Character;
