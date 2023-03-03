@@ -26,13 +26,11 @@ import config.Configuration;
  * @version 1.0
  * */
 
-public class PrepGUI extends JFrame implements Runnable {
+public class PrepGUI extends JFrame{
 	
 	public static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(Configuration.WINDOW_WIDTH, Configuration.WINDOW_HEIGHT);
 	
 	private static final long serialVersionUID = 6294652327524659690L;
-	
-	private PrepGUI instance = this;
 	
 	private ToolPanel toolPanel;
 	private CharacterPanel characterPanel;
@@ -89,13 +87,4 @@ public class PrepGUI extends JFrame implements Runnable {
 		this.setSize(IDEAL_MAIN_DIMENSION);
 		this.setResizable(true);
 	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-
 }
