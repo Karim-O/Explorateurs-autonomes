@@ -9,7 +9,7 @@ import view.prep.SelectPanel;
 /**
  * Configuration file
  *
- * 
+ * @author Omar CHAKER
  * @author Feriel MALEK
  *
  */
@@ -135,6 +135,25 @@ public class Configuration {
 	
 	/** Height of the attributes panel in the preparation frame **/
 	public static final int ATTRIBUTES_PANEL_HEIGHT = 200;
+	
+	/** Width of the control panel in the main frame **/
+	public static final int CONTROL_PANEL_WIDTH = 800;
+	
+	/** Height of the control panel in the main frame **/
+	public static final int CONTROL_PANEL_HEIGHT = 100;
+	
+	/** Width of the map panel in the main frame **/
+	public static final int MAP_PANEL_WIDTH = 800;
+	
+	/** Height of the map panel in the main frame **/
+	public static final int MAP_PANEL_HEIGHT = 700;
+	
+	/** Width of the stats panel in the main frame **/
+	public static final int STATS_PANEL_WIDTH = 400;
+	
+	/** Height of the stats panel in the main frame **/
+	public static final int STATS_PANEL_HEIGHT = 800;
+	
 	
 	
 	/** Colors **/

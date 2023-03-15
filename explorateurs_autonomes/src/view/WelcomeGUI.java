@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
 
 import config.Configuration;
 import process.Utility;
-import view.MainGUI;
+import view.main.MainGUI;
 
 /**
  * This class represents a treasure

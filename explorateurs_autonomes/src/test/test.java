@@ -10,6 +10,7 @@ import data.map.geometry.*;
 import exceptions.*;
 import process.*;
 import view.*;
+import view.main.MainGUI;
 import view.prep.PrepGUI;
 
 
@@ -17,8 +18,8 @@ public class test {
 	public static void main(String args[]) {
 		
 		//Character character = new Character(null, null, 0, null, 0, null, null, 0, 0, 0);
-		//new WelcomeGUI("Welcome");
+		new WelcomeGUI("Welcome");
 		new PrepGUI("welcome");
-		//new EndGUI("end");
+		new EndGUI("end");
 	}	
 }
