@@ -22,7 +22,7 @@ public class ExplorationLigne {
         this.gameMap = gameMap;
         this.personnage = personnage;
     }
-
+/*
 
     public void explore() {
         // obtenir les coordonnées de départ du joueur
@@ -55,5 +55,6 @@ public class ExplorationLigne {
             // déplacer le joueur vers la case non visitée
             personnage.moveTo(x, y);
         }
-    }
+    }*/
 }
+

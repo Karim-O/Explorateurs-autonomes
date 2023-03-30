@@ -46,7 +46,7 @@ public class SelectPanel<E> extends JPanel{
 	
 	private JLabel type;
 	
-	private JButton select;
+	protected JButton select;
 	
 	protected ArrayList<E> mobileElements;
 	protected E currentElement;
