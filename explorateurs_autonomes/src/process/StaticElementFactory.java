@@ -28,7 +28,7 @@ public class StaticElementFactory {
 	public final static int RIVER = 4;
 	public final static int FOREST = 5;
 	
-	public GraphicElement getStaticElement(int mobileElementType, Position position,
+	public static GraphicElement createStaticElement(int mobileElementType, Position position,
 			Dimension dimension) throws ValueException {
 		
 		if(mobileElementType == TREE) {

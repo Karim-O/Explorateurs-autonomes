@@ -1,11 +1,16 @@
 package data.map;
 
 import java.awt.Dimension;
+
 import java.util.ArrayList;
+import java.util.List;
+
+import org.hamcrest.core.IsNull;
 
 import data.map.geometry.Position;
 import data.map.obstacles.Forest;
 import data.map.obstacles.Obstacle;
+import data.map.geometry.Block;
 
 /**
  * This class represents a map
@@ -19,17 +24,35 @@ import data.map.obstacles.Obstacle;
 
 public class Map {
 	
-	
 	private ArrayList<Forest> forests;
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Treasure> treasures;
-	  
-	public static final Dimension IDEAL_MAP_DIMENSION = new Dimension(800,300); 
+	private Block[][] blocks;
+	private int width;
+	private int height;
+	public static final Dimension IDEAL_MAP_DIMENSION = new Dimension(800,300);
 	
 	public Map() {
+		this.width = IDEAL_MAP_DIMENSION.width / Block.BLOCK_WIDTH;
+		this.height = IDEAL_MAP_DIMENSION.height / Block.BLOCK_WIDTH;
+		this.blocks = new Block[width][height];
+		
+		Block block;
 		this.forests = new ArrayList<Forest>();
 		this.obstacles = new ArrayList<Obstacle>();
 		this.treasures = new ArrayList<Treasure>();
+		
+		for (int i = 0; i < IDEAL_MAP_DIMENSION.width; i += Block.BLOCK_WIDTH) {
+            for (int j = 0; j < IDEAL_MAP_DIMENSION.height; j += Block.BLOCK_WIDTH) {
+            	
+            	if(blocks == null)
+            		block = new Block( (1 + j) , i/Block.BLOCK_WIDTH, j/Block.BLOCK_WIDTH, true);
+            	else
+            		block = new Block( (1 + j + blocks[i/Block.BLOCK_WIDTH].length * i/Block.BLOCK_WIDTH) , i/Block.BLOCK_WIDTH, j/Block.BLOCK_WIDTH, true);
+                
+            	blocks[i/Block.BLOCK_WIDTH][j/Block.BLOCK_WIDTH] = block;
+            }
+        }
 	}
 	
 	public ArrayList<Forest> getForests() {
@@ -55,6 +78,18 @@ public class Map {
 	public void setTreasures(ArrayList<Treasure> treasures) {
 		this.treasures = treasures;
 	}
+	
+	public Block[][] getBlocks() {
+		return blocks;
+	}
+
+	public int getLines() {
+		return blocks[0].length;
+	}
+
+	public int getColumns() {
+		return blocks.length;
+	}
 	  
 	  
 	/**
@@ -66,7 +101,7 @@ public class Map {
 	 * @return true if the element is on the right border of the map, otherwise false
 	 * 
 	 * */
-	public boolean isOnRightBorder(Position position, Dimension dimension) {
+	public static boolean isOnRightBorder(Position position, Dimension dimension) {
 		return !( (position.getX() + dimension.getWidth()) < IDEAL_MAP_DIMENSION.getWidth()); 
 	}
 	  
@@ -80,7 +115,7 @@ public class Map {
 	 * 
 	 * */
 	
-	public boolean isOnLeftBorder(Position position, Dimension dimension) {
+	public static boolean isOnLeftBorder(Position position, Dimension dimension) {
 		return !(position.getX() > 0); 
 	}
 	
@@ -94,7 +129,7 @@ public class Map {
 	 * 
 	 * */
 	
-	public boolean isOnTopBorder(Position position, Dimension dimension) {
+	public static boolean isOnTopBorder(Position position, Dimension dimension) {
 		return !(position.getY() > 0); 
 	}
 	
@@ -107,7 +142,7 @@ public class Map {
 	 * @return true if the element is on the bottom border of the map, otherwise false
 	 * 
 	 * */
-	public boolean isOnBottomBorder(Position position, Dimension dimension) {
+	public static boolean isOnBottomBorder(Position position, Dimension dimension) {
 		return !( (position.getY() + dimension.getHeight()) < IDEAL_MAP_DIMENSION.getHeight()); 
 	}
 	
@@ -122,9 +157,16 @@ public class Map {
 	 * 
 	 * @return true if the element is on map borders, otherwise false
 	 * */
-	public boolean isOnBorder(Position position, Dimension dimension) {
+	public static boolean isOnBorder(Position position, Dimension dimension) {
 		return isOnBottomBorder(position, dimension) || isOnTopBorder(position, dimension) 
 				|| isOnRightBorder(position, dimension) || isOnLeftBorder(position, dimension);
+	}
+	
+	public Block getBlock(int i, int j) {
+		if (i >= 0 && j >= 0 && j < getLines() && i < getColumns()) {
+			return blocks[i][j];
+		}
+		return null;
 	}
 }
 

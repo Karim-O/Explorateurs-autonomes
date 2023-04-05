@@ -159,4 +159,15 @@ public class Configuration {
 	/** Colors **/
 	public static final Color LIGHT_GRAY = new Color(200, 200, 200);
 	
+	
+	/** Move Interval **/
+	public static final int MOVE_INTERVAL = 5;
+	
+	
+	/** Width of a character **/
+	public static final int CHAR_WIDTH = 20;
+	/** Height of a character **/
+	public static final int CHAR_HEIGHT = 20;
+	
+	
 }
