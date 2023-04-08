@@ -5,6 +5,7 @@ import java.awt.Dimension;
 
 import data.map.GraphicElement;
 import data.map.Treasure;
+import data.map.geometry.Block;
 import data.map.geometry.Position;
 import data.map.obstacles.Forest;
 import data.map.obstacles.Mud;
@@ -28,23 +29,22 @@ public class StaticElementFactory {
 	public final static int RIVER = 4;
 	public final static int FOREST = 5;
 	
-	public static GraphicElement createStaticElement(int mobileElementType, Position position,
-			Dimension dimension) throws ValueException {
+	public static GraphicElement createStaticElement(int mobileElementType, Position position) throws ValueException {
 		
 		if(mobileElementType == TREE) {
-			return new Tree(position, dimension);
+			return new Tree(position, new Dimension(Block.BLOCK_WIDTH, Block.BLOCK_WIDTH));
 		}
 		else if (mobileElementType == ROCK) {
-			return new Rock(position, dimension);
+			return new Rock(position, new Dimension(Block.BLOCK_WIDTH, Block.BLOCK_WIDTH));
 		}
 		else if (mobileElementType == TREASURE) {
-			return new Treasure(position, dimension);
+			return new Treasure(position, new Dimension(Block.BLOCK_WIDTH, Block.BLOCK_WIDTH));
 		}
 		else if (mobileElementType == MUD) {
-			return new Mud(position, dimension);
+			return new Mud(position, new Dimension(Block.BLOCK_WIDTH, Block.BLOCK_WIDTH));
 		}
 		else if (mobileElementType == RIVER) {
-			return new River(position, dimension);
+			return new River(position, new Dimension(Block.BLOCK_WIDTH, Block.BLOCK_WIDTH));
 		}
 		else if (mobileElementType == FOREST) {
 			return new Forest(position);

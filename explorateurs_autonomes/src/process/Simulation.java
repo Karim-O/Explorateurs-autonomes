@@ -1,9 +1,8 @@
 package process;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import javax.xml.stream.events.Characters;
+import java.util.HashMap;
 
 import config.Configuration;
 import data.map.Map;

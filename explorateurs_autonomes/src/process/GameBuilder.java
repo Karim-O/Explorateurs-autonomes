@@ -1,26 +1,28 @@
 package process;
 
 import java.awt.Dimension;
+
 import java.util.ArrayList;
 
-
-
-import config.Configuration;
 import java.util.List;
+
+import data.map.GraphicElement;
 import data.map.Map;
 import data.map.Treasure;
 import data.map.geometry.Block;
 import data.map.geometry.Position;
 import data.map.mobile.Character;
 import data.map.mobile.MobileElement;
+import data.map.obstacles.Forest;
 import data.map.tools.Tool;
 import exceptions.ValueException;
 
 public class GameBuilder {
 	
 	public static Map createMap() {
-		Map map = new Map();
-		map.setTreasures(initTreasures());
+		Map map = new Map(initMapElements());
+		/*map.setTreasures(initTreasures());
+		map.setForests(initForests());*/
 		return map;
 	}
 	
@@ -37,34 +39,50 @@ public class GameBuilder {
 		return managers;
 	}*/
 	
+	public static ArrayList<GraphicElement> initMapElements(){
+		ArrayList<GraphicElement> mapElements = new ArrayList<GraphicElement>();
+		
+		mapElements.addAll(initForests());
+		mapElements.addAll(initTreasures());
+
+		/*mapElements.addAll(initRocks());
+		mapElements.addAll(initRivers());*/
+		
+		return mapElements;
+		
+	}
+	
 	
 	public static ArrayList<Character> initCharacters(){
 		ArrayList<Character> characters = new ArrayList<Character>();
 		
-		Position posAndy = new Position(Configuration.CHAR_WIDTH/2, Configuration.CHAR_HEIGHT/2);
-		
-		Position posCharlie = new Position(Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
+		//Position posDepart = new Position(0, 0);		
 		
 		
-		Position posKevin = new Position(2 * Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
+		Position posAndy = new Position(Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
+		Position posCharlie = new Position(Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
 		
-
-		Position posLexi = new Position(3 * Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				2 * Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
 		
-		Position posSam = new Position(4 * Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
+		Position posKevin = new Position(2 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
 		
 
-		Position posVickie = new Position(5 * Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				2 * Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
+		Position posLexi = new Position(3 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				2 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+		Position posSam = new Position(4 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+
+		Position posVickie = new Position(5 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				2 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
 		
 		
 		
 		try {
 			characters.add(CharacterFactory.createCharacter(CharacterFactory.Andy, posAndy));
+			//characters.add(CharacterFactory.createCharacter(CharacterFactory.Andy, posDepart));
 			characters.add(CharacterFactory.createCharacter(CharacterFactory.Charlie, posCharlie));
 			characters.add(CharacterFactory.createCharacter(CharacterFactory.Kevin, posKevin));
 			characters.add(CharacterFactory.createCharacter(CharacterFactory.Lexi, posLexi));
@@ -103,45 +121,39 @@ public class GameBuilder {
 	public static ArrayList<Treasure> initTreasures(){
 		ArrayList<Treasure> treasures = new ArrayList<Treasure>();
 		
-		Position pos1 = new Position(10 * Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2, 10 * Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
+		Position pos1 = new Position(10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH, 10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
 		
-		Position pos2 = new Position(11 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				12 * Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
+		Position pos2 = new Position(11 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				12 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
 		
 		
-		Position pos3 = new Position(12 * Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				10 * Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
-		
-
-		Position pos4 = new Position(52 * Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				10 * Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
-		
-		Position pos5 = new Position(54 * Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				10 * Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
+		Position pos3 = new Position(12 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
 		
 
-		Position pos6 = new Position(30 * Block.BLOCK_WIDTH + Configuration.CHAR_WIDTH/2,
-				12 * Block.BLOCK_WIDTH + Configuration.CHAR_HEIGHT/2);
+		Position pos4 = new Position(2 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+		Position pos5 = new Position(14 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+
+		Position pos6 = new Position(2 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH/2,
+				12 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
 		
 		
 		try {
-			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,
-					pos1, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT)));
+			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE, pos1));
 
-			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,
-					pos2, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT)));
+			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,	pos2));
 
-			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,
-					pos3, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT)));
+			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,	pos3));
 
-			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,
-					pos4, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT)));
+			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,	pos4));
 
-			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,
-					pos5, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT)));
+			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,	pos5));
 
-			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,
-					pos6, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT)));
+			treasures.add((Treasure)StaticElementFactory.createStaticElement(StaticElementFactory.TREASURE,	pos6));
 		
 		}
 		
@@ -150,6 +162,54 @@ public class GameBuilder {
 		}
 		
 		return treasures;
+		
+	}
+	
+	public static ArrayList<Forest> initForests(){
+		ArrayList<Forest> forests = new ArrayList<Forest>();
+		
+		Position pos1 = new Position(9 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH, 9 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+		Position pos2 = new Position(10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				11 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+		
+		Position pos3 = new Position(11 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				9 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+
+		Position pos4 = new Position(1 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				9 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+		Position pos5 = new Position(13 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				9 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+
+		Position pos6 = new Position(Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
+				11 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		
+		
+		try {
+			forests.add((Forest)StaticElementFactory.createStaticElement(StaticElementFactory.FOREST,
+					pos1));
+
+			forests.add((Forest)StaticElementFactory.createStaticElement(StaticElementFactory.FOREST, pos2));
+
+			forests.add((Forest)StaticElementFactory.createStaticElement(StaticElementFactory.FOREST, pos3));
+
+			forests.add((Forest)StaticElementFactory.createStaticElement(StaticElementFactory.FOREST, pos4));
+
+			forests.add((Forest)StaticElementFactory.createStaticElement(StaticElementFactory.FOREST, pos5));
+
+			forests.add((Forest)StaticElementFactory.createStaticElement(StaticElementFactory.FOREST, pos6));
+		
+		}
+		
+		catch(ValueException e) {
+			e.getMessage();
+		}
+		
+		return forests;
 		
 	}
 }

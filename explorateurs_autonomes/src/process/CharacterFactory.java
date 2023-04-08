@@ -2,9 +2,11 @@ package process;
 
 import java.awt.Dimension;
 
+
 import config.Configuration;
 import data.map.GraphicElement;
 import data.map.Treasure;
+import data.map.geometry.Block;
 import data.map.geometry.Position;
 import data.map.obstacles.Forest;
 import data.map.obstacles.Mud;
@@ -31,32 +33,26 @@ public class CharacterFactory {
 	
 	public static Character createCharacter(int characterName, Position position) throws ValueException {
 		
-		
+		Dimension charDim = new Dimension(Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
 		//public Character(Position position, Dimension dimension, int pace, String name, int strength,
 			//	int intelligence, int stamina, int price);
 		if(characterName == Vickie) {
-			return new Character(position, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT),
-					60, "Vickie", 60, 80, 80, 0);
+			return new Character(position, charDim, 60, "Vickie", 60, 80, 80, 0);
 		}
 		else if (characterName == Sam) {
-			return new Character(position, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT),
-					80, "Sam", 80, 70, 60, 0);
+			return new Character(position, charDim, 80, "Sam", 80, 70, 60, 0);
 		}
 		else if (characterName == Charlie) {
-			return new Character(position, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT),
-					90, "Charlie", 50, 90, 60, 0);
+			return new Character(position, charDim, 90, "Charlie", 50, 90, 60, 0);
 		}
 		else if (characterName == Lexi) {
-			return new Character(position, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT),
-					80, "Lexi", 60, 80, 80, 0);
+			return new Character(position, charDim, 80, "Lexi", 60, 80, 80, 0);
 		}
 		else if (characterName == Kevin) {
-			return new Character(position, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT),
-					70, "Kevin", 90, 60, 90, 0);
+			return new Character(position, charDim, 70, "Kevin", 90, 60, 90, 0);
 		}
 		else if (characterName == Andy) {
-			return new Character(position, new Dimension(Configuration.CHAR_WIDTH, Configuration.CHAR_HEIGHT),
-					60, "Andy", 80, 70, 80, 0);
+			return new Character(position, charDim, 60, "Andy", 80, 70, 80, 0);
 		}
 		
 		else

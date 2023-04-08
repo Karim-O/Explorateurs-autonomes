@@ -1,8 +1,7 @@
 package process;
 
 import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+
 
 import config.Configuration;
 import data.map.Map;

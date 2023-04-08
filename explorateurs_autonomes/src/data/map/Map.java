@@ -24,37 +24,43 @@ import data.map.geometry.Block;
 
 public class Map {
 	
-	private ArrayList<Forest> forests;
+	
+	private ArrayList<GraphicElement> mapElements;
+	/*private ArrayList<Forest> forests;
 	private ArrayList<Obstacle> obstacles;
-	private ArrayList<Treasure> treasures;
+	private ArrayList<Treasure> treasures;*/
 	private Block[][] blocks;
 	private int width;
 	private int height;
-	public static final Dimension IDEAL_MAP_DIMENSION = new Dimension(800,300);
+	public static final Dimension IDEAL_MAP_DIMENSION = new Dimension(800,800);
 	
-	public Map() {
+	public Map(ArrayList<GraphicElement> mapElements) {
 		this.width = IDEAL_MAP_DIMENSION.width / Block.BLOCK_WIDTH;
 		this.height = IDEAL_MAP_DIMENSION.height / Block.BLOCK_WIDTH;
 		this.blocks = new Block[width][height];
 		
-		Block block;
-		this.forests = new ArrayList<Forest>();
+		/*this.forests = new ArrayList<Forest>();
 		this.obstacles = new ArrayList<Obstacle>();
-		this.treasures = new ArrayList<Treasure>();
+		this.treasures = new ArrayList<Treasure>();*/
+
+		this.mapElements = mapElements;
 		
 		for (int i = 0; i < IDEAL_MAP_DIMENSION.width; i += Block.BLOCK_WIDTH) {
             for (int j = 0; j < IDEAL_MAP_DIMENSION.height; j += Block.BLOCK_WIDTH) {
-            	
             	if(blocks == null)
-            		block = new Block( (1 + j) , i/Block.BLOCK_WIDTH, j/Block.BLOCK_WIDTH, true);
+            		blocks[i/Block.BLOCK_WIDTH][j/Block.BLOCK_WIDTH] = new Block( (1 + j) , i, j, true);
             	else
-            		block = new Block( (1 + j + blocks[i/Block.BLOCK_WIDTH].length * i/Block.BLOCK_WIDTH) , i/Block.BLOCK_WIDTH, j/Block.BLOCK_WIDTH, true);
-                
-            	blocks[i/Block.BLOCK_WIDTH][j/Block.BLOCK_WIDTH] = block;
+            		blocks[i/Block.BLOCK_WIDTH][j/Block.BLOCK_WIDTH] = new Block( (1 + j + blocks[i/Block.BLOCK_WIDTH].length * i/Block.BLOCK_WIDTH) , i, j, true);
             }
         }
 	}
 	
+	public ArrayList<GraphicElement> getElements() {
+		return mapElements;
+	}
+	
+	
+	/*
 	public ArrayList<Forest> getForests() {
 		return forests;
 	}
@@ -77,18 +83,18 @@ public class Map {
 	
 	public void setTreasures(ArrayList<Treasure> treasures) {
 		this.treasures = treasures;
-	}
+	}*/
 	
 	public Block[][] getBlocks() {
 		return blocks;
 	}
 
-	public int getLines() {
-		return blocks[0].length;
+	public int getBlocksHeight() {
+		return height;
 	}
 
-	public int getColumns() {
-		return blocks.length;
+	public int getBlocksWidth() {
+		return width;
 	}
 	  
 	  
@@ -163,7 +169,7 @@ public class Map {
 	}
 	
 	public Block getBlock(int i, int j) {
-		if (i >= 0 && j >= 0 && j < getLines() && i < getColumns()) {
+		if (i >= 0 && j >= 0 && j < getBlocksHeight() && i < getBlocksWidth()) {
 			return blocks[i][j];
 		}
 		return null;

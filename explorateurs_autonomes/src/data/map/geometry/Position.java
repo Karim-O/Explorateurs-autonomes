@@ -44,6 +44,19 @@ public class Position {
 		this.y = y;
 	}
 	
+	public boolean equals(Object obj) {
+		if(obj == this) {
+			return true;
+		}
+		else if(!(obj instanceof Position)) {
+			return false;
+		}
+		
+		Position objPos = (Position)obj;
+		
+		return objPos.getX() == this.x && objPos.getX() == this.y;
+	}
+	
 	@Override
 	public String toString() {
 		return "Point : x = "+ this.x +" , y = "+ this.y;

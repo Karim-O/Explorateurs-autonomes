@@ -9,9 +9,13 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
 import java.util.ArrayList;
 
+import org.hamcrest.core.IsInstanceOf;
+
 import config.Configuration;
+import data.map.GraphicElement;
 import data.map.Map;
 import data.map.Treasure;
+import data.map.geometry.Block;
 import data.map.geometry.Position;
 import data.map.obstacles.Forest;
 import data.map.obstacles.Mud;
@@ -31,11 +35,25 @@ public class PaintStrategy {
 	
 	
 	public static void paint(Graphics g, Map map) {
-		ArrayList<Forest> forests = map.getForests();
+		/*ArrayList<Forest> forests = map.getForests();
 		ArrayList<Obstacle> obstacles = map.getObstacles();
-		ArrayList<Treasure> treasures = map.getTreasures();
+		ArrayList<Treasure> treasures = map.getTreasures();*/
 		
-		for(Forest forest : forests) {
+
+		ArrayList<GraphicElement> mapElements = map.getElements();
+		
+		for(int i = 0; i < map.getBlocksWidth(); i++) {
+			for(int j = 0; j < map.getBlocksHeight(); j++) {
+				Block block = map.getBlock(i, j);
+				int x = block.getX();
+				int y = block.getY();
+				g.setColor(Color.GRAY);
+				g.drawRect(x, y, Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
+			}
+			
+		}
+		
+		/*for (Forest forest : forests) {
 			paintForest(g, forest, false);
 		}
 		
@@ -45,41 +63,47 @@ public class PaintStrategy {
 		
 		for (Treasure treasure : treasures) {
 			paintTreasure(g, treasure, false);
+		}*/
+		
+		for(GraphicElement mapElement : mapElements) {
+			if(mapElement instanceof Treasure) {
+				paintTreasure(g, (Treasure)mapElement);
+			}
+			else if(mapElement instanceof Obstacle) {
+				paintObstacle(g, (Obstacle)mapElement);
+			}
+			else if(mapElement instanceof Forest) {
+				paintForest(g, (Forest)mapElement);
+			}
+			
 		}
-	}
 	
+	}
 	
 	public static void paint(Graphics g, ArrayList<MobileElementManager> managers) {
 		for(MobileElementManager manager : managers) {
 			Character character = manager.getCharacter();
 			Position charPos = character.getPosition();
 			
-			g.drawImage(Utility.readImage("src/images/sprites/boy.png"),
-					charPos.getX(), charPos.getY(), Configuration.CHAR_WIDTH,
-					Configuration.CHAR_HEIGHT, null);
+			g.drawImage(Utility.readImage("src/images/sprites/boy2.png"),
+					charPos.getX(), charPos.getY(), Block.BLOCK_WIDTH,
+					Block.BLOCK_WIDTH, null);
 		}
 		
 	}
 	
 	
-	
-	private static void paintForest(Graphics g, Forest forest, boolean test) {
+	private static void paintForest(Graphics g, Forest forest) {
 		
 		for(Tree tree : forest.getTrees()) {
 			Position treePos = tree.getPosition();
-			if (!test) {
-				g.drawImage(Utility.readImage("src/images/sprites/tree.png"),
-						treePos.getX(), treePos.getY(), Configuration.CHAR_WIDTH,
-						Configuration.CHAR_HEIGHT, null);
-			}
-			else {
-				char[] data = {'T'};
-				g.drawChars(data, 0, 1, tree.getPosition().getX(), tree.getPosition().getX());
-			}
+			g.drawImage(Utility.readImage("src/images/sprites/tree.png"),
+					treePos.getX(), treePos.getY(), Block.BLOCK_WIDTH,
+					Block.BLOCK_WIDTH, null);
 		}
 	}
 	
-	private static void paintObstacle(Graphics g, Obstacle obstacle, boolean test) {
+	private static void paintObstacle(Graphics g, Obstacle obstacle) {
 		Position obstaclePos = obstacle.getPosition();
 		String obstacleName = "";
 		
@@ -96,35 +120,18 @@ public class PaintStrategy {
 			obstacleName = "tree";
 		}
 		
-		if (!test) {
-			g.drawImage(Utility.readImage("src/images/sprites/"+ obstacleName +".png"),
-					obstaclePos.getX(), obstaclePos.getY(), Configuration.CHAR_WIDTH,
-					Configuration.CHAR_WIDTH, null);
-		}
-		else {
-			char[] data = {'T'};
-			g.drawChars(data, 0, 1, obstacle.getPosition().getX(), obstacle.getPosition().getX());
-		}
+		g.drawImage(Utility.readImage("src/images/sprites/"+ obstacleName +".png"),
+				obstaclePos.getX(), obstaclePos.getY(), Block.BLOCK_WIDTH,
+				Block.BLOCK_WIDTH, null);
 	}
 	
-	private static void paintTreasure(Graphics g, Treasure treasure, boolean test) {
+	private static void paintTreasure(Graphics g, Treasure treasure) {
 		Position treasurePos = treasure.getPosition();
-		if (!test) {
-			g.drawImage(Utility.readImage("src/images/sprites/treasure.png"),
-					treasurePos.getX(), treasurePos.getY(), Configuration.CHAR_WIDTH,
-					Configuration.CHAR_WIDTH, null);
-		}
-		else {
-			char[] data = {'T'};
-			g.drawChars(data, 0, 1, treasure.getPosition().getX(), treasure.getPosition().getX());
-		}
-	}
-	
-	private static void paintCharacter(Graphics g, Character character) {
-		Position charPos = character.getPosition();
+		
 		g.drawImage(Utility.readImage("src/images/sprites/treasure.png"),
-				charPos.getX(), charPos.getY(), Configuration.CHAR_WIDTH,
-				Configuration.CHAR_WIDTH, null);
+				treasurePos.getX(), treasurePos.getY(), Block.BLOCK_WIDTH,
+				Block.BLOCK_WIDTH, null);
+		
 	}
 	
 	
