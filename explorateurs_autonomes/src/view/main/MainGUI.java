@@ -8,6 +8,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -109,6 +111,7 @@ public class MainGUI extends JFrame implements Runnable{
 		this.setVisible(true);
 		this.setPreferredSize(IDEAL_WINDOW_DIMENSION);
 		this.setResizable(true);
+		this.addWindowListener(new ExitOnClose());
 		
 	}
 	
@@ -133,6 +136,35 @@ public class MainGUI extends JFrame implements Runnable{
 			}
 		}
 		
+	}
+	
+	
+	private class ExitOnClose implements WindowListener{
+
+		@Override
+		public void windowOpened(WindowEvent e) {}
+
+		@Override
+		public void windowClosing(WindowEvent e) {
+			// Mettre à jour l'indicateur de l'état des threads pour indiquer qu'ils doivent s'arrêter
+	        simulation.isFinished = true;
+	        System.exit(0);
+		}
+
+		@Override
+		public void windowClosed(WindowEvent e) {}
+
+		@Override
+		public void windowIconified(WindowEvent e) {}
+
+		@Override
+		public void windowDeiconified(WindowEvent e) {}
+
+		@Override
+		public void windowActivated(WindowEvent e) {}
+
+		@Override
+		public void windowDeactivated(WindowEvent e) {}
 	}
 	
 	

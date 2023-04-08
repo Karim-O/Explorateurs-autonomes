@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Block {
 	
-	public static final int BLOCK_WIDTH = 50;
+	public static final int BLOCK_WIDTH = 40;
 	
 	
     /**

@@ -19,7 +19,8 @@ public class test {
 		
 		//Character character = new Character(null, null, 0, null, 0, null, null, 0, 0, 0);
 		//new WelcomeGUI("Welcome");
-		new PrepGUI("welcome");
+		//new PrepGUI("welcome");
+		new MainGUI("welcome");
 		//new EndGUI("end");
 	}	
 }

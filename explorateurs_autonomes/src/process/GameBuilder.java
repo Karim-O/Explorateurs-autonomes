@@ -42,8 +42,9 @@ public class GameBuilder {
 	public static ArrayList<GraphicElement> initMapElements(){
 		ArrayList<GraphicElement> mapElements = new ArrayList<GraphicElement>();
 		
-		mapElements.addAll(initForests());
+		//mapElements.addAll(initForests());
 		mapElements.addAll(initTreasures());
+		mapElements.addAll(initForestsByTreasures(mapElements));
 
 		/*mapElements.addAll(initRocks());
 		mapElements.addAll(initRivers());*/
@@ -121,25 +122,25 @@ public class GameBuilder {
 	public static ArrayList<Treasure> initTreasures(){
 		ArrayList<Treasure> treasures = new ArrayList<Treasure>();
 		
-		Position pos1 = new Position(10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH, 10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		Position pos1 = new Position(10 * Block.BLOCK_WIDTH, 10 * Block.BLOCK_WIDTH);
 		
-		Position pos2 = new Position(11 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
-				12 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		Position pos2 = new Position(11 * Block.BLOCK_WIDTH,
+				12 * Block.BLOCK_WIDTH);
 		
 		
-		Position pos3 = new Position(12 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
-				10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
-		
-
-		Position pos4 = new Position(2 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
-				10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
-		
-		Position pos5 = new Position(14 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH,
-				10 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		Position pos3 = new Position(12 * Block.BLOCK_WIDTH,
+				10 * Block.BLOCK_WIDTH);
 		
 
-		Position pos6 = new Position(2 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH/2,
-				12 * Block.BLOCK_WIDTH + Block.BLOCK_WIDTH);
+		Position pos4 = new Position(2 * Block.BLOCK_WIDTH,
+				8 * Block.BLOCK_WIDTH);
+		
+		Position pos5 = new Position(14 * Block.BLOCK_WIDTH,
+				10 * Block.BLOCK_WIDTH);
+		
+
+		Position pos6 = new Position(2 * Block.BLOCK_WIDTH,
+				12 * Block.BLOCK_WIDTH);
 		
 		
 		try {
@@ -163,6 +164,30 @@ public class GameBuilder {
 		
 		return treasures;
 		
+	}
+	
+	public static ArrayList<Forest> initForestsByTreasures(ArrayList<GraphicElement> treasures){
+		ArrayList<Forest> forests = new ArrayList<Forest>();
+		
+		for(GraphicElement treasure : treasures) {
+			if(treasure instanceof Treasure) {
+				Position treasurePos = treasure.getPosition(); 
+				
+				Position forestPosition= new Position(treasurePos.getX() - Block.BLOCK_WIDTH,
+						treasurePos.getY() - Block.BLOCK_WIDTH);
+				
+				try {
+					forests.add((Forest)StaticElementFactory.createStaticElement(
+							StaticElementFactory.FOREST, forestPosition));
+				} catch (ValueException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		
+		return forests;
 	}
 	
 	public static ArrayList<Forest> initForests(){

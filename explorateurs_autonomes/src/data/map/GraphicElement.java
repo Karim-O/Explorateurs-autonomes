@@ -39,6 +39,14 @@ public class GraphicElement {
 	public Dimension getDimension() {
 		return dimension;
 	}
+	
+	public int getWidth() {
+		return (int)dimension.getWidth();
+	}
+	
+	public int getHeight() {
+		return (int)dimension.getHeight();
+	}
 
 	@Override
 	public String toString() {

@@ -31,14 +31,14 @@ public class Forest extends GraphicElement{
 				(int)(2 * nbTrees * Block.BLOCK_WIDTH)));
 		
 		int x = position.getX();
-		int y = position.getX();
+		int y = position.getY();
 		
 		Position firstTreePos = new Position(x, y);
-		Position secondTreePos = new Position(x + Block.BLOCK_WIDTH, y);
-		Position thirdTreePos = new Position(x + 2 * Block.BLOCK_WIDTH, y);
-		Position fourthTreePos = new Position(x, y + Block.BLOCK_WIDTH);
-		Position fifthTreePos = new Position(x + 2 * Block.BLOCK_WIDTH, y + Block.BLOCK_WIDTH);
-		Position sixthTreePos = new Position(x, y + 2 * Block.BLOCK_WIDTH);
+		Position secondTreePos = new Position(x + 2 * Block.BLOCK_WIDTH, y);
+		Position thirdTreePos = new Position(x, y + Block.BLOCK_WIDTH);
+		Position fourthTreePos = new Position(x + 2 * Block.BLOCK_WIDTH, y + Block.BLOCK_WIDTH);
+		Position fifthTreePos = new Position(x, y + 2 * Block.BLOCK_WIDTH);
+		//Position sixthTreePos = new Position(x + Block.BLOCK_WIDTH, y + 2 * Block.BLOCK_WIDTH);
 		Position seventhTreePos = new Position(x + 2 * Block.BLOCK_WIDTH, y + 2 * Block.BLOCK_WIDTH);
 		
 		try {
@@ -47,7 +47,7 @@ public class Forest extends GraphicElement{
 			trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, thirdTreePos));
 			trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, fourthTreePos));
 			trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, fifthTreePos));
-			trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, sixthTreePos));
+			//trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, sixthTreePos));
 			trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, seventhTreePos));
 		} catch (ValueException e) {
 			// TODO Auto-generated catch block
