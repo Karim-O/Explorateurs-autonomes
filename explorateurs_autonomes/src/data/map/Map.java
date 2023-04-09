@@ -30,10 +30,8 @@ public class Map {
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Treasure> treasures;*/
 	private Block[][] blocks;
-    	private int characterX, characterY;
     	private int width;
 	private int height;
-	private ArrayList<GraphicElement> mapElements;
 	public static final Dimension IDEAL_MAP_DIMENSION = new Dimension(800,800);
 
 	public Map(ArrayList<GraphicElement> mapElements) {
