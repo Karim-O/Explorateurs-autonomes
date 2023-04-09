@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.io.ObjectInputFilter.Config;
 import java.util.ArrayList;
 import data.map.mobile.Character;
@@ -19,7 +20,9 @@ import view.main.MainGUI;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import config.Configuration;
 
@@ -32,22 +35,20 @@ import config.Configuration;
  * @version 2.0
  * */
 
-public class PrepGUI extends JFrame{
+public class PrepGUI extends JFrame implements Runnable{
 	
 	public static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(Configuration.WINDOW_WIDTH, Configuration.WINDOW_HEIGHT);
 	
 	private static final long serialVersionUID = 6294652327524659690L;
-	//private JPanel control = new JPanel();
 	private ToolPanel toolPanel;
 	private CharacterPanel characterPanel;
 	private InventoryPanel inventoryPanel;
 	public ArrayList<Character> characters = GameBuilder.initCharacters();
 	public ArrayList<Tool> tools = GameBuilder.initTools();
 	private JButton start = new JButton("start");
+	private ArrayList<JLabel> selectedCharacterLabels;
+	private ArrayList<JLabel> selectedToolLabels;
 	
-	//private static Color controlColor = new Color(0xecf39e); 
-	
-	//private JButton createDH = new JButton("start");
 	public PrepGUI(String title) {
 		super(title);
 		characterPanel = new CharacterPanel(characters);
@@ -66,7 +67,6 @@ public class PrepGUI extends JFrame{
 		
 		JPanel principalPanel = new JPanel();
 		principalPanel.setLayout(new BorderLayout());
-		//control.setBackground(controlColor);
 
 		
 		JPanel coPrincipalPanel = new JPanel();
@@ -82,20 +82,23 @@ public class PrepGUI extends JFrame{
 		characterSelectionPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		characterPanel.attributesPanel.setBackground(Color.BLACK);
+
 		
-		
-		/*
-		JPanel toolcharacterPanel = new JPanel();
-		toolcharacterPanel.setLayout(new BorderLayout());
-		characterSelectionPanel.add(characterPanel.attributesPanel, toolPanel);
-		toolcharacterPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		toolcharacterPanel.setBackground(Color.BLACK);
-		*/
 		
 		JPanel leftPanel = new JPanel();
 	    leftPanel.setPreferredSize(characterPanel.IDEAL_CHARACTER_PANEL_DIMENSION);
 	    leftPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-	    
+	    selectedCharacterLabel = new JLabel(characterPanel.name);
+	    selectedCharacterLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	    selectedCharacterLabel.setPreferredSize(new Dimension(150, 20));
+	    selectedCharacterLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+	    leftPanel.add(selectedCharacterLabel, BorderLayout.NORTH);
+	    selectedToolLabel = new JLabel(toolPanel.name);
+	    selectedToolLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	    selectedToolLabel.setPreferredSize(new Dimension(150, 20));
+	    selectedToolLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+	    leftPanel.add(selectedToolLabel, BorderLayout.NORTH);
+
 	    
 	    
 	    
@@ -111,16 +114,13 @@ public class PrepGUI extends JFrame{
 		toolSelectionPanel.setLayout(new BorderLayout());
 		
 		toolSelectionPanel.add(toolPanel, BorderLayout.CENTER);
-		
+
+		//toolPanel.select.addActionListener(new ActionToolSelect());
 		toolSelectionPanel.add(inventoryPanel, BorderLayout.SOUTH);
 		
 		toolSelectionPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		toolSelectionPanel.setBackground(Color.BLACK);
 		
-		//characterPanel = new CharacterPanel();
-		
-		//principalPanel.add(characterPanel);
-		//principalPanel.add(characterPanel.getAttributesPanel());
 		coPrincipalPanel.add(leftPanel);
 		coPrincipalPanel.add(characterSelectionPanel);
 		coPrincipalPanel.add(toolSelectionPanel);
@@ -132,10 +132,10 @@ public class PrepGUI extends JFrame{
 		principalPanel.add(startPanel, BorderLayout.SOUTH);
 		
 		this.add(principalPanel);
+		
 		//Paramètres du jframe
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.pack();
-		//selectPanel.setBackground(Color.blue);
 		
 		this.setVisible(true);
 		this.setPreferredSize(IDEAL_MAIN_DIMENSION);
@@ -151,10 +151,30 @@ public class PrepGUI extends JFrame{
 				
 				MainGUI gameMainGui = new MainGUI("Main");
 
-				Thread gameThread = new Thread();
+				Thread gameThread = new Thread(gameMainGui);
 				gameThread.start();
+				
+				dispose();
 			}    	
-	    }
+	  }
+	  
+	  
 	
+	  @Override
+	  public void run() {
+		  String nameTmp;
+		  while(true) {
+			  if(name.equals(nameTmp) ) {
+				  
+			  }
+			  else 
+				  selectedCharacterLabel.setText(characterPanel.name);
+				  selectedToolLabel.setText(toolPanel.name);  
+			  }
+			  nameTmp = name;
+			  repaint();
+		  }
+			  
+	  }
 	
 }
