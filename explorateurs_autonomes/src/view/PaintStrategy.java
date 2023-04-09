@@ -9,7 +9,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
 import java.util.ArrayList;
 
-import org.hamcrest.core.IsInstanceOf;
+
 
 import config.Configuration;
 import data.map.GraphicElement;

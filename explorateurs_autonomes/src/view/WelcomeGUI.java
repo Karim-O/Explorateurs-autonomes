@@ -7,9 +7,12 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.io.ObjectInputFilter.Config;
 
 import javax.swing.AbstractButton;
@@ -23,11 +26,12 @@ import javax.swing.JTextArea;
 import config.Configuration;
 import process.Utility;
 import view.main.MainGUI;
+import view.prep.PrepGUI;
 
 /**
  * This class represents a treasure
  * 
- * @version 1.0
+ * @version 2.0
  * @author Feriel MALEK
  * */
 
@@ -47,7 +51,11 @@ public class WelcomeGUI extends JFrame {
 	
 	//private static Font font = new Font(Font.SERIF, Font.ITALIC, 20);
      
-    // Description of the game 
+    // Description of the game
+	private JLabel titre = new JLabel("EXPLORATEURS AUTONOMES");
+	
+	
+	
     private JLabel description = new JLabel("<html>"
     									+ "<p style=\"text-align: justify;\">\tCe jeu représente des explorateurs autonomes"
     									+ " dans un environnement hostile a fin d’y trouver"
@@ -58,16 +66,14 @@ public class WelcomeGUI extends JFrame {
 										+ " l’environnement et lui permet aussi de suivre"
 										+ " l’avancée des explorateurs à chaque tour.</p>"
 										+ "<html>");
-	
+ 
 	private static Font font1 = new Font(Font.SERIF, Font.ITALIC, 12);
-	
-	
     
 	private JButton start = new JButton("start");
 	
-	private static Color buttonColor = new Color(241, 234, 232);
+	private static Color buttonColor = new Color(0x90a955);
 	
-	private static Color controlColor = new Color(228, 220, 219); 
+	private static Color controlColor = new Color(0xecf39e); 
     
 
 	
@@ -87,14 +93,29 @@ public class WelcomeGUI extends JFrame {
 		control.setPreferredSize(preferredSize);
 		control.setBackground(controlColor);
 		
+		Font dePixelFont;
+		try {
+			dePixelFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/DePixelKlein.ttf")).deriveFont(24f);
+			titre.setFont(dePixelFont);
+			titre.setForeground(Color.BLACK);
+			titre.setBounds(Configuration.TITLE_WELCOME_POSITION_X,
+                Configuration.TITLE_WELCOME_POSITION_Y,
+                Configuration.TITLE_WELCOME_WIDTH,
+                Configuration.TITLE_WELCOME_HEIGHT);
+		}
+		catch(FontFormatException e1) {
+			e1.printStackTrace();
+		}
+		catch(IOException e2) {
+			e2.printStackTrace();
+		}
+		
 		contentPane.add(control);
 	
-		// Affichage page pricipale
-		
-		//titre.setFont(font);
-				
+		//Affichage page pricipale
+		//titre.setFont(new Font("DePixel", Font.PLAIN, 24));
 		//titre.setBounds(200, 20, 200, 80);
-		//control.add(titre);
+		control.add(titre);
 		
 		//description.setPreferredSize(new Dimension(100,40));
 		
@@ -137,13 +158,15 @@ public class WelcomeGUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			MainGUI gameMainGui = new MainGUI("Welcome");
+			PrepGUI gamePrepGui = new PrepGUI("Preparation");
 
 			Thread gameThread = new Thread();
 			gameThread.start();
+			
+			dispose();
 		}    	
     }
-    
+  /*  
     public void paint(Graphics g) {
     	super.paintComponents(g);
     	g.drawImage(Utility.readImage("src/images/explorateurs.png"),
@@ -153,5 +176,5 @@ public class WelcomeGUI extends JFrame {
                 Configuration.TITLE_WELCOME_HEIGHT, null);
     	
     	 	
-    }
+    }*/
 }

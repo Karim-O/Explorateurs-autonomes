@@ -84,7 +84,7 @@ public class Configuration {
 	
 	
 	/** Width of the title picture in the welcome frame **/
-	public static final int TITLE_WELCOME_WIDTH = 400;
+	public static final int TITLE_WELCOME_WIDTH = 354;
 	
 	/** Height of the title picture in the welcome frame **/
 	public static final int TITLE_WELCOME_HEIGHT = 90;
@@ -93,6 +93,19 @@ public class Configuration {
 	public static final int TITLE_WELCOME_POSITION_X = (WINDOW_WIDTH_WELCOME/2) - (TITLE_WELCOME_WIDTH/2);
 	/** Position Y of the title picture in the welcome frame **/
 	public static final int TITLE_WELCOME_POSITION_Y = (WINDOW_HEIGHT_WELCOME/2) - (TITLE_WELCOME_HEIGHT/2) - (DESCRIPTION_WELCOME_HEIGHT);
+	
+	
+	
+	/** Width of the title picture in the welcome frame **/
+	public static final int TITLE_END_WIDTH = 354;
+	
+	/** Height of the title picture in the welcome frame **/
+	public static final int TITLE_END_HEIGHT = 90;
+	
+	/** Position X of the title picture in the welcome frame **/
+	public static final int TITLE_END_POSITION_X = (WINDOW_WIDTH_WELCOME/2) - (TITLE_END_WIDTH/2);
+	/** Position Y of the title picture in the welcome frame **/
+	public static final int TITLE_END_POSITION_Y = (WINDOW_HEIGHT_WELCOME/2) - (TITLE_END_HEIGHT/2);
 	
 	
 	/** Width of the start button in the end frame **/	
@@ -162,6 +175,8 @@ public class Configuration {
 	
 	/** Move Interval **/
 	public static final int MOVE_INTERVAL = 5;
+	
+	
 	
 	
 }

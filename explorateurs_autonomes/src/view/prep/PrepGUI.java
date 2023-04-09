@@ -28,7 +28,8 @@ import config.Configuration;
  * This class represents the frame to initialize the game.
  * 
  * @author Omar CHAKER
- * @version 1.0
+ * @author Feriel MALEK
+ * @version 2.0
  * */
 
 public class PrepGUI extends JFrame{
@@ -36,13 +37,15 @@ public class PrepGUI extends JFrame{
 	public static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(Configuration.WINDOW_WIDTH, Configuration.WINDOW_HEIGHT);
 	
 	private static final long serialVersionUID = 6294652327524659690L;
-	
+	//private JPanel control = new JPanel();
 	private ToolPanel toolPanel;
 	private CharacterPanel characterPanel;
 	private InventoryPanel inventoryPanel;
 	public ArrayList<Character> characters = GameBuilder.initCharacters();
 	public ArrayList<Tool> tools = GameBuilder.initTools();
 	private JButton start = new JButton("start");
+	
+	//private static Color controlColor = new Color(0xecf39e); 
 	
 	//private JButton createDH = new JButton("start");
 	public PrepGUI(String title) {
@@ -60,8 +63,14 @@ public class PrepGUI extends JFrame{
 		
 		this.setLayout(new BorderLayout());
 		
+		
 		JPanel principalPanel = new JPanel();
-		principalPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		principalPanel.setLayout(new BorderLayout());
+		//control.setBackground(controlColor);
+
+		
+		JPanel coPrincipalPanel = new JPanel();
+		coPrincipalPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 		JPanel characterSelectionPanel = new JPanel();
 		characterSelectionPanel.setLayout(new BorderLayout());
@@ -71,7 +80,7 @@ public class PrepGUI extends JFrame{
 		
 		characterSelectionPanel.setPreferredSize(characterPanel.IDEAL_CHARACTER_PANEL_DIMENSION);
 		characterSelectionPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
+		
 		characterPanel.attributesPanel.setBackground(Color.BLACK);
 		
 		
@@ -87,14 +96,12 @@ public class PrepGUI extends JFrame{
 	    leftPanel.setPreferredSize(characterPanel.IDEAL_CHARACTER_PANEL_DIMENSION);
 	    leftPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 	    
+	    JPanel startPanel = new JPanel();
+	    startPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+	    
 	    start.addActionListener(new ActionStart());
 		
-		start.setBounds(Configuration.START_WELCOME_POSITION_X,
-				Configuration.START_WELCOME_POSITION_Y,
-				Configuration.START_WELCOME_WIDTH,
-				Configuration.START_WELCOME_HEIGHT);
-		
-		principalPanel.add(start);
+	    startPanel.add(start);
 	    
 		
 		JPanel toolSelectionPanel = new JPanel();
@@ -111,12 +118,15 @@ public class PrepGUI extends JFrame{
 		
 		//principalPanel.add(characterPanel);
 		//principalPanel.add(characterPanel.getAttributesPanel());
-		principalPanel.add(leftPanel);
-		principalPanel.add(characterSelectionPanel);
-		principalPanel.add(toolSelectionPanel);
+		coPrincipalPanel.add(leftPanel);
+		coPrincipalPanel.add(characterSelectionPanel);
+		coPrincipalPanel.add(toolSelectionPanel);
 	    
 		
-		principalPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		coPrincipalPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		
+		principalPanel.add(coPrincipalPanel, BorderLayout.CENTER);
+		principalPanel.add(startPanel, BorderLayout.SOUTH);
 		
 		this.add(principalPanel);
 		//Paramètres du jframe
@@ -126,6 +136,7 @@ public class PrepGUI extends JFrame{
 		
 		this.setVisible(true);
 		this.setPreferredSize(IDEAL_MAIN_DIMENSION);
+		
 		this.setSize(IDEAL_MAIN_DIMENSION);
 		this.setResizable(true);
 	}
@@ -135,7 +146,7 @@ public class PrepGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MainGUI gameMainGui = new MainGUI("Prep");
+				MainGUI gameMainGui = new MainGUI("Main");
 
 				Thread gameThread = new Thread();
 				gameThread.start();

@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import org.jfree.chart.JFreeChart;
+
 
 import config.Configuration;
 import data.map.stats.Statistics;
@@ -21,7 +21,7 @@ public class StatsPanel extends JPanel{
 	private static final Dimension IDEAL_STATS_PANEL_DIMENSION = new Dimension(Configuration.STATS_PANEL_WIDTH,
 																			Configuration.STATS_PANEL_HEIGHT);
 	
-	protected JFreeChart barChart;
+	//protected JFreeChart barChart;
 	protected JLabel statsLabel;
 	
 	

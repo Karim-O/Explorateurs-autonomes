@@ -2,11 +2,14 @@ package view.prep;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -30,6 +33,7 @@ import data.map.mobile.Character;
  * This class represents a panel to choose an element to initialize.
  * 
  * @author Omar CHAKER
+ * @author Feriel MALEK
  * @version 2.0
  * */
 
@@ -78,6 +82,7 @@ public class SelectPanel<E> extends JPanel{
 		
 		selectPanel.add(select);
 		
+
 		
 		leftButton.setPreferredSize(TriangularButton.PREFERRED_BUTTON_DIMENSION);
 		JPanel leftButtonPanel = new JPanel();
@@ -104,9 +109,51 @@ public class SelectPanel<E> extends JPanel{
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setBackground(Configuration.LIGHT_GRAY);
 		this.setVisible(true);
-	}	
+		
+
+}	
 	
 	
+	private class ActionStart implements ActionListener{
+		
+		private E currentElement;
+		
+		public ActionStart(E currentElement) {
+			this.currentElement = currentElement;
+		}
+		
+		public void mouseClicked(MouseEvent e) {}
+
+
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseReleased(MouseEvent e) {
+			System.out.println("abcd");
+			if(currentElement instanceof Tool) {
+				
+			}
+			else if(currentElement instanceof Character) {
+				
+			}
+		
+			repaint();
+		}
+
+		public void mouseEntered(MouseEvent e) {}
+
+		
+		public void mouseExited(MouseEvent e) {}
+
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	} 
+
+
+
 	@Override
 	public void paintComponent(Graphics g) {
 		String elementPath = "";
@@ -126,4 +173,5 @@ public class SelectPanel<E> extends JPanel{
 				Configuration.CHAR_PREP_HEIGHT, null);
 		
 	}
+	
 }

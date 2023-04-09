@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hamcrest.core.IsNull;
+
 
 import data.map.geometry.Position;
 import data.map.obstacles.Forest;
