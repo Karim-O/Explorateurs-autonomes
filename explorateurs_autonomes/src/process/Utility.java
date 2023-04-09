@@ -79,30 +79,31 @@ public class Utility {
 	 * */
 	public static Block getBlockFromPosition(Map map, Position searchedPosition) {
 
-		int width = map.getBlocksWidth();
-		int height = map.getBlocksHeight();
+		int xPosition = searchedPosition.getX();
+		int yPosition = searchedPosition.getY();
 		
-		for(int i = 0; i< width; i++) {
-			for(int j = 0; i< height; i++) {
-				
-				Block block = map.getBlock(i, j);
-				
-				int x = block.getX();
-				int y = block.getY();
-				
-				
-				if(searchedPosition.getX() < x + Block.BLOCK_WIDTH 
-						&& searchedPosition.getY() < y + Block.BLOCK_WIDTH
-						&& searchedPosition.getX() > x
-						&& searchedPosition.getY() > y
-						) {
-					return block;
-				}
-			
-			}
-			
-		}
-		return null;
+//		for(int i = 0; i< width; i++) {
+//			for(int j = 0; i< height; i++) {
+//				
+//				Block block = map.getBlock(i, j);
+//				
+//				int x = block.getX();
+//				int y = block.getY();
+//				
+//				
+//				if(searchedPosition.getX() < x + Block.BLOCK_WIDTH 
+//						&& searchedPosition.getY() < y + Block.BLOCK_WIDTH
+//						&& searchedPosition.getX() > x
+//						&& searchedPosition.getY() > y
+//						) {
+//					return block;
+//				}
+//			
+//			}
+//			
+//		}
+		
+		return map.getBlock(xPosition/Block.BLOCK_WIDTH, yPosition/Block.BLOCK_WIDTH);
 	}
 	
 	
@@ -244,7 +245,7 @@ public class Utility {
 	 * 
 	 * */
 	public static boolean isElementNBlockNearElement(Map map, Position elementPosition, int nbBlocks) {
-		int i, line, column;
+		int i, j, line, column;
 		Block block;
 		int xPosition = elementPosition.getX();
 		int yPosition = elementPosition.getY();
@@ -257,31 +258,33 @@ public class Utility {
 					int x = mapElementPosition.getX();
 					int y = mapElementPosition.getY();
 					
-					for(i = 1; i <= nbBlocks; i++) {
-						for(int j = -i; j <= i; j++) {
-							line = yPosition/Block.BLOCK_WIDTH + j;
-							for(int k = -i; k < i; k++) {
-								if(k !=0 || j != 0) {
-									column = xPosition/Block.BLOCK_WIDTH + k;
-									block = map.getBlock(column, line);
-									if(block.getX() == x && block.getY() == y) {
-										return true;
-									}
-								}
+					/*for(i = -nbBlocks; i <= nbBlocks; i++) {
+						line = yPosition/Block.BLOCK_WIDTH + i;
+						for(j = -nbBlocks; j < nbBlocks; j++) {
+							column = xPosition/Block.BLOCK_WIDTH + j;
+							block = map.getBlock(column, line);
+							if(block.getX() == x && block.getY() == y) {
+								return true;
 							}
-							
 						}
 						
+					}*/
+					
+					
+					if(x <= xPosition + nbBlocks * Block.BLOCK_WIDTH
+							&& x >= xPosition - nbBlocks * Block.BLOCK_WIDTH
+							&& y <= yPosition + nbBlocks * Block.BLOCK_WIDTH
+							&& y >= yPosition - nbBlocks * Block.BLOCK_WIDTH) {
+						return true;
 					}
 					
-					
-					if(i<nbBlocks)
-						return true;
-					
 				}
-		
+			return false;
 		}
-		return false;
+		else {
+			return true;
+		}
+		
 	}
 	
 	

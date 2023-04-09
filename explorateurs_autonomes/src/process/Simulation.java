@@ -31,7 +31,7 @@ public class Simulation {
 	
 	public Simulation(Map map) {
 		int line, column;
-		
+		this.map = map;
 		
 		for(line = 0; line < Configuration.MAP_PANEL_WIDTH; line += Block.BLOCK_WIDTH) {
 			for(column = 0; column < Configuration.MAP_PANEL_WIDTH; column += Block.BLOCK_WIDTH) {	
@@ -62,11 +62,15 @@ public class Simulation {
 						canBeAdded = false;
 						break;
 				}
-			
 			}
 		}	
-		if(canBeAdded)
+		if(canBeAdded) {
+			Block characterBlock = Utility.getBlockFromPosition(map, character.getPosition());
+			if(!characterBlock.isVisited()) {
+				characterBlock.setVisited(true);
+			}
 			managers.add(new MobileElementManager(this, character, map));
+		}
 		else
 			System.err.println("Character already exists");
 	}

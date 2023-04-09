@@ -47,6 +47,7 @@ public class GameBuilder {
 		//mapElements.addAll(initTreasures());
 		//mapElements.addAll(initForestsByTreasures(mapElements));
 		map = generateRandomTreasures(5, map);
+		map.addElements(initForestsByTreasures(map.getElements()));
 		
 		/*mapElements.addAll(initRocks());
 		mapElements.addAll(initRivers());*/
@@ -168,8 +169,8 @@ public class GameBuilder {
 		
 	}
 	
-	public static ArrayList<Forest> initForestsByTreasures(ArrayList<GraphicElement> treasures){
-		ArrayList<Forest> forests = new ArrayList<Forest>();
+	public static ArrayList<GraphicElement> initForestsByTreasures(ArrayList<GraphicElement> treasures){
+		ArrayList<GraphicElement> forests = new ArrayList<GraphicElement>();
 		
 		for(GraphicElement treasure : treasures) {
 			if(treasure instanceof Treasure) {
@@ -245,8 +246,9 @@ public class GameBuilder {
 		ArrayList<Treasure> randTreasures = new ArrayList<Treasure>();
 		for(int i = 0; i < nbTreasures; i++) {
 			do {
-				x = Utility.getRandomNumber(map.getBlocksWidth()/2, map.getBlocksWidth()-3) * Block.BLOCK_WIDTH;
+				x = Utility.getRandomNumber(1, map.getBlocksWidth()-3) * Block.BLOCK_WIDTH;
 				y = Utility.getRandomNumber(map.getBlocksHeight()/2, map.getBlocksHeight()-3) * Block.BLOCK_WIDTH;
+			
 			}while(Utility.isElementNBlockNearElement(map, new Position(x, y), 3));
 			
 			Position position = new Position(x, y);

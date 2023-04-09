@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 import data.map.geometry.Position;
 import data.map.obstacles.Forest;
 import data.map.obstacles.Obstacle;
@@ -65,6 +64,10 @@ public class Map {
 	
 	public void addElement(GraphicElement mapElement) {
 		this.mapElements.add(mapElement);
+	}
+	
+	public void addElements(ArrayList<GraphicElement> mapElements) {
+		this.mapElements.addAll(mapElements);
 	}
 	
 	/*

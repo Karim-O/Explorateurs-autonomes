@@ -9,8 +9,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
 import java.util.ArrayList;
 
-
-
 import config.Configuration;
 import data.map.GraphicElement;
 import data.map.Map;
@@ -48,17 +46,16 @@ public class PaintStrategy {
 				Block block = map.getBlock(i, j);
 				int x = block.getX();
 				int y = block.getY();
-                if (block.isTraversable() && !block.hasDanger() || !block.hasForest() || !block.hasTreasure()) {
+                if (block.isTraversable() || block.hasDanger() || block.hasForest() || block.hasTreasure()) {
                     if (block.isVisited()) {
                         g.setColor(Color.GREEN);
-                    } else{
-                        g.setColor(Color.GRAY);
+                        g.fillRect(x + 2, y + 2, Block.BLOCK_WIDTH-2, Block.BLOCK_WIDTH-2);
                     }
                 } 
-                g.fillRect(x, y, map.getBlocksWidth(), map.getBlocksHeight());
                 
                 // Dessiner les bordures de chaque bloc
-                g.setColor(Color.BLACK);
+
+                g.setColor(Color.GRAY);
                 g.drawRect(x, y, Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
 
             }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import config.Configuration;
 import data.map.Map;
+import data.map.geometry.Block;
 import data.map.geometry.Position;
 import data.map.mobile.Character;
 import data.map.tools.Tool;
@@ -61,9 +62,14 @@ public class MobileElementManager extends Thread{
 		while(!Simulation.isFinished) {
 			// Game is finished because all treasures were found
 			if(!suspended) {
+				
 				Utility.characterWaitingTime(character.getPace());
 				exploration.randomMove();
 				System.out.println(character);
+				Block characterBlock = Utility.getBlockFromPosition(map, character.getPosition());
+				if(!characterBlock.isVisited()) {
+					characterBlock.setVisited(true);
+				}
 			}	
 		}
 		
