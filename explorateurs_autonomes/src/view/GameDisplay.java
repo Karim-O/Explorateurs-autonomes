@@ -36,7 +36,7 @@ public class GameDisplay extends JPanel{
                 RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		PaintStrategy.paint(g2D, this.map);
-		PaintStrategy.paint(g2D, managers, this.map);
+		PaintStrategy.paint(g2D, managers);
 
 	}
 	
