@@ -42,16 +42,28 @@ public class PaintStrategy {
 
 		ArrayList<GraphicElement> mapElements = map.getElements();
 		
-		for(int i = 0; i < map.getBlocksWidth(); i++) {
-			for(int j = 0; j < map.getBlocksHeight(); j++) {
+
+        for (int i = 0; i < map.getBlocksWidth(); i++) {
+            for (int j = 0; j < map.getBlocksHeight(); j++) {
 				Block block = map.getBlock(i, j);
 				int x = block.getX();
 				int y = block.getY();
-				g.setColor(Color.GRAY);
-				g.drawRect(x, y, Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
-			}
-			
-		}
+                if (block.isTraversable() && !block.hasDanger() || !block.hasForest() || !block.hasTreasure()) {
+                    if (block.isVisited()) {
+                        g.setColor(Color.GREEN);
+                    } else{
+                        g.setColor(Color.GRAY);
+                    }
+                } 
+                g.fillRect(x, y, map.getBlocksWidth(), map.getBlocksHeight());
+                
+                // Dessiner les bordures de chaque bloc
+                g.setColor(Color.BLACK);
+                g.drawRect(x, y, 20, 20);
+
+            }
+
+        }
 		
 		/*for (Forest forest : forests) {
 			paintForest(g, forest, false);
