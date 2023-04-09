@@ -41,6 +41,11 @@ public class Block {
      * The character currently occupying the block
      */
     private Character character;
+    
+    /**
+     * The boolean if the block has been visited
+     */
+    private boolean visited;
 
     public Block(int id, int x, int y, boolean traversable) {
         this.id = id;
@@ -52,8 +57,17 @@ public class Block {
         this.hasDanger = false;
         this.traversable = traversable;
         this.voisins = new ArrayList<Block>();
+	this.visited = false;
+    }
+	
+    public synchronized  boolean isVisited() {
+		return visited;
     }
 
+    public synchronized  void setVisited(boolean visited) {
+		this.visited = visited;
+    }
+	
     public int getId() {
         return id;
     }
