@@ -25,6 +25,8 @@ public class MobileElementManager extends Thread{
 	private boolean dead;
 	private boolean running;
 	private BlockManager blockManager;
+	Object lock = new Object();
+
 	
 	public MobileElementManager(Simulation simulation, Character character, Map map) {
 		this.simulation = simulation;
