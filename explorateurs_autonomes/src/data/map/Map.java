@@ -30,14 +30,19 @@ public class Map {
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Treasure> treasures;*/
 	private Block[][] blocks;
-	private int width;
+    	private boolean[][] visited;
+    	private int characterX, characterY;
+    	private int width;
 	private int height;
+	private ArrayList<GraphicElement> mapElements;
 	public static final Dimension IDEAL_MAP_DIMENSION = new Dimension(800,800);
-	
+
 	public Map(ArrayList<GraphicElement> mapElements) {
 		this.width = IDEAL_MAP_DIMENSION.width / Block.BLOCK_WIDTH;
 		this.height = IDEAL_MAP_DIMENSION.height / Block.BLOCK_WIDTH;
 		this.blocks = new Block[width][height];
+		this.visited = new boolean[width][height];
+		int blockId = 1;
 		
 		/*this.forests = new ArrayList<Forest>();
 		this.obstacles = new ArrayList<Obstacle>();
@@ -46,13 +51,12 @@ public class Map {
 		this.mapElements = mapElements;
 		
 		for (int i = 0; i < IDEAL_MAP_DIMENSION.width; i += Block.BLOCK_WIDTH) {
-            for (int j = 0; j < IDEAL_MAP_DIMENSION.height; j += Block.BLOCK_WIDTH) {
-            	if(blocks == null)
-            		blocks[i/Block.BLOCK_WIDTH][j/Block.BLOCK_WIDTH] = new Block( (1 + j) , i, j, true);
-            	else
-            		blocks[i/Block.BLOCK_WIDTH][j/Block.BLOCK_WIDTH] = new Block( (1 + j + blocks[i/Block.BLOCK_WIDTH].length * i/Block.BLOCK_WIDTH) , i, j, true);
-            }
-        }
+            		for (int j = 0; j < IDEAL_MAP_DIMENSION.height; j += Block.BLOCK_WIDTH) {
+             			Block block = new Block(blockId, i, j, true);
+				blocks[i/Block.BLOCK_WIDTH][j/Block.BLOCK_WIDTH] = block;
+                		blockId++;            
+	    		}
+      		}
 	}
 	
 	public ArrayList<GraphicElement> getElements() {
