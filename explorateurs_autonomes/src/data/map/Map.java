@@ -30,7 +30,6 @@ public class Map {
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Treasure> treasures;*/
 	private Block[][] blocks;
-    	private boolean[][] visited;
     	private int characterX, characterY;
     	private int width;
 	private int height;
@@ -41,7 +40,6 @@ public class Map {
 		this.width = IDEAL_MAP_DIMENSION.width / Block.BLOCK_WIDTH;
 		this.height = IDEAL_MAP_DIMENSION.height / Block.BLOCK_WIDTH;
 		this.blocks = new Block[width][height];
-		this.visited = new boolean[width][height];
 		int blockId = 1;
 		
 		/*this.forests = new ArrayList<Forest>();
