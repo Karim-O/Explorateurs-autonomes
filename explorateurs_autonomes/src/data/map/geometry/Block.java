@@ -60,6 +60,19 @@ public class Block {
 	this.visited = false;
     }
 	
+	    public Block(int x, int y, boolean traversable) {
+        this.x = x;
+        this.y = y;
+        this.hasTreasure = false;
+        this.hasObstacle = false;
+        this.hasForest = false;
+        this.hasDanger = false;
+        this.traversable = traversable;
+        this.voisins = new ArrayList<Block>();
+        this.visited = false;
+        this.isOccupied = false;
+    }
+	
     public synchronized  boolean isVisited() {
 		return visited;
     }
