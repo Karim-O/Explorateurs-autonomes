@@ -96,6 +96,9 @@ public class PrepGUI extends JFrame{
 	    leftPanel.setPreferredSize(characterPanel.IDEAL_CHARACTER_PANEL_DIMENSION);
 	    leftPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 	    
+	    
+	    
+	    
 	    JPanel startPanel = new JPanel();
 	    startPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 	    

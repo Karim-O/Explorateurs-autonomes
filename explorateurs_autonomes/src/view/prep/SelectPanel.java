@@ -21,6 +21,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import config.Configuration;
 import data.map.tools.Tool;
@@ -45,6 +46,8 @@ public class SelectPanel<E> extends JPanel{
 
 	public static final Dimension IDEAL_SELECT_DIMENSION = new Dimension(Configuration.SELECT_PANEL_WIDTH, Configuration.SELECT_PANEL_HEIGHT);
 	
+	
+	//protected JLabel selectedElementLabel; 
 	protected JButton leftButton;
 	protected JButton rightButton;
 	
@@ -62,7 +65,12 @@ public class SelectPanel<E> extends JPanel{
 	}
 	
 	protected void init() {
-		
+		JLabel selectedElementLabel;
+		selectedElementLabel = new JLabel();
+		selectedElementLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		selectedElementLabel.setPreferredSize(new Dimension(150, 20));
+		selectedElementLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.add(selectedElementLabel, BorderLayout.NORTH);
 		this.setLayout(new BorderLayout());
 		
 		try {
@@ -118,6 +126,7 @@ public class SelectPanel<E> extends JPanel{
 		
 		private E currentElement;
 		
+		
 		public ActionStart(E currentElement) {
 			this.currentElement = currentElement;
 		}
@@ -129,13 +138,14 @@ public class SelectPanel<E> extends JPanel{
 
 		public void mouseReleased(MouseEvent e) {
 			System.out.println("abcd");
+			String selectedElementName = "";
 			if(currentElement instanceof Tool) {
-				
+				selectedElementName = ((Tool) currentElement).getName();
 			}
 			else if(currentElement instanceof Character) {
-				
+				 selectedElementName = ((Character) currentElement).getName();
 			}
-		
+				//selectedElementLabel.setText(selectedElementName);
 			repaint();
 		}
 
