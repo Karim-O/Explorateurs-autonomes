@@ -122,9 +122,11 @@ public class Exploration extends Thread{
 			throw new IllegalArgumentException("Unexpected value: " + orientation);
 		}
 		
-		if(!Map.isOnBorder(position, character.getDimension())) {
-			character.setPosition(position);
-		}
+	    synchronized (lock) {
+	        if(!Map.isOnBorder(position, character.getDimension())) {
+	            character.setPosition(position);
+	        }
+	    }
 		
 	}
 	
