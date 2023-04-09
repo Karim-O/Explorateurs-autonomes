@@ -64,7 +64,22 @@ public class MobileElementManager extends Thread{
 			if(!suspended) {
 				
 				Utility.characterWaitingTime(character.getPace());
-				exploration.randomMove();
+					            // Obtenez le verrou avant de se déplacer.
+				Block block = new Block(character.getPosition().getX(), character.getPosition().getY(), true);
+                blockManager = new BlockManager(block);
+	            synchronized(lock) {	        	    
+	            	if (blockManager.isFree()) {
+	        	        blockManager.enter(this);
+	        	        exploration.randomMove();
+	            	}
+
+	            }
+	            // Attendez une courte période de temps avant de continuer.
+	            try {
+	                Thread.sleep(10);
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
 				System.out.println(character);
 				Block characterBlock = Utility.getBlockFromPosition(map, character.getPosition());
 				if(!characterBlock.isVisited()) {
