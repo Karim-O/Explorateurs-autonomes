@@ -17,6 +17,8 @@ public class Exploration extends Thread{
 	private Character character;
 	private Map map;
 	private int orientation;
+	Object lock = new Object();
+
 	
 	public Exploration(Character character, int orientation, Map map){
 		this.character = character;
