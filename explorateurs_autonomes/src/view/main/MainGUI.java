@@ -88,7 +88,7 @@ public class MainGUI extends JFrame implements Runnable{
 		this.dashboard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.dashboard.setBackground(Color.LIGHT_GRAY);
 		this.dashboard.setPreferredSize(IDEAL_MAP_DIMENSION);
-		this.dashboard.setBackground(new Color(0x059a5c));
+		this.dashboard.setBackground(Color.GRAY);
 		
 		JPanel generalPanel = new JPanel();
 		generalPanel.setLayout(new FlowLayout());
