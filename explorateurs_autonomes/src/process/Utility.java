@@ -183,6 +183,34 @@ public class Utility {
 			
 		return null;
 	}
+	/**
+	 * This method returns a GraphicElement from a position
+	 * 
+	 * @param x and y.
+	 * @param map blocks.
+	 * 
+	 * @return a {@link GraphicElement} since the position in parameter.
+	 * */
+	
+	public static GraphicElement getGraphicElementFromPosition(Map map, int xSearchedPosition, int ySearchedPosition) {
+		
+		for(GraphicElement mapElement : map.getElements()){
+			
+			int xMapElement = mapElement.getPosition().getX();
+			int yMapElement = mapElement.getPosition().getY();
+			
+			
+			if(xSearchedPosition < xMapElement + mapElement.getWidth()
+					&& xSearchedPosition >= xMapElement
+					&& ySearchedPosition < yMapElement + mapElement.getHeight()
+					&& ySearchedPosition >= yMapElement) {
+				return mapElement;
+			}
+			
+		}
+			
+		return null;
+	}
 	
 	
 	/**
@@ -204,6 +232,56 @@ public class Utility {
 				&& (x - Block.BLOCK_WIDTH > 0)
 				&& (y - Block.BLOCK_WIDTH > 0);
 		
+	}
+	/**
+	 * This method tells if a {@link GraphicElement} is n block near an Element.
+	 * 
+	 * @param element position.
+	 * @param map.
+	 * 
+	 * @return if the position is not near from map sides it returns true
+	 * 			 otherwise, it returns false.
+	 * 
+	 * */
+	public static boolean isElementNBlockNearElement(Map map, Position elementPosition, int nbBlocks) {
+		int i, line, column;
+		Block block;
+		int xPosition = elementPosition.getX();
+		int yPosition = elementPosition.getY();
+		if(xPosition/Block.BLOCK_WIDTH + nbBlocks < map.getBlocksWidth()
+			&& xPosition/Block.BLOCK_WIDTH - nbBlocks > 0
+			&& yPosition/Block.BLOCK_WIDTH + nbBlocks < map.getBlocksHeight()
+			&& yPosition/Block.BLOCK_WIDTH - nbBlocks > 0) {
+				for(GraphicElement mapElement : map.getElements()) {
+					Position mapElementPosition = mapElement.getPosition();
+					int x = mapElementPosition.getX();
+					int y = mapElementPosition.getY();
+					
+					for(i = 1; i <= nbBlocks; i++) {
+						for(int j = -i; j <= i; j++) {
+							line = yPosition/Block.BLOCK_WIDTH + j;
+							for(int k = -i; k < i; k++) {
+								if(k !=0 || j != 0) {
+									column = xPosition/Block.BLOCK_WIDTH + k;
+									block = map.getBlock(column, line);
+									if(block.getX() == x && block.getY() == y) {
+										return true;
+									}
+								}
+							}
+							
+						}
+						
+					}
+					
+					
+					if(i<nbBlocks)
+						return true;
+					
+				}
+		
+		}
+		return false;
 	}
 	
 	

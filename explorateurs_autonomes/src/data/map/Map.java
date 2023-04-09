@@ -25,16 +25,16 @@ import data.map.geometry.Block;
 public class Map {
 	
 	
-	private ArrayList<GraphicElement> mapElements;
 	/*private ArrayList<Forest> forests;
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Treasure> treasures;*/
 	private Block[][] blocks;
-    	private int width;
+    private int width;
 	private int height;
-	public static final Dimension IDEAL_MAP_DIMENSION = new Dimension(800,800);
+	private ArrayList<GraphicElement> mapElements;
+	public static final Dimension IDEAL_MAP_DIMENSION = new Dimension(800,700);
 
-	public Map(ArrayList<GraphicElement> mapElements) {
+	public Map() {
 		this.width = IDEAL_MAP_DIMENSION.width / Block.BLOCK_WIDTH;
 		this.height = IDEAL_MAP_DIMENSION.height / Block.BLOCK_WIDTH;
 		this.blocks = new Block[width][height];
@@ -44,14 +44,14 @@ public class Map {
 		this.obstacles = new ArrayList<Obstacle>();
 		this.treasures = new ArrayList<Treasure>();*/
 
-		this.mapElements = mapElements;
+		this.mapElements = new ArrayList<GraphicElement>();
 		
-		for (int i = 0; i < IDEAL_MAP_DIMENSION.width; i += Block.BLOCK_WIDTH) {
-            		for (int j = 0; j < IDEAL_MAP_DIMENSION.height; j += Block.BLOCK_WIDTH) {
-             			Block block = new Block(blockId, i, j, true);
-				blocks[i/Block.BLOCK_WIDTH][j/Block.BLOCK_WIDTH] = block;
-                		blockId++;            
-	    		}
+		for (int i = 0; i <= IDEAL_MAP_DIMENSION.width - Block.BLOCK_WIDTH; i += Block.BLOCK_WIDTH) {
+        		for (int j = 0; j <= IDEAL_MAP_DIMENSION.height - Block.BLOCK_WIDTH; j += Block.BLOCK_WIDTH) {
+         			Block block = new Block(blockId, i, j, true);
+         			blocks[i/Block.BLOCK_WIDTH][j/Block.BLOCK_WIDTH] = block;
+            		blockId++;            
+        		}
       		}
 	}
 	
@@ -59,6 +59,13 @@ public class Map {
 		return mapElements;
 	}
 	
+	public void setElements(ArrayList<GraphicElement> mapElements) {
+		this.mapElements = mapElements;
+	}
+	
+	public void addElement(GraphicElement mapElement) {
+		this.mapElements.add(mapElement);
+	}
 	
 	/*
 	public ArrayList<Forest> getForests() {
@@ -175,6 +182,3 @@ public class Map {
 		return null;
 	}
 }
-
-
-

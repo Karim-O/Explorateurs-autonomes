@@ -57,6 +57,9 @@ public class PaintStrategy {
                 } 
                 g.fillRect(x, y, map.getBlocksWidth(), map.getBlocksHeight());
                 
+                // Dessiner les bordures de chaque bloc
+                g.setColor(Color.BLACK);
+                g.drawRect(x, y, Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
 
             }
 

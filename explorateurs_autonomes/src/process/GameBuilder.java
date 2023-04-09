@@ -20,7 +20,8 @@ import exceptions.ValueException;
 public class GameBuilder {
 	
 	public static Map createMap() {
-		Map map = new Map(initMapElements());
+		Map map = initMapElements();
+		
 		/*map.setTreasures(initTreasures());
 		map.setForests(initForests());*/
 		return map;
@@ -39,17 +40,18 @@ public class GameBuilder {
 		return managers;
 	}*/
 	
-	public static ArrayList<GraphicElement> initMapElements(){
-		ArrayList<GraphicElement> mapElements = new ArrayList<GraphicElement>();
+	public static Map initMapElements(){
+		Map map = new Map();
 		
 		//mapElements.addAll(initForests());
-		mapElements.addAll(initTreasures());
-		mapElements.addAll(initForestsByTreasures(mapElements));
-
+		//mapElements.addAll(initTreasures());
+		//mapElements.addAll(initForestsByTreasures(mapElements));
+		map = generateRandomTreasures(5, map);
+		
 		/*mapElements.addAll(initRocks());
 		mapElements.addAll(initRivers());*/
 		
-		return mapElements;
+		return map;
 		
 	}
 	
@@ -237,4 +239,30 @@ public class GameBuilder {
 		return forests;
 		
 	}
+	
+	public static Map generateRandomTreasures(int nbTreasures, Map map) {
+		int x, y;
+		ArrayList<Treasure> randTreasures = new ArrayList<Treasure>();
+		for(int i = 0; i < nbTreasures; i++) {
+			do {
+				x = Utility.getRandomNumber(map.getBlocksWidth()/2, map.getBlocksWidth()-3) * Block.BLOCK_WIDTH;
+				y = Utility.getRandomNumber(map.getBlocksHeight()/2, map.getBlocksHeight()-3) * Block.BLOCK_WIDTH;
+			}while(Utility.isElementNBlockNearElement(map, new Position(x, y), 3));
+			
+			Position position = new Position(x, y);
+			try {
+				map.addElement((Treasure)StaticElementFactory.createStaticElement(
+						StaticElementFactory.TREASURE, position));
+			} catch (ValueException e) {
+				e.printStackTrace();
+			}
+		}
+		return map;
+	}
+	
 }
+
+
+
+
+
