@@ -27,17 +27,27 @@ import data.map.mobile.MobileElement;
 import process.MobileElementManager;
 import process.Utility;
 
+/**
+ * This class represents the paint stategy.
+ * 
+ * @author Omar CHAKER
+ * @author Xuming MA
+ * @version 2.0
+ * */
 
 
 public class PaintStrategy {
-	
+	/**
+	*
+	*This method draws the blocks of the map and graphical elements such as treasures, obstacles, and forests.
+	*It takes a Map object and a Graphics object as parameters to draw.
+	*@param g - Graphics to draw on
+	*@param map - Map to be drawn
+	*/
 	
 	public static void paint(Graphics g, Map map) {
-		/*ArrayList<Forest> forests = map.getForests();
-		ArrayList<Obstacle> obstacles = map.getObstacles();
-		ArrayList<Treasure> treasures = map.getTreasures();*/
-		
 
+		// draw the passable or dangerous blocks
 		ArrayList<GraphicElement> mapElements = map.getElements();
 		
 
@@ -53,7 +63,7 @@ public class PaintStrategy {
                     }
                 } 
                 
-                // Dessiner les bordures de chaque bloc
+                // Drawing the borders of each block.
 
                 g.setColor(Color.GRAY);
                 g.drawRect(x, y, Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
@@ -61,19 +71,8 @@ public class PaintStrategy {
             }
 
         }
-		
-		/*for (Forest forest : forests) {
-			paintForest(g, forest, false);
-		}
-		
-		for (Obstacle obstacle : obstacles) {
-			paintObstacle(g, obstacle, false);
-		}
-		
-		for (Treasure treasure : treasures) {
-			paintTreasure(g, treasure, false);
-		}*/
-		
+
+     // Draw the graphical elements.
 		for(GraphicElement mapElement : mapElements) {
 			if(mapElement instanceof Treasure) {
 				paintTreasure(g, (Treasure)mapElement);
@@ -89,6 +88,13 @@ public class PaintStrategy {
 	
 	}
 	
+	/**
+	*
+	*This method draws mobile characters on the map. It takes a list of MobileElementManager as parameter.
+	*@param g - Graphics to draw on
+	*@param managers - list of MobileElementManager containing mobile characters to draw
+	*/
+	
 	public static void paint(Graphics g, ArrayList<MobileElementManager> managers) {
 		for(MobileElementManager manager : managers) {
 			Character character = manager.getCharacter();
@@ -100,7 +106,12 @@ public class PaintStrategy {
 		}
 		
 	}
-	
+	/**
+	*
+	*@brief This method draws the forest on the canvas.
+	*@param g The graphics context for drawing.
+	*@param forest The forest to draw.
+	*/
 	
 	private static void paintForest(Graphics g, Forest forest) {
 		
@@ -111,7 +122,12 @@ public class PaintStrategy {
 					Block.BLOCK_WIDTH, null);
 		}
 	}
-	
+	/**
+	*
+	*@brief This method allows to draw an obstacle on the canvas.
+	*@param g The graphics context to draw on.
+	*@param obstacle The obstacle to draw.
+	*/
 	private static void paintObstacle(Graphics g, Obstacle obstacle) {
 		Position obstaclePos = obstacle.getPosition();
 		String obstacleName = "";
@@ -134,6 +150,13 @@ public class PaintStrategy {
 				Block.BLOCK_WIDTH, null);
 	}
 	
+	/**
+	 *
+	 *This method draws a treasure on the canvas.
+	 *@param g The graphics context to draw on.
+	 *@param treasure The treasure to draw.
+	*/
+
 	private static void paintTreasure(Graphics g, Treasure treasure) {
 		Position treasurePos = treasure.getPosition();
 		

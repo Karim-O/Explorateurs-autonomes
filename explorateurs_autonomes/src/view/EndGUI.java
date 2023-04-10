@@ -26,11 +26,12 @@ import javax.swing.JTextArea;
 import config.Configuration;
 import process.Utility;
 import view.main.MainGUI;
+import view.prep.PrepGUI;
 
 /**
- * This class represents a treasure
+ * This class represents the end frame
  * 
- * @version 1.2
+ * @version 2.0
  * @author Feriel MALEK
  * */
 
@@ -42,7 +43,6 @@ public class EndGUI extends JFrame{
 
     private EndGUI instance = this;
     
-    //private JPanel panel = new JPanel();
 	private JPanel control = new JPanel();
 	
 	private static Color controlColor = new Color(0xecf39e); 
@@ -52,20 +52,17 @@ public class EndGUI extends JFrame{
     private JLabel titre = new JLabel("Fin de la partie");
    
 	
-    
+    // button start 
 	private JButton start = new JButton("Start");
 	
 	private static Color startColor1 = new Color(0x90a955);
-	
-	//private static Color controlColor1 = new Color(0xecf39e); 
-    
+	    
 
-	
+	//button exit
 	private JButton exit = new JButton("Exit");
 	
 	private static Color exitColor2 = new Color(0x90a955);
 	
-	//private static Color controlColor2 = new Color(0xecf39e); 
     
 	
 	
@@ -76,6 +73,10 @@ public class EndGUI extends JFrame{
         init();
     }
 
+    /**
+	 *
+     *@brief Initializes the EndGUI window.
+     */
     private void init() {
     	
     	Color backgroundColor = new Color(0xecf39e);
@@ -102,31 +103,27 @@ public class EndGUI extends JFrame{
 			catch(IOException e2) {
 				e2.printStackTrace();
 			}
-			
-			
+				
 			
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         titlePanel.setBackground(backgroundColor);
-		// Affichage page principale
 		
    
 		titlePanel.add(titre);
 
-		
 		start.addActionListener(new ActionStart());
 		start.setBackground(startColor1);
 		control.add(start, BorderLayout.EAST);
 		
 		
-		exit.addActionListener(new ActionStart());	
+		exit.addActionListener(new ActionExit());	
 		exit.setBackground(exitColor2);
 		control.add(exit, BorderLayout.WEST);
 		
 
 		control.setPreferredSize(new Dimension(Configuration.WINDOW_WIDTH_WELCOME,
 				50));
-		//control.setBackground(controlColor2);
 		add(control, BorderLayout.SOUTH);
 		add(titlePanel,  BorderLayout.CENTER);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -138,13 +135,16 @@ public class EndGUI extends JFrame{
 
     }
     
-    
+    /**
+	 *
+     *@brief Action listener for the "Start" button.
+     */
     private class ActionStart implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			MainGUI gameMainGui = new MainGUI("Welcome");
+			PrepGUI gamePrepGui = new PrepGUI("Preparation");
 
 			Thread gameThread = new Thread();
 			gameThread.start();
@@ -152,8 +152,27 @@ public class EndGUI extends JFrame{
 		}    	
     }
     
-  
+    /**
+	 *
+     *@brief Action listener for the "Exit" button.
+     */
+    private class ActionExit implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			Thread gameThread = new Thread();
+			gameThread.start();
+			
+			dispose();
+		}    	
+		
+    }
     
+    /**
+     * @brief Paints the graphics on the window.
+     * @param g Graphics object.
+     */
     public void paint(Graphics g) {
     	super.paintComponents(g);
     	g.drawImage(Utility.readImage("src/images/coupe.png"),

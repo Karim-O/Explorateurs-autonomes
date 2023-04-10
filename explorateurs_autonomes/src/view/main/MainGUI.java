@@ -106,8 +106,6 @@ public class MainGUI extends JFrame implements Runnable{
 		//Paramètres du jframe
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.pack();
-		//selectPanel.setBackground(Color.blue);
-		
 		this.setVisible(true);
 		this.setPreferredSize(IDEAL_WINDOW_DIMENSION);
 		this.setResizable(true);
@@ -146,6 +144,7 @@ public class MainGUI extends JFrame implements Runnable{
 
 		@Override
 		public void windowClosing(WindowEvent e) {
+			
 			// Mettre à jour l'indicateur de l'état des threads pour indiquer qu'ils doivent s'arrêter
 	        simulation.isFinished = true;
 	        System.exit(0);
@@ -169,36 +168,12 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	
 	
-	/*private class ActionStats implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			if(stop) {
-				stop = false;
-				controlPanel.start.setText(" Stop ");
-				Thread chronoThread = new Thread(instance);
-				chronoThread.start();
-
-				button2.setFocusable(false);
-				reset.setFocusable(false);
-				instance.setFocusable(true);
-			}
-			else{
-				button2.setText(" Start ");
-				stop = true;
-			}
-		}
-		
-	}*/
-	
-	
 	@Override
 	public void run() {
 		while (time <= 3000) {
 			for(MobileElementManager manager : simulation.getManagers()) {
 				Utility.windowRefreshTime();
 				Character character = manager.getCharacter();
-				//System.out.println("Position du personnage "+ character.getName() +" : (" + charPosition.getX() + ", " + charPosition.getY() + ")");
 				if(!manager.isAlive()) manager.start();
 				dashboard.repaint();
 			}

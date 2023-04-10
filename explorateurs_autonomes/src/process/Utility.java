@@ -24,6 +24,7 @@ import data.map.mobile.Character;
  * This class contains static methods for different utilities
  * 
  * @author Omar CHAKER
+ * @author Feriel MALEK
  * @version 1.0
  * */
 
@@ -64,7 +65,6 @@ public class Utility {
 
 		return (int) (Math.random() * (max + 1 - min)) + min;
 		
-		//return randomNumber;
 	}
 	
 	/**
@@ -80,29 +80,7 @@ public class Utility {
 	public static Block getBlockFromPosition(Map map, Position searchedPosition) {
 
 		int xPosition = searchedPosition.getX();
-		int yPosition = searchedPosition.getY();
-		
-//		for(int i = 0; i< width; i++) {
-//			for(int j = 0; i< height; i++) {
-//				
-//				Block block = map.getBlock(i, j);
-//				
-//				int x = block.getX();
-//				int y = block.getY();
-//				
-//				
-//				if(searchedPosition.getX() < x + Block.BLOCK_WIDTH 
-//						&& searchedPosition.getY() < y + Block.BLOCK_WIDTH
-//						&& searchedPosition.getX() > x
-//						&& searchedPosition.getY() > y
-//						) {
-//					return block;
-//				}
-//			
-//			}
-//			
-//		}
-		
+		int yPosition = searchedPosition.getY();		
 		return map.getBlock(xPosition/Block.BLOCK_WIDTH, yPosition/Block.BLOCK_WIDTH);
 	}
 	
@@ -258,18 +236,6 @@ public class Utility {
 					int x = mapElementPosition.getX();
 					int y = mapElementPosition.getY();
 					
-					/*for(i = -nbBlocks; i <= nbBlocks; i++) {
-						line = yPosition/Block.BLOCK_WIDTH + i;
-						for(j = -nbBlocks; j < nbBlocks; j++) {
-							column = xPosition/Block.BLOCK_WIDTH + j;
-							block = map.getBlock(column, line);
-							if(block.getX() == x && block.getY() == y) {
-								return true;
-							}
-						}
-						
-					}*/
-					
 					
 					if(x <= xPosition + nbBlocks * Block.BLOCK_WIDTH
 							&& x >= xPosition - nbBlocks * Block.BLOCK_WIDTH
@@ -306,16 +272,6 @@ public class Utility {
 				&& (getGraphicElementFromPosition(map, treasurePosition) != null);
 		
 	}
-	
-	/**
-	 * This method returns a {@link GraphicElement} from a position
-	 * 
-	 * @param a position.
-	 * @param a map.
-	 * 
-	 * @param a {@link GraphicElement}.
-	 * */
-	
 	
 	
 }

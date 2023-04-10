@@ -14,6 +14,12 @@ import javax.swing.border.Border;
 import config.Configuration;
 import data.map.stats.Statistics;
 
+/**
+ * This class represents the panel statistics.
+ * 
+ * @author Omar CHAKER
+ * @version 2.0
+ * */
 public class StatsPanel extends JPanel{
 	
 	private static final long serialVersionUID = -36202287396771440L;
@@ -21,19 +27,23 @@ public class StatsPanel extends JPanel{
 	private static final Dimension IDEAL_STATS_PANEL_DIMENSION = new Dimension(Configuration.STATS_PANEL_WIDTH,
 																			Configuration.STATS_PANEL_HEIGHT);
 	
-	//protected JFreeChart barChart;
 	protected JLabel statsLabel;
 	
 	
 	private Statistics stats = new Statistics();
 	
+	/**
+	 * Constructs a StatsPanel object and initializes its components.
+	 */
 	public StatsPanel() {
 		super();
 		this.statsLabel = new JLabel();
-		//this.barChart = new JFreeChart(null);
 		init();
 	}
 	
+	/**
+	 * Initializes the layout and appearance of the StatsPanel.
+	 */
 	private void init() {
 		this.setLayout(new BorderLayout());
 		

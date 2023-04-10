@@ -24,9 +24,7 @@ import data.map.geometry.Block;
 public class Map {
 	
 	
-	/*private ArrayList<Forest> forests;
-	private ArrayList<Obstacle> obstacles;
-	private ArrayList<Treasure> treasures;*/
+	
 	private Block[][] blocks;
     private int width;
 	private int height;
@@ -39,10 +37,7 @@ public class Map {
 		this.blocks = new Block[width][height];
 		int blockId = 1;
 		
-		/*this.forests = new ArrayList<Forest>();
-		this.obstacles = new ArrayList<Obstacle>();
-		this.treasures = new ArrayList<Treasure>();*/
-
+	
 		this.mapElements = new ArrayList<GraphicElement>();
 		
 		for (int i = 0; i <= IDEAL_MAP_DIMENSION.width - Block.BLOCK_WIDTH; i += Block.BLOCK_WIDTH) {
@@ -70,30 +65,7 @@ public class Map {
 		this.mapElements.addAll(mapElements);
 	}
 	
-	/*
-	public ArrayList<Forest> getForests() {
-		return forests;
-	}
 	
-	public void setForests(ArrayList<Forest> forests) {
-		this.forests = forests;
-	}
-	
-	public ArrayList<Obstacle> getObstacles() {
-		return obstacles;
-	}
-	
-	public void setObstacles(ArrayList<Obstacle> obstacles) {
-		this.obstacles = obstacles;
-	}
-	
-	public ArrayList<Treasure> getTreasures() {
-		return treasures;
-	}
-	
-	public void setTreasures(ArrayList<Treasure> treasures) {
-		this.treasures = treasures;
-	}*/
 	
 	public Block[][] getBlocks() {
 		return blocks;

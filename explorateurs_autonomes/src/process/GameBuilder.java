@@ -18,49 +18,36 @@ import data.map.tools.Tool;
 import exceptions.ValueException;
 
 public class GameBuilder {
-	
+	/**
+	 * @brief This function creates the game map with its elements.
+	 * @return Map The generated map with its elements.
+	 */
 	public static Map createMap() {
 		Map map = initMapElements();
 		
-		/*map.setTreasures(initTreasures());
-		map.setForests(initForests());*/
 		return map;
 	}
 	
-	/*public static MobileElementManager buildInitMobile(Simulation simulation, Map map) {
-		
-		ArrayList<Character> characters = initCharacters();
-		ArrayList<Tool> tools = initTools();
-		
-		for(Character character : characters) {
-			MobileElementManager manager = new MobileElementManager(simulation, character, map);
-			
-		}
-		
-		return managers;
-	}*/
-	
+
+	/**
+	 * @brief This function generates and initializes the elements of the game map.
+	 * @return Map The map with its elements.
+	 */
 	public static Map initMapElements(){
 		Map map = new Map();
-		
-		//mapElements.addAll(initForests());
-		//mapElements.addAll(initTreasures());
-		//mapElements.addAll(initForestsByTreasures(mapElements));
 		map = generateRandomTreasures(5, map);
 		map.addElements(initForestsByTreasures(map.getElements()));
-		
-		/*mapElements.addAll(initRocks());
-		mapElements.addAll(initRivers());*/
-		
 		return map;
 		
 	}
 	
 	
+	/**
+	 * @brief This function initializes the characters of the game.
+	 * @return ArrayList<Character> The characters of the game.
+	 */
 	public static ArrayList<Character> initCharacters(){
 		ArrayList<Character> characters = new ArrayList<Character>();
-		
-		//Position posDepart = new Position(0, 0);		
 		
 		
 		Position posAndy = new Position(Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
@@ -86,7 +73,6 @@ public class GameBuilder {
 		
 		try {
 			characters.add(CharacterFactory.createCharacter(CharacterFactory.Andy, posAndy));
-			//characters.add(CharacterFactory.createCharacter(CharacterFactory.Andy, posDepart));
 			characters.add(CharacterFactory.createCharacter(CharacterFactory.Charlie, posCharlie));
 			characters.add(CharacterFactory.createCharacter(CharacterFactory.Kevin, posKevin));
 			characters.add(CharacterFactory.createCharacter(CharacterFactory.Lexi, posLexi));
@@ -102,6 +88,10 @@ public class GameBuilder {
 		
 	}
 	
+	/**
+	 * @brief This function initializes the tools of the game.
+	 * @return ArrayList<Tool> The tools of the game.
+	 */
 	public static ArrayList<Tool> initTools(){
 		ArrayList<Tool> tools = new ArrayList<Tool>();
 		
@@ -121,7 +111,10 @@ public class GameBuilder {
 		return tools;
 		
 	}
-	
+	/**
+	 * @brief This function initializes the treasures of the game.
+	 * @return ArrayList<Treasure> The treasures of the game
+	 */
 	public static ArrayList<Treasure> initTreasures(){
 		ArrayList<Treasure> treasures = new ArrayList<Treasure>();
 		
@@ -169,6 +162,11 @@ public class GameBuilder {
 		
 	}
 	
+	/**
+	 * @brief This function generates and initializes forests on the game map around each treasure.
+	 * @param treasures The list of treasures on the game map.
+	 * @return ArrayList<GraphicElement> The list of forests generated on the game map.
+	 */
 	public static ArrayList<GraphicElement> initForestsByTreasures(ArrayList<GraphicElement> treasures){
 		ArrayList<GraphicElement> forests = new ArrayList<GraphicElement>();
 		
@@ -193,6 +191,10 @@ public class GameBuilder {
 		return forests;
 	}
 	
+	/**
+	 * @brief This function initializes the forests of the game.
+	 * @return ArrayList<Forest> The forests of the game
+	 */
 	public static ArrayList<Forest> initForests(){
 		ArrayList<Forest> forests = new ArrayList<Forest>();
 		
@@ -240,7 +242,12 @@ public class GameBuilder {
 		return forests;
 		
 	}
-	
+	/**
+	 * @brief This function generates random treasures on the map.
+	 * @param nbTreasures The number of treasures to generate.
+	 * @param map The map on which to generate the treasures.
+	 * @return Map The map with the generated treasures. 
+	 */
 	public static Map generateRandomTreasures(int nbTreasures, Map map) {
 		int x, y;
 		ArrayList<Treasure> randTreasures = new ArrayList<Treasure>();

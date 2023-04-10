@@ -15,6 +15,13 @@ import javax.swing.JPanel;
 
 import config.Configuration;
 
+/**
+ * This class represents the attributs of character
+ * 
+ * @version 2.0
+ * @author Feriel MALEK
+ * @author Omar CHAKER
+ * */
 
 public class AttributesPanel extends JPanel{
 	
@@ -30,7 +37,14 @@ public class AttributesPanel extends JPanel{
 	private JLabel stamina;
 
 	private Map<String, Integer> characterAttributes = new HashMap<String, Integer>();
-	
+	/**
+		*
+		*Constructor that takes values for each attribute of a character.
+		*@param pace The value for pace.
+		*@param strength The value for strength.
+		*@param intelligence The value for intelligence.
+		*@param stamina The value for stamina.
+	*/
 	
 	public AttributesPanel(int pace, int strength, int intelligence, int stamina) {
 		super();
@@ -42,6 +56,13 @@ public class AttributesPanel extends JPanel{
 		init();
 	}
 	
+	
+	/**
+		*
+		*Constructor that takes a character as a parameter.
+		*Attribute values are retrieved from the character.
+		*@param character The character from which to retrieve the attributes.
+	*/
 	public AttributesPanel(Character character) {
 		this(character.getPace(), character.getStrength(), character.getIntelligence(), character.getStamina());
 	}

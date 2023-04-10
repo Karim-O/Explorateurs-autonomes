@@ -19,12 +19,13 @@ import config.Configuration;
 import data.map.mobile.Character;
 import process.Utility;
 
-/**
- * This class represents the panel to choose a character.
- * 
- * @author Omar CHAKER
- * @version 2.0
- * */
+	/**
+	 * This class represents the panel to choose a character.
+	 * 
+	 * @author Omar CHAKER
+	 * @author Xuming MA
+	 * @version 2.0
+	 * */
 
 public class CharacterPanel extends SelectPanel<Character>{
 	
@@ -34,7 +35,7 @@ public class CharacterPanel extends SelectPanel<Character>{
 	
 	protected AttributesPanel attributesPanel;
 
-
+               // Constructs a new CharacterPanel using the given ArrayList of Characters
 	public CharacterPanel(ArrayList<Character> characters) {
 		super();
 		mobileElements = characters;
@@ -45,27 +46,33 @@ public class CharacterPanel extends SelectPanel<Character>{
 		attributesPanel = new AttributesPanel(currentElement);
 		init();
 	}
-	
+               //Initializes the CharacterPanel	
 	@Override
 	protected void init() {
 		super.init();
 		rightButton.addMouseListener(new ActionSwipe(ActionSwipe.RIGHT_BUTTON_SELECT));
 		leftButton.addMouseListener(new ActionSwipe(ActionSwipe.LEFT_BUTTON_SELECT));
 		attributesPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		//attributesPanel.setBorder(null);
-		//add(this, BorderLayout.NORTH);
 		this.setPreferredSize(IDEAL_CHARACTER_PANEL_DIMENSION);
 		this.setVisible(true);
 		
 	}
-	
+	/**
+            * The ActionSwipe class represents a MouseListener used to detect a swipe to the right or to the left.
+            * If a swipe is detected, the selected Character is changed accordingly.
+            * 
+            */
 	private class ActionSwipe implements MouseListener{
 
 		private int buttonSelector;
 		
 		public static final int RIGHT_BUTTON_SELECT = 0;
 		public static final int LEFT_BUTTON_SELECT = 1;
-		
+		/**
+	         * Constructs a new ActionSwipe MouseListener with the given button selector
+	         * 
+	         * @param buttonSelector The button selector to be used (RIGHT_BUTTON_SELECT or LEFT_BUTTON_SELECT)
+	     */
 		public ActionSwipe(int buttonSelector){
 			this.buttonSelector = buttonSelector;
 		}
@@ -76,7 +83,11 @@ public class CharacterPanel extends SelectPanel<Character>{
 
 		@Override
 		public void mousePressed(MouseEvent e) {}
-
+                                
+   /**
+	     * Called when the mouse button is released.
+	     * If a swipe is detected, the selected Character is changed accordingly.
+    */
 		@Override
 		public void mouseReleased(MouseEvent e) throws DirectoryIteratorException{
 			System.out.println("abcd");

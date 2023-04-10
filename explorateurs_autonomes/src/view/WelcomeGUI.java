@@ -29,7 +29,7 @@ import view.main.MainGUI;
 import view.prep.PrepGUI;
 
 /**
- * This class represents a treasure
+ * This class represents the welcome interface
  * 
  * @version 2.0
  * @author Feriel MALEK
@@ -46,16 +46,11 @@ public class WelcomeGUI extends JFrame {
 	private JPanel control = new JPanel();
 	
     
-   
-    //private JLabel titre = new JLabel("Explorateurs autonomes");
-	
-	//private static Font font = new Font(Font.SERIF, Font.ITALIC, 20);
-     
-    // Description of the game
+    // title of the game
 	private JLabel titre = new JLabel("EXPLORATEURS AUTONOMES");
 	
 	
-	
+	// Description of the game
     private JLabel description = new JLabel("<html>"
     									+ "<p style=\"text-align: justify;\">\tCe jeu représente des explorateurs autonomes"
     									+ " dans un environnement hostile a fin d’y trouver"
@@ -88,7 +83,6 @@ public class WelcomeGUI extends JFrame {
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         
-       // control.setLayout(new FlowLayout());
 		control.setLayout(null);
 		control.setPreferredSize(preferredSize);
 		control.setBackground(controlColor);
@@ -112,14 +106,8 @@ public class WelcomeGUI extends JFrame {
 		
 		contentPane.add(control);
 	
-		//Affichage page pricipale
-		//titre.setFont(new Font("DePixel", Font.PLAIN, 24));
-		//titre.setBounds(200, 20, 200, 80);
 		control.add(titre);
-		
-		//description.setPreferredSize(new Dimension(100,40));
-		
-		//description.setBounds(160, 100, 300, 130);
+	
 		description.setFont(font1);
 		description.setBounds(Configuration.DESCRIPTION_WELCOME_POSITION_X,
 				Configuration.DESCRIPTION_WELCOME_POSITION_Y,
@@ -128,9 +116,6 @@ public class WelcomeGUI extends JFrame {
 		description.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		description.setHorizontalAlignment(JLabel.LEFT);
 		control.add(description);
-		//description.setLineWrap(true);
-		//description.setWrapStyleWord(true);
-		
 		
 		start.addActionListener(new ActionStart());
 		
@@ -160,21 +145,11 @@ public class WelcomeGUI extends JFrame {
 			
 			PrepGUI gamePrepGui = new PrepGUI("Preparation");
 
-			Thread gameThread = new Thread();
+			Thread gameThread = new Thread(gamePrepGui);
 			gameThread.start();
 			
 			dispose();
 		}    	
     }
-  /*  
-    public void paint(Graphics g) {
-    	super.paintComponents(g);
-    	g.drawImage(Utility.readImage("src/images/explorateurs.png"),
-                Configuration.TITLE_WELCOME_POSITION_X,
-                Configuration.TITLE_WELCOME_POSITION_Y,
-                Configuration.TITLE_WELCOME_WIDTH,
-                Configuration.TITLE_WELCOME_HEIGHT, null);
-    	
-    	 	
-    }*/
+
 }

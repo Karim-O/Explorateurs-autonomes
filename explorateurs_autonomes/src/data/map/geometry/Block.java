@@ -9,7 +9,7 @@ import java.util.List;
  * There can be only one character on the block at the same time.
  * The block may contain treasure, obstacles, forests, or dangers.
  * 
- * @author Le roi des chats
+ * @author Karim OULFID
  */
 public class Block {
 	
@@ -70,7 +70,7 @@ public class Block {
         this.traversable = traversable;
         this.voisins = new ArrayList<Block>();
         this.visited = false;
-        this.isOccupied = false;
+     
     }
 	
     public synchronized  boolean isVisited() {

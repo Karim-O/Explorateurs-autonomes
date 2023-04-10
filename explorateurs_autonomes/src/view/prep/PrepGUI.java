@@ -46,8 +46,7 @@ public class PrepGUI extends JFrame implements Runnable{
 	public ArrayList<Character> characters = GameBuilder.initCharacters();
 	public ArrayList<Tool> tools = GameBuilder.initTools();
 	private JButton start = new JButton("start");
-	private ArrayList<JLabel> selectedCharacterLabels;
-	private ArrayList<JLabel> selectedToolLabels;
+	private JLabel selectedCharacterLabel = new JLabel();
 	
 	public PrepGUI(String title) {
 		super(title);
@@ -59,7 +58,12 @@ public class PrepGUI extends JFrame implements Runnable{
 	
 	
 	    
-	
+	/**
+	 * @brief Initializes the main panel of the PrepGUI frame
+	 * 
+	 * This method initializes the main panel of the PrepGUI frame by adding the different subpanels to it.
+	 * It also sets the parameters of the frame and makes it visible.
+	 */
 	private void init() {
 		
 		this.setLayout(new BorderLayout());
@@ -88,16 +92,12 @@ public class PrepGUI extends JFrame implements Runnable{
 		JPanel leftPanel = new JPanel();
 	    leftPanel.setPreferredSize(characterPanel.IDEAL_CHARACTER_PANEL_DIMENSION);
 	    leftPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-	    selectedCharacterLabel = new JLabel(characterPanel.name);
+	    
+	    selectedCharacterLabel = new JLabel(characterPanel.name.toString());
 	    selectedCharacterLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	    selectedCharacterLabel.setPreferredSize(new Dimension(150, 20));
 	    selectedCharacterLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	    leftPanel.add(selectedCharacterLabel, BorderLayout.NORTH);
-	    selectedToolLabel = new JLabel(toolPanel.name);
-	    selectedToolLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    selectedToolLabel.setPreferredSize(new Dimension(150, 20));
-	    selectedToolLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-	    leftPanel.add(selectedToolLabel, BorderLayout.NORTH);
 
 	    
 	    
@@ -162,16 +162,13 @@ public class PrepGUI extends JFrame implements Runnable{
 	
 	  @Override
 	  public void run() {
-		  String nameTmp;
+		  StringBuffer nameTmp = new StringBuffer();
 		  while(true) {
-			  if(name.equals(nameTmp) ) {
-				  
+			  if(!nameTmp.toString().equals(characterPanel.name.toString()) ) {
+				  selectedCharacterLabel.setText(selectedCharacterLabel.getText() + characterPanel.name.toString());
 			  }
-			  else 
-				  selectedCharacterLabel.setText(characterPanel.name);
-				  selectedToolLabel.setText(toolPanel.name);  
-			  }
-			  nameTmp = name;
+			  nameTmp.delete(0, nameTmp.length());
+			  nameTmp.append(characterPanel.name.toString());
 			  repaint();
 		  }
 			  

@@ -26,7 +26,6 @@ public class Forest extends GraphicElement{
 	
 	
 	public Forest(Position position, int nbTrees) {
-		// The forest dimension depends on the number of trees
 		super(position, new Dimension((int)(2 * nbTrees * Block.BLOCK_WIDTH),
 				(int)(2 * nbTrees * Block.BLOCK_WIDTH)));
 		
@@ -38,7 +37,6 @@ public class Forest extends GraphicElement{
 		Position thirdTreePos = new Position(x, y + Block.BLOCK_WIDTH);
 		Position fourthTreePos = new Position(x + 2 * Block.BLOCK_WIDTH, y + Block.BLOCK_WIDTH);
 		Position fifthTreePos = new Position(x, y + 2 * Block.BLOCK_WIDTH);
-		//Position sixthTreePos = new Position(x + Block.BLOCK_WIDTH, y + 2 * Block.BLOCK_WIDTH);
 		Position seventhTreePos = new Position(x + 2 * Block.BLOCK_WIDTH, y + 2 * Block.BLOCK_WIDTH);
 		
 		try {
@@ -47,7 +45,6 @@ public class Forest extends GraphicElement{
 			trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, thirdTreePos));
 			trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, fourthTreePos));
 			trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, fifthTreePos));
-			//trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, sixthTreePos));
 			trees.add((Tree)StaticElementFactory.createStaticElement(StaticElementFactory.TREE, seventhTreePos));
 		} catch (ValueException e) {
 			// TODO Auto-generated catch block

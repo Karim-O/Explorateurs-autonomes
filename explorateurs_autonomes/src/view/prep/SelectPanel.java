@@ -53,18 +53,26 @@ public class SelectPanel<E> extends JPanel{
 	
 	private JLabel type;
 	
+	StringBuffer name = new StringBuffer();
+	// Button to select the current element
 	protected JButton select;
 	
+	// ArrayList of mobile elements to choose from
 	protected ArrayList<E> mobileElements;
-	protected E currentElement;
-	protected ListIterator<E> iterator;
 	
+	// Currently selected element
+	protected E currentElement;
+	
+	// Iterator over the mobileElements ArrayList
+	protected ListIterator<E> iterator;
 	
 	public SelectPanel() {
 		super();
 	}
 	
+	//Initializes the SelectPanel.
 	protected void init() {
+		// Creates and configures the label for the selected element
 		JLabel selectedElementLabel;
 		selectedElementLabel = new JLabel();
 		selectedElementLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -73,7 +81,9 @@ public class SelectPanel<E> extends JPanel{
 		this.add(selectedElementLabel, BorderLayout.NORTH);
 		this.setLayout(new BorderLayout());
 		
+		// Creates the buttons to navigate the list of mobile elements
 		try {
+			
 			leftButton = new TriangularButton(TriangularButton.LEFT_BUTTON);
 			rightButton = new TriangularButton(TriangularButton.RIGHT_BUTTON);
 		}
@@ -81,9 +91,10 @@ public class SelectPanel<E> extends JPanel{
 			e.getMessage();
 		}
 		
+		// Creates the button to select the current element
 		select = new JButton(" Select ");
 		
-		//select.setMaximumSize(new Dimension(50, 20));
+		// Creates the panel for the select button
 		JPanel selectPanel = new JPanel();
 		selectPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		selectPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -91,14 +102,14 @@ public class SelectPanel<E> extends JPanel{
 		selectPanel.add(select);
 		
 
-		
+		// Creates the panel for the left navigation button
 		leftButton.setPreferredSize(TriangularButton.PREFERRED_BUTTON_DIMENSION);
 		JPanel leftButtonPanel = new JPanel();
 		leftButtonPanel.setLayout(new GridBagLayout());
 		leftButtonPanel.add(leftButton);
 		leftButtonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
-		
+		// Creates the panel for the right navigation button
 		rightButton.setPreferredSize(TriangularButton.PREFERRED_BUTTON_DIMENSION);
 		JPanel rightButtonPanel = new JPanel();
 		rightButtonPanel.setLayout(new GridBagLayout());
@@ -108,12 +119,12 @@ public class SelectPanel<E> extends JPanel{
 		
 		
 		
-		
+		// Adds the panels to the SelectPanel
 		this.add(leftButtonPanel, BorderLayout.WEST);
 		this.add(rightButtonPanel, BorderLayout.EAST);
 		this.add(selectPanel, BorderLayout.SOUTH);
 		
-		
+		// Configures the SelectPanel
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setBackground(Configuration.LIGHT_GRAY);
 		this.setVisible(true);
@@ -138,14 +149,14 @@ public class SelectPanel<E> extends JPanel{
 
 		public void mouseReleased(MouseEvent e) {
 			System.out.println("abcd");
-			String selectedElementName = "";
+
+			name.delete(0, name.length());
 			if(currentElement instanceof Tool) {
-				selectedElementName = ((Tool) currentElement).getName();
+				name.append(((Tool) currentElement).getName());
 			}
 			else if(currentElement instanceof Character) {
-				 selectedElementName = ((Character) currentElement).getName();
+				name.append(((Character) currentElement).getName());
 			}
-				//selectedElementLabel.setText(selectedElementName);
 			repaint();
 		}
 

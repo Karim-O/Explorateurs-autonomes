@@ -33,14 +33,14 @@ public class TriangularButton extends JButton {
 	/** This constant represents the the right orientation of a Triangular Button **/
 	public final static int LEFT_BUTTON = 1;
 	
-	/* These constants represents the width and the length of a Triangular Button */
+	/** These constants represents the width and the length of a Triangular Button **/
 	private final static int PREFERRED_BUTTON_WIDTH = 20;
 	private final static int PREFERRED_BUTTON_HEIGHT = PREFERRED_BUTTON_WIDTH * 2;
 	
 	/** This constant represents the preferred dimension for a Triangular Button **/
 	public final static Dimension PREFERRED_BUTTON_DIMENSION = new Dimension(PREFERRED_BUTTON_WIDTH, PREFERRED_BUTTON_HEIGHT);
 	
-	/* These constants represents the default points to create a Triangular Button */
+	/** These constants represents the default points to create a Triangular Button **/
 	private static final Position IDEAL_LP1_POSITION = new Position(0, PREFERRED_BUTTON_WIDTH);
 	private static final Position IDEAL_LP2_POSITION = new Position(PREFERRED_BUTTON_WIDTH, 0);
 	private static final Position IDEAL_LP3_POSITION = new Position(PREFERRED_BUTTON_WIDTH, PREFERRED_BUTTON_HEIGHT);
@@ -109,13 +109,10 @@ public class TriangularButton extends JButton {
     private Shape createTriangle(Position p1, Position p2, Position p3) {
         Polygon p = new Polygon();
         
-        // p.addPoint(100, 0);
         p.addPoint(p1.getX(), p1.getY());
         
-        // p.addPoint(0, 100);
         p.addPoint(p2.getX(), p2.getY());
         
-        // p.addPoint(100, 200);
         p.addPoint(p3.getX(), p3.getY());
         
         return p;

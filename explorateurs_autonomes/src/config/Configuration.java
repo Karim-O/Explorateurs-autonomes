@@ -20,8 +20,6 @@ public class Configuration {
 	//get maximum window bounds
 	private static Rectangle maximumWindowBounds=graphicsEnvironment.getMaximumWindowBounds();
 	
-	//System.out.println("(" + maximumWindowBounds.height + ", "  + maximumWindowBounds.width + ")");
-	
 	/** Width of the window **/
 	//public static final int WINDOW_WIDTH = 1600;
 	public static final int WINDOW_WIDTH = (int) maximumWindowBounds.getWidth();
@@ -83,54 +81,32 @@ public class Configuration {
 	public static final int START_WELCOME_POSITION_Y = (WINDOW_HEIGHT_WELCOME/2) - (START_WELCOME_HEIGHT/2) + (DESCRIPTION_WELCOME_HEIGHT);
 	
 	
-	/** Width of the title picture in the welcome frame **/
+	/** Width of the title in the welcome frame **/
 	public static final int TITLE_WELCOME_WIDTH = 354;
 	
-	/** Height of the title picture in the welcome frame **/
+	/** Height of the title in the welcome frame **/
 	public static final int TITLE_WELCOME_HEIGHT = 90;
 	
-	/** Position X of the title picture in the welcome frame **/
+	/** Position X of the title in the welcome frame **/
 	public static final int TITLE_WELCOME_POSITION_X = (WINDOW_WIDTH_WELCOME/2) - (TITLE_WELCOME_WIDTH/2);
 	/** Position Y of the title picture in the welcome frame **/
 	public static final int TITLE_WELCOME_POSITION_Y = (WINDOW_HEIGHT_WELCOME/2) - (TITLE_WELCOME_HEIGHT/2) - (DESCRIPTION_WELCOME_HEIGHT);
 	
 	
 	
-	/** Width of the title picture in the welcome frame **/
+	/** Width of the title in the end frame **/
 	public static final int TITLE_END_WIDTH = 354;
 	
-	/** Height of the title picture in the welcome frame **/
+	/** Height of the title in the end frame **/
 	public static final int TITLE_END_HEIGHT = 90;
 	
-	/** Position X of the title picture in the welcome frame **/
+	/** Position X of the title in the end frame **/
 	public static final int TITLE_END_POSITION_X = (WINDOW_WIDTH_WELCOME/2) - (TITLE_END_WIDTH/2);
-	/** Position Y of the title picture in the welcome frame **/
+	/** Position Y of the title in the end frame **/
 	public static final int TITLE_END_POSITION_Y = (WINDOW_HEIGHT_WELCOME/2) - (TITLE_END_HEIGHT/2);
 	
 	
-	/** Width of the start button in the end frame **/	
-	//public static final int START_END_WIDTH = 200;
 	
-	/** Height of the start button in the end frame **/
-	//public static final int START_END_HEIGHT =70;
-	
-	/** Position X of the start button in the end frame **/
-	//public static final int START_END_POSITION_X = (WINDOW_WIDTH_WELCOME/4) - (START_END_WIDTH/2);
-	/** Position Y of the start button in the end frame **/
-	//public static final int START_END_POSITION_Y = (WINDOW_HEIGHT_WELCOME) - (START_END_HEIGHT/2);
-	
-	
-	/** Width of the exit button in the end frame **/
-	//public static final int EXIT_END_WIDTH = 200;
-	
-	/** Height of the exit button in the end frame **/
-	//public static final int EXIT_END_HEIGHT = 70;
-	
-	/** Position X of the exit button in the end frame **/
-	//public static final int EXIT_END_POSITION_X = (WINDOW_WIDTH_WELCOME/4) + (EXIT_END_WIDTH/2);
-	/** Position Y of the exit button in the end frame **/
-	//public static final int EXIT_END_POSITION_Y = (WINDOW_HEIGHT_WELCOME) - (EXIT_END_HEIGHT/2);
-
 	
 	/** Width of the finish game in the end frame **/
 	public static final int COUPE_END_WIDTH = 500;
@@ -143,11 +119,15 @@ public class Configuration {
 	/** Position Y of the finish game in the end frame **/
 	public static final int COUPE_END_POSITION_Y = (WINDOW_HEIGHT_WELCOME/2) - (COUPE_END_HEIGHT/2);
 	
+	
+	
 	/** Width of the attributes panel in the preparation frame **/
 	public static final int ATTRIBUTES_PANEL_WIDTH = 400;
 	
 	/** Height of the attributes panel in the preparation frame **/
 	public static final int ATTRIBUTES_PANEL_HEIGHT = 200;
+	
+	
 	
 	/** Width of the control panel in the main frame **/
 	public static final int CONTROL_PANEL_WIDTH = 800;
@@ -155,11 +135,15 @@ public class Configuration {
 	/** Height of the control panel in the main frame **/
 	public static final int CONTROL_PANEL_HEIGHT = 100;
 	
+	
+	
 	/** Width of the map panel in the main frame **/
 	public static final int MAP_PANEL_WIDTH = 800;
 	
 	/** Height of the map panel in the main frame **/
 	public static final int MAP_PANEL_HEIGHT = 700;
+	
+	
 	
 	/** Width of the stats panel in the main frame **/
 	public static final int STATS_PANEL_WIDTH = 400;

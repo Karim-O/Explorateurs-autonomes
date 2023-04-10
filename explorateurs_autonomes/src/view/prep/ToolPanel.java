@@ -28,6 +28,7 @@ public class ToolPanel extends SelectPanel<Tool>{
 	
 	private static final long serialVersionUID = 4953894814379435412L;
 	
+	// Constructor for ToolPanel class
 	public ToolPanel(ArrayList<Tool> tools) {
 		super();
 		mobileElements = tools;
@@ -37,14 +38,13 @@ public class ToolPanel extends SelectPanel<Tool>{
 		}
 		init();
 	}
-	
+	// Method to initialize the ToolPanel
 	protected void init() {
-		super.init();
+		super.init();	
 		
+		// Add mouse listeners to the buttons
 		rightButton.addMouseListener(new ActionSwipe(ActionSwipe.RIGHT_BUTTON_SELECT));
 		leftButton.addMouseListener(new ActionSwipe(ActionSwipe.LEFT_BUTTON_SELECT));
-		//attributesPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		//add(attributesPanel, BorderLayout.SOUTH);
 		this.setPreferredSize(CharacterPanel.IDEAL_SELECT_DIMENSION);
 		
 	}

@@ -13,11 +13,12 @@ import exceptions.ValueException;
 import process.MobileElementManager;
 
 /**
- * The simulation management class. Its contains and prepares all {@link BlockManager} and all {@link TrainManager}.
+ * The simulation management class. Its contains and prepares all {@link BlockManager}.
  * 
- * The class has also some basic operations needed by the train simulation.
+ * The class has also some basic operations needed by the simulation.
  * 
- * @author Tianxiao.Liu@u-cergy.fr
+ * @author Omar CHAKER
+ * @author Karim OULFID
  */
 public class Simulation {
 	private volatile ArrayList<BlockManager> blockManagers = new ArrayList<BlockManager>();
@@ -51,6 +52,11 @@ public class Simulation {
 
 	}
 	
+	/**
+	 *
+	 *@brief Adds a new character to the game, represented by a MobileElementManager.
+	 *@param character The character to add.
+	 */
 	public void addManager(Character character){
 		boolean canBeAdded = true;
 		if(managers != null) {
@@ -74,13 +80,21 @@ public class Simulation {
 		else
 			System.err.println("Character already exists");
 	}
-	
+	/**
+	 *
+	 *@brief Kills all mobile elements in the game.
+	 */
 	public void killAllMobileElements() {
 		for (MobileElementManager manager : managers) {
 			manager.kill();
 		}
 	}
 
+	/**
+	 *
+	 *@brief Gets the next mobile element in the game.
+	 *@return The next mobile element in the game.
+	 */
 	public MobileElementManager getNextCharacter() {
 		for (MobileElementManager mobileElementManager : managers) {
 			if (!mobileElementManager.isDead()) {
@@ -89,25 +103,51 @@ public class Simulation {
 		}
 		return null;
 	}
-
+	/**
+	 *
+	 *@brief Gets the list of MobileElementManager in the game.
+	 *@return The list of MobileElementManager in the game.
+	 */
 	public ArrayList<MobileElementManager> getManagers() {
 		return managers;
 	}
 
+	
+	/**
+	 *
+	 *@brief Gets the list of BlockManager in the game.
+	 *@return The list of BlockManager in the game.
+	 */
 	public ArrayList<BlockManager> getBlockManagers() {
 		return blockManagers;
 	}
 
+	
+	/**
+	*
+	*@brief Gets the map used in the game.
+	*@return The map used in the game.
+	*/
 	public Map getMap() {
 		return map;
 	}
 
+	
+	/**
+	 *
+	 *@brief Suspends all MobileElementManager in the game.
+	 */
 	public void suspendAllManagers() {
 		for(MobileElementManager manager : managers) {
 			manager.suspendManager();
 		}
 		isSuspended = true;
 	}
+	
+	/**
+	 * @brief Releases all MobileElementManager in the game.
+	 * 
+	 */
 	public void releaseAllManagers() {
 		for(MobileElementManager manager : managers) {
 			manager.releaseManager();

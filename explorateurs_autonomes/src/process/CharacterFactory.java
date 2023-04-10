@@ -16,6 +16,12 @@ import data.map.obstacles.Tree;
 import data.map.mobile.Character;
 import exceptions.ValueException;
 
+/**
+ * this class represents a factory for creating different characters with specified attributes and positions on a game map.
+ * @version 2.0
+ * @author Feriel MALEK
+ * */
+
 public class CharacterFactory {
 	public final static int FAST_STRONG_INTELLIGENT_TOUGH = 0;
 	public final static int STRONG = 1;
@@ -34,8 +40,6 @@ public class CharacterFactory {
 	public static Character createCharacter(int characterName, Position position) throws ValueException {
 		
 		Dimension charDim = new Dimension(Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
-		//public Character(Position position, Dimension dimension, int pace, String name, int strength,
-			//	int intelligence, int stamina, int price);
 		if(characterName == Vickie) {
 			return new Character(position, charDim, 60, "Vickie", 60, 80, 80, 0);
 		}

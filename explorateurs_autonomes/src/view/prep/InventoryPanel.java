@@ -30,6 +30,7 @@ public class InventoryPanel extends JPanel {
 	 *This class represents the panel to inventory.
 	 * 
 	 * @author Feriel MALEK
+	 * @author Xuming MA
 	 * @version 2.0
 	 **/
 	private static final long serialVersionUID = -4890110162104066033L;
@@ -40,9 +41,7 @@ public class InventoryPanel extends JPanel {
     private ArrayList<JButton> buttons = new ArrayList<JButton>(Arrays.asList(new JButton(), new JButton(), new JButton()));
 
     public InventoryPanel() {
-        // Initialiser la liste d'outils et l'étiquette d'inventaire
-    	
-    	
+        // Initialize the tool list and the inventory label
     	tools = new ArrayList<String>();
         inventoryLabel = new JLabel("Inventaire");
         
@@ -65,8 +64,6 @@ public class InventoryPanel extends JPanel {
         buttons.get(0).setText("Map");
         buttons.get(1).setText("Bag");
         buttons.get(2).setText("Sword");
-      //  buttons.get(1).setIcon(new ImageIcon("/src/images/tool/Bag.png"));
-        //buttons.get(2).setIcon(new ImageIcon("file:///C:/Users/PC/git/Explorateurs-autonomes/explorateurs_autonomes/src/images/tool/Bag.png"));
         
         JPanel inventoryPanelPane = new JPanel();
         inventoryPanelPane.setLayout(new BorderLayout());
@@ -79,55 +76,27 @@ public class InventoryPanel extends JPanel {
         inventoryPanel.add(inventoryPanelPane);
       
        
-        // Ajouter une bordure à ce panel
+        // add a border to a panel
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        // Ajouter l'étiquette d'inventaire en haut
+        //  add an inventory label at the top
         setLayout(new BorderLayout());
         add(inventoryName, BorderLayout.NORTH);
         add(inventoryPanel, BorderLayout.CENTER);
-        // Ajouter un JPanel pour la liste d'outils en bas
-        /*JPanel toolsPanel = new JPanel();
-        toolsPanel.setLayout(new BoxLayout(toolsPanel, BoxLayout.Y_AXIS));
-        toolsPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        add(toolsPanel, BorderLayout.SOUTH);
-        
-        // Ajouter un JPanel pour le contenu principal au centre
-    
-        JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new BorderLayout());
-        add(contentPanel, BorderLayout.CENTER);
-        */
+       
         setPreferredSize(IDEAL_ATTRIBUTES_PANEL_DIMENSION);
         
-        		
-
-       /* Ajouter un JPanel pour le contenu de gauche à gauche
-        JPanel leftPanel = new JPanel();
-        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-        contentPanel.add(leftPanel, BorderLayout.WEST);
-        
-        Ajouter un JPanel pour le contenu de milieu
-        JPanel centerPanel = new JPanel();
-        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-        contentPanel.add(centerPanel, BorderLayout.CENTER);
-        
-        
-        Ajouter un JPanel pour le contenu de droite à droite
-        JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-        contentPanel.add(rightPanel, BorderLayout.EAST);*/
     }
     
 
 
     public void addTool(String tool) {
-        // Ajouter un outil à la liste
+        // add a tool to the list
         tools.add(tool);
         
     }
     public ArrayList<String> getTools() {
-        // Retourner la liste d'outils
+        // return the list of tools
         return tools;
     }
 
