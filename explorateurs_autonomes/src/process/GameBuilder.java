@@ -191,6 +191,33 @@ public class GameBuilder {
 		return forests;
 	}
 	
+	public static ArrayList<GraphicElement> initSlowingDownObstacles(int nbSlowingDownObstacles, Map map){
+		ArrayList<GraphicElement> obstacles = new ArrayList<GraphicElement>();
+		int x, y, i, randInstance;
+		Position obstaclePosition;
+		for(i = 0; i<nbSlowingDownObstacles; i++) {
+			do {
+				x = Utility.getRandomNumber(1, map.getBlocksWidth()-3) * Block.BLOCK_WIDTH;
+				y = Utility.getRandomNumber(map.getBlocksHeight()/2, map.getBlocksHeight()-3) * Block.BLOCK_WIDTH;
+				obstaclePosition = new Position(x, y);
+			}while(Utility.isElementNBlockNearElement(map, obstaclePosition, 0));
+			
+			randInstance = Utility.getRandomNumber(StaticElementFactory.MUD, StaticElementFactory.RIVER);
+			
+			try {
+				obstacles.add((GraphicElement)StaticElementFactory.createStaticElement(randInstance, obstaclePosition));
+			}
+			
+			catch(ValueException e) {
+				e.getMessage();
+			}	
+		}
+		
+		return obstacles;
+		
+	}
+	
+	
 	/**
 	 * @brief This function initializes the forests of the game.
 	 * @return ArrayList<Forest> The forests of the game

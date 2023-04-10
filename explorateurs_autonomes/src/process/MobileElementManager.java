@@ -110,13 +110,18 @@ public class MobileElementManager extends Thread{
 			if(!suspended) {
 				
 				Utility.characterWaitingTime(character.getPace());
-					            // Obtenez le verrou avant de se déplacer.
-				Block block = new Block(character.getPosition().getX(), character.getPosition().getY(), true);
-                blockManager = new BlockManager(block);
-	            synchronized(lock) {	        	    
+				Position oldPosition = character.getPosition();
+        		Position newPosition = exploration.randomMove();
+                blockManager = Utility.getBlockManagerFromBlock(simulation.getBlockManagers()
+				, Utility.getBlockFromPosition(map, newPosition));
+				// Obtenez le verrou avant de se déplacer.
+	            synchronized(lock) {        	    
 	            	if (blockManager.isFree()) {
 	        	        blockManager.enter(this);
-	        	        exploration.randomMove();
+	        	        character.setPosition(newPosition);
+	            	}
+	            	else {
+	            		exploration.setCharacterPosition(oldPosition);
 	            	}
 
 	            }

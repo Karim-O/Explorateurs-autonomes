@@ -1,5 +1,8 @@
 package process;
 
+import java.util.HashMap;
+
+import data.map.GraphicElement;
 import data.map.Map;
 import data.map.geometry.Block;
 import data.map.geometry.Position;
@@ -23,6 +26,7 @@ public class Exploration extends Thread{
 	public Exploration(Character character, int orientation, Map map){
 		this.character = character;
 		this.orientation = orientation;
+		this.map = map;
 	}
 	
 	public Exploration(Character character, Map map){
@@ -92,7 +96,7 @@ public class Exploration extends Thread{
 	 * @param direction where the character moves
 	 * */
 	
-	public void moveCharacter(int orientation) {
+	public synchronized void moveCharacter(int orientation) {
 		Position position = new Position();
 				
 		position.setX(character.getPosition().getX());
@@ -132,15 +136,24 @@ public class Exploration extends Thread{
 		
 	}
 	
-	public void randomMove(boolean test) {
-		orientation = Utility.getRandomNumber(NORTH_ORIENTATION, WEST_ORIENTATION);
+	public Position randomMove(boolean test) {
+		HashMap<Integer, GraphicElement> adjacents = Utility.getAllAdjacentElementsWithOrientation(character.getPosition(), map);
+		do {
+			orientation = Utility.getRandomNumber(NORTH_ORIENTATION, WEST_ORIENTATION);
+		}while(adjacents.get(orientation) != null);
+		
 		this.moveCharacter(orientation);
 		if (test)
 			System.out.println(this);
+		return character.getPosition();
 	}
 	
-	public void randomMove() {
-		randomMove(false);
+	public Position randomMove() {
+		return randomMove(false);
+	}
+	
+	public void setCharacterPosition(Position position) {
+		this.character.setPosition(position);
 	}
 	
 }

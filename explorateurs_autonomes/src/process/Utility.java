@@ -6,9 +6,11 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.imageio.plugins.bmp.BMPImageWriteParam;
 import javax.lang.model.element.Element;
 
 import config.Configuration;
@@ -18,13 +20,14 @@ import data.map.Treasure;
 import data.map.geometry.Block;
 import data.map.geometry.Position;
 import data.map.mobile.Character;
+import data.map.obstacles.Rock;
+import data.map.obstacles.Tree;
 
 
 /**
  * This class contains static methods for different utilities
  * 
  * @author Omar CHAKER
- * @author Feriel MALEK
  * @version 1.0
  * */
 
@@ -65,6 +68,7 @@ public class Utility {
 
 		return (int) (Math.random() * (max + 1 - min)) + min;
 		
+		//return randomNumber;
 	}
 	
 	/**
@@ -80,9 +84,35 @@ public class Utility {
 	public static Block getBlockFromPosition(Map map, Position searchedPosition) {
 
 		int xPosition = searchedPosition.getX();
-		int yPosition = searchedPosition.getY();		
+		int yPosition = searchedPosition.getY();
+		
 		return map.getBlock(xPosition/Block.BLOCK_WIDTH, yPosition/Block.BLOCK_WIDTH);
 	}
+	
+	/**
+	 * This static method returns a blockManager from a position in the map.
+	 * 
+	 * @param blockManagers
+	 * 				an ArrayList containing all block Managers.
+	 * @param searchedPosition
+	 * 				an indicated position.
+	 * 
+	 * @return a block.
+	 * */
+	public static BlockManager getBlockManagerFromBlock(ArrayList<BlockManager> blockManagers, Block block) {
+
+		int x = block.getX();
+		int y = block.getY();
+		
+		for(BlockManager blockManager : blockManagers) {
+			if(blockManager.getBlock().getX() == x 
+					&& blockManager.getBlock().getY() == y) {
+				return blockManager;
+			}
+		}
+		return null;
+	}
+	
 	
 	
 	/**
@@ -121,8 +151,6 @@ public class Utility {
 	 */
 	public static void characterWaitingTime(int pace) {
 		try {
-			
-			
 			Thread.sleep(Configuration.GAME_SPEED * (1 - pace/100));
 		} catch (InterruptedException e) {
 			System.err.println(e.getMessage());
@@ -236,7 +264,6 @@ public class Utility {
 					int x = mapElementPosition.getX();
 					int y = mapElementPosition.getY();
 					
-					
 					if(x <= xPosition + nbBlocks * Block.BLOCK_WIDTH
 							&& x >= xPosition - nbBlocks * Block.BLOCK_WIDTH
 							&& y <= yPosition + nbBlocks * Block.BLOCK_WIDTH
@@ -272,6 +299,62 @@ public class Utility {
 				&& (getGraphicElementFromPosition(map, treasurePosition) != null);
 		
 	}
+	
+	/**
+	 * This method returns an {@link ArrayList} of {@link BlockManager}s which are occupied
+	 * 
+	 * @param an {@link ArrayList} of {@link BlockManager}s.
+	 * 
+	 * @param an {@link ArrayList} of occupied {@link BlockManager}s.
+	 * */
+	
+	public static ArrayList<BlockManager> getOccupiedBlockManagers(ArrayList<BlockManager> blockManagers){
+		ArrayList<BlockManager> occupiedManagers = new ArrayList<BlockManager>();
+		for(BlockManager blockManager : blockManagers) {
+			if(!blockManager.isFree()) {
+				occupiedManagers.add(blockManager);
+			}
+		}
+		return occupiedManagers;
+	}
+	
+	
+	/**
+	 * This method return a {@link HashMap} with all adjacent elements of an explorator associated
+	 * with the needed orientation to go in.
+	 * 
+	 * @param characterPosition
+	 * @param mapElements
+	 * 
+	 * @return a {@link HashMap}
+	 * 
+	 * */
+	public static HashMap<Integer,GraphicElement> getAllAdjacentElementsWithOrientation(Position characterPosition, Map map){
+			HashMap<Integer,GraphicElement> elementsWithOrientation = new HashMap<Integer,GraphicElement>();
+			GraphicElement element;
+			int x = characterPosition.getX();
+			int y = characterPosition.getX();
+			int orientation = 0; 
+			ArrayList<Position> positions = new ArrayList<Position>();
+			
+			positions.add(new Position(x, y - Block.BLOCK_WIDTH));
+			positions.add(new Position(x, y + Block.BLOCK_WIDTH));
+			positions.add(new Position(x + Block.BLOCK_WIDTH, y));
+			positions.add(new Position(x - Block.BLOCK_WIDTH, y));
+			
+			for(Position position : positions) {
+				element = getGraphicElementFromPosition(map, position);
+				if(element != null && (element instanceof Rock || element instanceof Tree)) {
+					elementsWithOrientation.put(orientation, element);
+				}
+				orientation++;
+			}
+			
+			return elementsWithOrientation;
+	}
+	
+	
+	
 	
 	
 }

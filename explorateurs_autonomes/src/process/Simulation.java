@@ -34,8 +34,8 @@ public class Simulation {
 		int line, column;
 		this.map = map;
 		
-		for(line = 0; line < Configuration.MAP_PANEL_WIDTH; line += Block.BLOCK_WIDTH) {
-			for(column = 0; column < Configuration.MAP_PANEL_WIDTH; column += Block.BLOCK_WIDTH) {	
+		for(line = 0; line < map.getBlocksWidth(); line ++) {
+			for(column = 0; column < map.getBlocksHeight(); column++) {	
 				Block block = map.getBlock(line, column);
 				blockManagers.add(new BlockManager(block));
 				
@@ -75,7 +75,11 @@ public class Simulation {
 			if(!characterBlock.isVisited()) {
 				characterBlock.setVisited(true);
 			}
-			managers.add(new MobileElementManager(this, character, map));
+			MobileElementManager manager = new MobileElementManager(this, character, map);
+			BlockManager blockManager = new BlockManager(characterBlock);
+			manager.setBlockManager(null);
+			managers.add(manager);
+			blockManagers.add(blockManager);
 		}
 		else
 			System.err.println("Character already exists");
