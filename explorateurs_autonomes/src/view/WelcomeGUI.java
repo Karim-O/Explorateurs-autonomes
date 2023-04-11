@@ -62,7 +62,7 @@ public class WelcomeGUI extends JFrame {
 										+ " l’avancée des explorateurs à chaque tour.</p>"
 										+ "<html>");
  
-	private static Font font1 = new Font(Font.SERIF, Font.ITALIC, 12);
+	private static Font font1 = new Font(Font.SERIF, Font.ITALIC, 20);
     
 	private JButton start = new JButton("start");
 	
@@ -86,10 +86,11 @@ public class WelcomeGUI extends JFrame {
 		control.setLayout(null);
 		control.setPreferredSize(preferredSize);
 		control.setBackground(controlColor);
+		control.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		Font dePixelFont;
 		try {
-			dePixelFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/DePixelKlein.ttf")).deriveFont(24f);
+			dePixelFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/DePixelKlein.ttf")).deriveFont(60f);
 			titre.setFont(dePixelFont);
 			titre.setForeground(Color.BLACK);
 			titre.setBounds(Configuration.TITLE_WELCOME_POSITION_X,
@@ -113,7 +114,7 @@ public class WelcomeGUI extends JFrame {
 				Configuration.DESCRIPTION_WELCOME_POSITION_Y,
 				Configuration.DESCRIPTION_WELCOME_WIDTH,
 				Configuration.DESCRIPTION_WELCOME_HEIGHT);
-		description.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		//description.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		description.setHorizontalAlignment(JLabel.LEFT);
 		control.add(description);
 		

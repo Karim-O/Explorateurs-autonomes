@@ -65,8 +65,8 @@ public class PaintStrategy {
                 
                 // Drawing the borders of each block.
 
-                g.setColor(Color.GRAY);
-                g.drawRect(x, y, Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
+//                g.setColor(Color.GRAY);
+//                g.drawRect(x, y, Block.BLOCK_WIDTH, Block.BLOCK_WIDTH);
 
             }
 

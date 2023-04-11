@@ -11,15 +11,19 @@ import exceptions.ValueException;
 
 public class Exploration extends Thread{
 
-	private static final int NORTH_ORIENTATION = 0;
-	private static final int SOUTH_ORIENTATION = 1;
-	private static final int EAST_ORIENTATION = 2;
-	private static final int WEST_ORIENTATION = 3;
+	public static final int NORTH_ORIENTATION = 0;
+	public static final int SOUTH_ORIENTATION = 1;
+	public static final int EAST_ORIENTATION = 2;
+	public static final int WEST_ORIENTATION = 3;
 	
 	
 	private Character character;
 	private Map map;
 	private int orientation;
+	public int getOrientation() {
+		return orientation;
+	}
+
 	Object lock = new Object();
 
 	

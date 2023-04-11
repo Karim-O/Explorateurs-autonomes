@@ -344,9 +344,7 @@ public class Utility {
 			
 			for(Position position : positions) {
 				element = getGraphicElementFromPosition(map, position);
-				if(element != null && (element instanceof Rock || element instanceof Tree)) {
-					elementsWithOrientation.put(orientation, element);
-				}
+				elementsWithOrientation.put(orientation, element);
 				orientation++;
 			}
 			
@@ -354,6 +352,103 @@ public class Utility {
 	}
 	
 	
+	/**
+	 * This method lists all adjacent elements near the explorator with a
+	 * perimeter of nbBlocks
+	 * 
+	 * @param nbBlocks
+	 * 				a perimeter of exploration
+	 * @param map
+	 * 				a map.
+	 * @param charPosition
+	 * 				a character position.
+	 *
+	 * @return the orientation
+	 * 
+	 **/
+	
+	public static ArrayList<GraphicElement> getNBlocksAdjacents(int nbBlocks, Map map, Position charPosition) {
+		int i, j, line, column;
+		ArrayList<GraphicElement> adjacents = new ArrayList<GraphicElement>();
+		Block block;
+		int xPosition = charPosition.getX();
+		int yPosition = charPosition.getY();
+		if(xPosition/Block.BLOCK_WIDTH + nbBlocks < map.getBlocksWidth()
+			&& xPosition/Block.BLOCK_WIDTH - nbBlocks > 0
+			&& yPosition/Block.BLOCK_WIDTH + nbBlocks < map.getBlocksHeight()
+			&& yPosition/Block.BLOCK_WIDTH - nbBlocks > 0) {
+			
+			for(GraphicElement mapElement : map.getElements()) {
+				Position mapElementPosition = mapElement.getPosition();
+				int x = mapElementPosition.getX();
+				int y = mapElementPosition.getY();
+				
+				if(x <= xPosition + nbBlocks * Block.BLOCK_WIDTH
+						&& x >= xPosition - nbBlocks * Block.BLOCK_WIDTH
+						&& y <= yPosition + nbBlocks * Block.BLOCK_WIDTH
+						&& y >= yPosition - nbBlocks * Block.BLOCK_WIDTH) {
+					adjacents.add(mapElement);
+				}
+				
+			}
+		}
+		return adjacents;
+	}
+	
+	/**
+	 * This method generates a path to a position
+	 * 
+	 * @param charPosition
+	 * 			The position of a character
+	 * @param searchedPosition
+	 * 			The position of a treasure
+	 * 
+	 * @returns orientations
+	 * 			an orientation {@link ArrayList}
+	 * 
+	 * */
+	public static ArrayList<Integer> generatePathToTreasure(Position charPosition, Position searchedPosition) {
+	    ArrayList<Integer> orientations = new ArrayList<Integer>();
+	    
+	    
+	    // horizontal and vertical distance between the explorator and the treasure
+	    int xDistance = searchedPosition.getX() - charPosition.getX();
+	    int yDistance = searchedPosition.getY() - charPosition.getY();
+	    
+	    // Find the orientations
+	    if (xDistance > 0) {
+	      for (int i = 0; i < xDistance; i++) {
+	        orientations.add(Exploration.EAST_ORIENTATION);
+	      }
+	    } else {
+	      for (int i = 0; i < -xDistance; i++) {
+	        orientations.add(Exploration.WEST_ORIENTATION);
+	      }
+	    }
+	    
+	    if (yDistance > 0) {
+	      for (int i = 0; i < yDistance; i++) {
+	        orientations.add(Exploration.SOUTH_ORIENTATION);
+	      }
+	    } else {
+	      for (int i = 0; i < -yDistance; i++) {
+	        orientations.add(Exploration.NORTH_ORIENTATION);
+	      }
+	    }
+	    
+	    return orientations;
+	  }
+	
+	
+	/**
+	 * This method generates a path to a treasure in a forest
+	 * 
+	 * */
+	
+	public static ArrayList<Integer> generatePathToTreasure(Position charPosition){
+		ArrayList<Integer> orientations = new ArrayList<Integer>();
+		return orientations;
+	}
 	
 	
 	

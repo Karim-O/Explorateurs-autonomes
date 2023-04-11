@@ -38,7 +38,9 @@ import config.Configuration;
 public class PrepGUI extends JFrame implements Runnable{
 	
 	public static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(Configuration.WINDOW_WIDTH, Configuration.WINDOW_HEIGHT);
+
 	
+	private static Color controlColor = new Color(0xecf39e);
 	private static final long serialVersionUID = 6294652327524659690L;
 	private ToolPanel toolPanel;
 	private CharacterPanel characterPanel;
@@ -149,10 +151,11 @@ public class PrepGUI extends JFrame implements Runnable{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MainGUI gameMainGui = new MainGUI("Main");
+				/*MainGUI gameMainGui = new MainGUI("Main");
 
 				Thread gameThread = new Thread(gameMainGui);
-				gameThread.start();
+				gameThread.start();*/
+				new MainGUI("Main");
 				
 				dispose();
 			}    	

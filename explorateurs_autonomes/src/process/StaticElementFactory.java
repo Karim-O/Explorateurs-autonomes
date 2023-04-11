@@ -24,9 +24,9 @@ public class StaticElementFactory {
 	
 	public final static int TREE = 0;
 	public final static int ROCK = 1;
-	public final static int TREASURE = 2;
-	public final static int MUD = 3;
-	public final static int RIVER = 4;
+	public final static int MUD = 2;
+	public final static int RIVER = 3;
+	public final static int TREASURE = 4;
 	public final static int FOREST = 5;
 	
 	public static GraphicElement createStaticElement(int mobileElementType, Position position) throws ValueException {

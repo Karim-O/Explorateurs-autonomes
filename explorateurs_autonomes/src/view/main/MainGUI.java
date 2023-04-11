@@ -26,6 +26,7 @@ import process.MobileElementManager;
 import process.Simulation;
 import process.Utility;
 import view.GameDisplay;
+import view.PaintStrategy;
 import view.prep.SelectPanel;
 
 /**
@@ -177,6 +178,7 @@ public class MainGUI extends JFrame implements Runnable{
 				if(!manager.isAlive()) manager.start();
 				dashboard.repaint();
 			}
+			//PaintStrategy.paint(dashboard.getGraphics(), simulation.getManagers());
 			if(!simulation.isSuspended) {
 				System.out.println("Temps :" + time);
 				time++;	

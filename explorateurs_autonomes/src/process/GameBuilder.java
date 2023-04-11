@@ -37,6 +37,7 @@ public class GameBuilder {
 		Map map = new Map();
 		map = generateRandomTreasures(5, map);
 		map.addElements(initForestsByTreasures(map.getElements()));
+		map.addElements(initObstacles(10, map));
 		return map;
 		
 	}
@@ -191,7 +192,7 @@ public class GameBuilder {
 		return forests;
 	}
 	
-	public static ArrayList<GraphicElement> initSlowingDownObstacles(int nbSlowingDownObstacles, Map map){
+	public static ArrayList<GraphicElement> initObstacles(int nbSlowingDownObstacles, Map map){
 		ArrayList<GraphicElement> obstacles = new ArrayList<GraphicElement>();
 		int x, y, i, randInstance;
 		Position obstaclePosition;
@@ -200,9 +201,9 @@ public class GameBuilder {
 				x = Utility.getRandomNumber(1, map.getBlocksWidth()-3) * Block.BLOCK_WIDTH;
 				y = Utility.getRandomNumber(map.getBlocksHeight()/2, map.getBlocksHeight()-3) * Block.BLOCK_WIDTH;
 				obstaclePosition = new Position(x, y);
-			}while(Utility.isElementNBlockNearElement(map, obstaclePosition, 0));
+			}while(Utility.getGraphicElementFromPosition(map, obstaclePosition) != null);
 			
-			randInstance = Utility.getRandomNumber(StaticElementFactory.MUD, StaticElementFactory.RIVER);
+			randInstance = Utility.getRandomNumber(StaticElementFactory.ROCK, StaticElementFactory.RIVER);
 			
 			try {
 				obstacles.add((GraphicElement)StaticElementFactory.createStaticElement(randInstance, obstaclePosition));
@@ -277,7 +278,6 @@ public class GameBuilder {
 	 */
 	public static Map generateRandomTreasures(int nbTreasures, Map map) {
 		int x, y;
-		ArrayList<Treasure> randTreasures = new ArrayList<Treasure>();
 		for(int i = 0; i < nbTreasures; i++) {
 			do {
 				x = Utility.getRandomNumber(1, map.getBlocksWidth()-3) * Block.BLOCK_WIDTH;

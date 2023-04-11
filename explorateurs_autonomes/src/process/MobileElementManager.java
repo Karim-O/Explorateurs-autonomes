@@ -1,10 +1,12 @@
 package process;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 
 import config.Configuration;
 import data.map.Map;
+import data.map.Treasure;
+import data.map.GraphicElement;
 import data.map.geometry.Block;
 import data.map.geometry.Position;
 import data.map.mobile.Character;
@@ -108,6 +110,13 @@ public class MobileElementManager extends Thread{
 		while(!Simulation.isFinished) {
 			// Game is finished because all treasures were found
 			if(!suspended) {
+				ArrayList<GraphicElement> adjacents = Utility.getNBlocksAdjacents(5, map, character.getPosition());
+				
+				for(GraphicElement adjacent : adjacents) {
+					if(adjacent != null && adjacent instanceof Treasure) {
+						
+					}
+				}
 				
 				Utility.characterWaitingTime(character.getPace());
 				Position oldPosition = character.getPosition();

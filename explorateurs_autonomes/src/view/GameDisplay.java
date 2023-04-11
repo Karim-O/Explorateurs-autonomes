@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -10,6 +11,7 @@ import javax.swing.JPanel;
 import data.map.Map;
 import process.GameBuilder;
 import process.MobileElementManager;
+import view.prep.CharacterPanel;
 
 	/**
 	
@@ -22,7 +24,7 @@ public class GameDisplay extends JPanel{
 	
 	private Map map;
 	private ArrayList<MobileElementManager> managers;
-	
+	//private CharactersDisplay charactersDisplay;
 	/**
 	*
 	*@brief Constructor of the GameDisplay class.
@@ -30,9 +32,18 @@ public class GameDisplay extends JPanel{
 	*@param map The game map.
 	*/
 	public GameDisplay(ArrayList<MobileElementManager> managers, Map map) {
-		this.managers = managers;
+		//this.charactersDisplay = new CharactersDisplay(managers);
 		this.map = map;
+		this.managers = managers;
+		//this.setLayout(new FlowLayout());
+		//this.add(charactersDisplay);
 	}
+	
+	
+	/*public void repaintCharacters() {
+		charactersDisplay.repaint();
+	}*/
+	
 	
 	/**
 	*
@@ -48,13 +59,12 @@ public class GameDisplay extends JPanel{
 		
 		
 		//Activation du antialiasing
-		g2D.setRenderingHint(
+		/*g2D.setRenderingHint(
                 RenderingHints.KEY_ANTIALIASING, 
-                RenderingHints.VALUE_ANTIALIAS_ON);
-		
+                RenderingHints.VALUE_ANTIALIAS_ON);*/
+		//charactersDisplay.paint(g);
 		PaintStrategy.paint(g2D, this.map);
 		PaintStrategy.paint(g2D, managers);
-
 	}
 	
 	

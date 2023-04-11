@@ -50,17 +50,20 @@ public class Configuration {
 	
 	
 	/** Game speed in ms **/
-	public static final int GAME_SPEED = 1000;
+	public static final int GAME_SPEED = 500;
 	
-	public static final int WINDOW_WIDTH_WELCOME = 600;
-	public static final int WINDOW_HEIGHT_WELCOME = 400;
+//	public static final int WINDOW_WIDTH_WELCOME = 600;
+//	public static final int WINDOW_HEIGHT_WELCOME = 400;
+
+	public static final int WINDOW_WIDTH_WELCOME = WINDOW_WIDTH;
+	public static final int WINDOW_HEIGHT_WELCOME = WINDOW_HEIGHT;
 
 	
 	/** Width of the description in the welcome frame **/
-	public static final int DESCRIPTION_WELCOME_WIDTH = 300;
+	public static final int DESCRIPTION_WELCOME_WIDTH = 700;
 	
 	/** Height of the description in the welcome frame **/
-	public static final int DESCRIPTION_WELCOME_HEIGHT = 110;
+	public static final int DESCRIPTION_WELCOME_HEIGHT = 200;
 	
 	/** Position X of the description in the welcome frame **/
 	public static final int DESCRIPTION_WELCOME_POSITION_X = (WINDOW_WIDTH_WELCOME/2) - (DESCRIPTION_WELCOME_WIDTH/2);
@@ -82,7 +85,7 @@ public class Configuration {
 	
 	
 	/** Width of the title in the welcome frame **/
-	public static final int TITLE_WELCOME_WIDTH = 354;
+	public static final int TITLE_WELCOME_WIDTH = 866;
 	
 	/** Height of the title in the welcome frame **/
 	public static final int TITLE_WELCOME_HEIGHT = 90;
